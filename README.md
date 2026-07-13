@@ -18,4 +18,3 @@ Shared memory of the Testimonial System rock. **This repo (branch `main`) is the
 - Everything is written in English; conversations may happen in Spanish.
 
 Team: Bernardo (rock owner / director) · Joey (strategy & creative, async approvals) · Miguel (operations & technical).
-write test Bernardo OK — 2026-07-13
