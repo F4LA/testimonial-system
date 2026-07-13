@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** July 13, 2026 (by Bernardo — T-B.2 done, D-020 logged)
+**Last updated:** July 13, 2026 (by Bernardo — write-path redesign logged, D-021)
 
 ## Current phase
 
@@ -15,14 +15,14 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 ## Done
 
 - Rock defined, brief written, architecture decided
-- Decision Log active (D-001 through D-020; D-001 replaced by D-006). ⚠️ Rows D-014 and D-015 missing from the migrated log — recover from Drive version history (see migration note in `decision-log.md`)
+- Decision Log active (D-001 through D-021; D-001 replaced by D-006). ⚠️ Rows D-014 and D-015 missing from the migrated log — recover from Drive version history (see migration note in `decision-log.md`)
 - Current-system documentation loaded into Project knowledge
 - AI-first definition and hierarchy adopted (Brief §2)
 - Master Plan v1 built, approved, and uploaded (Jul 9): 20 tasks, owners (Joey 8 / Bernardo 8 / Miguel 5 +1 optional), dependencies, execution order + execution map. D-012: all collection reassigned to Bernardo end to end
 - T-C.1 Google Business Profile created (service-area business, "Strong Standard"), verified by Google (D-013)
 - T-C.2a Review technical setup done: Google review direct link + QR generated and handed off to Bernardo; Joey's "physical component" idea discarded — no physical customer-facing location exists (D-014, D-015)
 - T-B.1 Storytelling style guide v1.0 approved (D-016). Publishing pages confirmed: Dr. Joey primary + Strong Standard + coaches; not Bernardo's page (D-017). Doc in Drive
-- Decision Log, Project Brain and Master Plan migrated to GitHub (`F4LA/testimonial-system`) as the single source of truth; Drive docs frozen; pure Markdown, no Pages (D-018, D-019). Repo made public — chats read via raw URLs, no auth
+- Decision Log, Project Brain and Master Plan migrated to GitHub (`F4LA/testimonial-system`) as the single source of truth; Drive docs frozen; pure Markdown, no Pages (D-018, D-019). Repo made public — chats read via raw URLs, no auth. Write path redesigned: reading via public URLs, writing via Claude Code, token removed (D-021, replaces D-018). Setup + instructions pending in a follow-up chat
 - T-B.2 Social templates done (carousel, reel, 3-frame story) + per-page voice adaptation rule (D-020). Feeds T-B.4
 
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
