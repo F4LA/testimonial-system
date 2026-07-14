@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** July 14, 2026 (by Bernardo — Asana project created, D-023)
+**Last updated:** July 14, 2026 (by Bernardo — T-0.1 spike closed, D-024/D-025)
 
 ## Current phase
 
@@ -25,10 +25,11 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 - Decision Log, Project Brain and Master Plan migrated to GitHub (`F4LA/testimonial-system`) as the single source of truth; Drive docs frozen; pure Markdown, no Pages (D-018, D-019). Repo made public — chats read via raw URLs, no auth. Write path redesigned: reading via public URLs, writing via Claude Code, token removed (D-021, replaces D-018). Setup + instructions pending in a follow-up chat
 - T-B.2 Social templates done (carousel, reel, 3-frame story) + per-page voice adaptation rule (D-020). Feeds T-B.4
 - Master Plan cargado a Asana como proyecto del rock ("Testimonial System Rock — Master Plan"): 20 tasks numerados en orden de ejecución con owners (Bernardo, Joey, Miguel), due dates Jul 15–17, prerequisitos en el título y regla de handoff (avisar + entregar en la carpeta de Drive) en cada task que desbloquea a alguien (D-023)
+- T-0.1 Spike closed: both sources AUTOMATABLE — Meet via domain-wide Drive watch (D-024), Looms via flag-system Sheet + Loom public transcript endpoint, verified live Jul 14 (D-025). Verdict doc in the Drive project folder. Unblocks T-A.4. Asana task 09 completed
 
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
 
-- Bernardo: T-E.1 + T-E.2 (process map v0 + dashboard data requirements) · T-0.1 (transcripts + Looms spike)
+- Bernardo: T-E.1 + T-E.2 (process map v0 + dashboard data requirements)
 - Joey: T-A.1 + T-A.2 (client + coach questionnaires)
 - Miguel: none active — next task blocked (see below)
 
