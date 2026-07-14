@@ -6,13 +6,11 @@
 
 ---
 
-## Paso 0 — Prerrequisito: cuenta de GitHub con acceso al repo
+## Paso 0 — Cuenta de GitHub compartida
 
-1. Si no tienes cuenta de GitHub, créala gratis en https://github.com/signup (usa tu correo de trabajo).
-2. Envíale a Bernardo tu **nombre de usuario de GitHub** por Slack.
-3. Bernardo te agrega como colaborador del repo `F4LA/testimonial-system`. Te llegará un **correo de invitación de GitHub → ábrelo y acepta** ("Accept invitation"). Sin este paso, el push del final va a fallar.
+Los tres (Bernardo, Joey, Miguel) usan **la misma cuenta de GitHub compartida**, la que está vinculada al **correo de membership**. No se crean cuentas individuales ni se agrega a nadie como colaborador.
 
-*(Bernardo: colaboradores se agregan en github.com → repo → Settings → Collaborators → Add people.)*
+La credencial de esa cuenta se comparte **por un canal seguro** (por ejemplo, un gestor de contraseñas del equipo). **Nunca** se pega en texto plano en chats, Slack, correo ni en este repo. Si no la tienes todavía, pídesela a Bernardo por ese canal.
 
 ## Paso 1 — Abrir Claude Code
 
