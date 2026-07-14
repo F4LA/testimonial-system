@@ -27,7 +27,7 @@ Copia y pega este mensaje en Claude Code, tal cual:
 Claude Code va a hacer el trabajo y en algún momento te va a pedir autenticarte:
 
 - Te mostrará un **código de un solo uso** (algo como `ABCD-1234`) y un enlace a `github.com/login/device`.
-- Abre el enlace en tu navegador, inicia sesión con **tu** cuenta de GitHub, escribe el código y autoriza.
+- Abre el enlace en tu navegador, inicia sesión con **la cuenta compartida de membership**, escribe el código y autoriza.
 - Vuelve a Claude Code y dile que ya está. Esto se hace **una sola vez**: la credencial queda guardada en tu máquina.
 
 ## Paso 3 — Prueba de que el push funciona
@@ -52,7 +52,7 @@ Verificación final:
 
 ## Si algo falla
 
-- **"Permission denied" o el push es rechazado** → casi seguro no aceptaste la invitación de colaborador (Paso 0.3) o Bernardo aún no te agregó. Revisa tu correo.
+- **"Permission denied" o el push es rechazado** → casi seguro las credenciales de la cuenta compartida se ingresaron mal al autenticarte. Reintenta en Claude Code: "autentícame de nuevo con gh auth login usando el navegador", e inicia sesión con la cuenta compartida de membership.
 - **La autenticación falla o expira** → repite en Claude Code: "autentícame de nuevo con gh auth login usando el navegador".
 - **Claude Code dice que hay conflictos** → no intentes resolverlos tú: avísale a Bernardo con una captura. Con 3 personas editando archivos distintos casi nunca debería pasar.
 - **Cualquier otra cosa** → pregúntale a Claude Code directamente qué pasó y qué recomienda; si no se resuelve en 5 minutos, Slack a Bernardo.
