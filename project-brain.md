@@ -15,7 +15,7 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 ## Done
 
 - Rock defined, brief written, architecture decided
-- Decision Log active (D-001 through D-021; D-001 replaced by D-006). ⚠️ Rows D-014 and D-015 missing from the migrated log — recover from Drive version history (see migration note in `decision-log.md`)
+- Decision Log active (D-001 through D-021; D-001 replaced by D-006)
 - Current-system documentation loaded into Project knowledge
 - AI-first definition and hierarchy adopted (Brief §2)
 - Master Plan v1 built, approved, and uploaded (Jul 9): 20 tasks, owners (Joey 8 / Bernardo 8 / Miguel 5 +1 optional), dependencies, execution order + execution map. D-012: all collection reassigned to Bernardo end to end
