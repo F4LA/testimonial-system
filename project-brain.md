@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** July 13, 2026 (by Bernardo — write-path redesign logged, D-021)
+**Last updated:** July 14, 2026 (by Bernardo — Asana project created, D-023)
 
 ## Current phase
 
@@ -24,6 +24,7 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 - T-B.1 Storytelling style guide v1.0 approved (D-016). Publishing pages confirmed: Dr. Joey primary + Strong Standard + coaches; not Bernardo's page (D-017). Doc in Drive
 - Decision Log, Project Brain and Master Plan migrated to GitHub (`F4LA/testimonial-system`) as the single source of truth; Drive docs frozen; pure Markdown, no Pages (D-018, D-019). Repo made public — chats read via raw URLs, no auth. Write path redesigned: reading via public URLs, writing via Claude Code, token removed (D-021, replaces D-018). Setup + instructions pending in a follow-up chat
 - T-B.2 Social templates done (carousel, reel, 3-frame story) + per-page voice adaptation rule (D-020). Feeds T-B.4
+- Master Plan cargado a Asana como proyecto del rock ("Testimonial System Rock — Master Plan"): 20 tasks numerados en orden de ejecución con owners (Bernardo, Joey, Miguel), due dates Jul 15–17, prerequisitos en el título y regla de handoff (avisar + entregar en la carpeta de Drive) en cada task que desbloquea a alguien (D-023)
 
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
 
