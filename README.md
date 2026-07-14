@@ -12,8 +12,8 @@ Shared memory of the Testimonial System rock. **This repo (branch `main`) is the
 
 ## Workflow
 
-- **Chat start:** every Claude work chat in the Project reads the three files from this repo via the GitHub API.
-- **Chat close:** Claude commits new Decision Log rows and any Project Brain / Master Plan updates directly to `main`.
+- **Chat start:** every Claude work chat in the Project reads the three files from this repo directly via their public raw URLs — no GitHub API, no token (D-021).
+- **Chats never write.** A Project chat produces the content of a change and hands it back; it does not touch the repo. Each person uploads that content with their own Claude Code session, which does pull → edit → push to `main` following [`CLAUDE.md`](CLAUDE.md) (D-021).
 - Documents are pure Markdown — no HTML, no GitHub Pages (D-019).
 - Everything is written in English; conversations may happen in Spanish.
 
