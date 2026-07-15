@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** July 14, 2026 (by Bernardo — deliverables convention + reading rule, D-026/D-027)
+**Last updated:** July 15, 2026 (by Bernardo — T-E.1 closed, D-028 through D-032)
 
 ## Current phase
 
@@ -27,10 +27,11 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 - Master Plan cargado a Asana como proyecto del rock ("Testimonial System Rock — Master Plan"): 20 tasks numerados en orden de ejecución con owners (Bernardo, Joey, Miguel), due dates Jul 15–17, prerequisitos en el título y regla de handoff (avisar + entregar en la carpeta de Drive) en cada task que desbloquea a alguien (D-023)
 - T-0.1 Spike closed: both sources AUTOMATABLE — Meet via domain-wide Drive watch (D-024), Looms via flag-system Sheet + Loom public transcript endpoint, verified live Jul 14 (D-025). Verdict doc in the Drive project folder. Unblocks T-A.4. Asana task 09 completed
 - Governance: deliverables convention adopted — every task deliverable is a single live Google Doc in the Drive project folder, linked from its Decision Log row (D-026); reading rule hardened against stale snapshots and fetch-proxy caching (D-027). Review-link deliverable (T-C.2a) complete in the folder: doc + QR image
+- T-E.1 Process Map v0 approved (D-028): 9 stages with AI-first labels; confirmation trigger decoupled from Asana via Sheet signal + AUTO fan-out (D-029); T-B.3 extended with the weekly email template (D-030). Doc in the Drive project folder. Asana task 08 completed
 
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
 
-- Bernardo: T-E.1 + T-E.2 (process map v0 + dashboard data requirements)
+- Bernardo: T-E.2 (dashboard data requirements — E.1 half closed, D-028)
 - Joey: T-A.1 + T-A.2 (client + coach questionnaires)
 - Miguel: none active — next task blocked (see below)
 
@@ -52,6 +53,8 @@ None standing alone — all remaining open items live inside their tasks and get
 
 - Fri Jul 17 — last working day before the trip (aspirational target: everything except dashboard done)
 - Sun Jul 19 — team trip; 6-month planning (sprint structure gets redefined there)
+- Week of Jul 27 — Bernardo builds the dashboard (D-031)
+- Mon Aug 3 — full system launch with the first monthly testimonial request (D-031; fallback: launch on Sheet signal if the dashboard slips)
 
 ## How to update this doc (Bernardo, Wednesdays — plus any chat that changes status)
 
