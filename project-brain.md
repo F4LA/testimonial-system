@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** July 15, 2026 (by Bernardo — T-E.1 closed, D-028 through D-032)
+**Last updated:** July 15, 2026 (by Bernardo — T-E.2 closed, D-033/D-034)
 
 ## Current phase
 
@@ -28,16 +28,17 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 - T-0.1 Spike closed: both sources AUTOMATABLE — Meet via domain-wide Drive watch (D-024), Looms via flag-system Sheet + Loom public transcript endpoint, verified live Jul 14 (D-025). Verdict doc in the Drive project folder. Unblocks T-A.4. Asana task 09 completed
 - Governance: deliverables convention adopted — every task deliverable is a single live Google Doc in the Drive project folder, linked from its Decision Log row (D-026); reading rule hardened against stale snapshots and fetch-proxy caching (D-027). Review-link deliverable (T-C.2a) complete in the folder: doc + QR image
 - T-E.1 Process Map v0 approved (D-028): 9 stages with AI-first labels; confirmation trigger decoupled from Asana via Sheet signal + AUTO fan-out (D-029); T-B.3 extended with the weekly email template (D-030). Doc in the Drive project folder. Asana task 08 completed
+- T-E.2 Dashboard Data Requirements v0 approved (D-033): what every one of the 9 stages must register, AUTO/manual per stage; dashboard absorbs all Asana functions + all 5 spreadsheet tabs + the new signals; instrumentation lives in an append-only event log separate from the D-029 signal (D-034). Doc in the Drive project folder. Asana task 07 completed
 
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
 
-- Bernardo: T-E.2 (dashboard data requirements — E.1 half closed, D-028)
+- Bernardo: T-A.3 (standard client folder — next queued)
 - Joey: T-A.1 + T-A.2 (client + coach questionnaires)
 - Miguel: none active — next task blocked (see below)
 
 ## Next up
 
-- Bernardo: T-A.3 standard client folder → T-A.4 collection build (Meet + Looms) → T-C.2b review tracking → T-E.3 final documentation
+- Bernardo: T-A.4 collection build (Meet + Looms) → T-C.2b review tracking → T-E.3 final documentation
 - Joey: T-B.3 case study → T-A.5 instructions email → T-D.1 / T-D.2 podcast
 - Miguel: T-B.4 agent spec — blocked only on Bernardo's standard client folder (T-A.3; templates T-B.2 delivered) → T-B.5 build → T-B.6 test
 
