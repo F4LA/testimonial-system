@@ -34,13 +34,13 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
 
 - Joey: T-A.1 + T-A.2 (client + coach questionnaires)
-- Miguel: none active — next task blocked (see below)
+- Miguel: T-B.4 agent spec (desbloqueado por T-A.3; templates T-B.2 ya entregados) — puede especificar todo menos el mapeo pregunta→beat, que espera la aprobación final del cuestionario de Joey (D-036c)
 
 ## Next up
 
 - Bernardo: T-A.4 collection build (Meet + Looms) → T-C.2b review tracking → T-E.3 final documentation
 - Joey: T-B.3 case study → T-A.5 instructions email → T-D.1 / T-D.2 podcast
-- Miguel: T-B.4 agent spec — blocked only on Bernardo's standard client folder (T-A.3; templates T-B.2 delivered) → T-B.5 build → T-B.6 test
+- Miguel: T-B.4 agent spec → T-B.5 build → T-B.6 test
 
 ## Blocked
 
