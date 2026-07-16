@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** July 15, 2026 (by Bernardo — T-E.2 closed, D-033/D-034)
+**Last updated:** July 16, 2026 (by Bernardo — T-A.3 closed, D-037/D-038)
 
 ## Current phase
 
@@ -29,10 +29,10 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 - Governance: deliverables convention adopted — every task deliverable is a single live Google Doc in the Drive project folder, linked from its Decision Log row (D-026); reading rule hardened against stale snapshots and fetch-proxy caching (D-027). Review-link deliverable (T-C.2a) complete in the folder: doc + QR image
 - T-E.1 Process Map v0 approved (D-028): 9 stages with AI-first labels; confirmation trigger decoupled from Asana via Sheet signal + AUTO fan-out (D-029); T-B.3 extended with the weekly email template (D-030). Doc in the Drive project folder. Asana task 08 completed
 - T-E.2 Dashboard Data Requirements v0 approved (D-033): what every one of the 9 stages must register, AUTO/manual per stage; dashboard absorbs all Asana functions + all 5 spreadsheet tabs + the new signals; instrumentation lives in an append-only event log separate from the D-029 signal (D-034). Doc in the Drive project folder. Asana task 07 completed
+- T-A.3 Standard client folder v0 approved (D-037): estructura idéntica por cliente + archivo de estado de recolección; fotos antes/después pasan a pull de Gaby vía Everfit. Doc en la carpeta de Drive. Asana task 12 completed. Desbloquea T-B.4
 
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
 
-- Bernardo: T-A.3 (standard client folder — next queued)
 - Joey: T-A.1 + T-A.2 (client + coach questionnaires)
 - Miguel: none active — next task blocked (see below)
 
@@ -44,7 +44,7 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 
 ## Blocked
 
-Nothing rock-wide. Miguel's T-B.4 is waiting only on Bernardo's standard client folder (T-A.3) — not a rock blocker, just sequencing.
+Nothing rock-wide.
 
 ## Open decisions
 
