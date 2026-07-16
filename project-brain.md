@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** July 16, 2026 (by Bernardo — T-A.3 closed, D-037/D-038)
+**Last updated:** July 16, 2026 (by Bernardo — collection build spec v1 closed, D-039/D-040)
 
 ## Current phase
 
@@ -30,6 +30,7 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 - T-E.1 Process Map v0 approved (D-028): 9 stages with AI-first labels; confirmation trigger decoupled from Asana via Sheet signal + AUTO fan-out (D-029); T-B.3 extended with the weekly email template (D-030). Doc in the Drive project folder. Asana task 08 completed
 - T-E.2 Dashboard Data Requirements v0 approved (D-033): what every one of the 9 stages must register, AUTO/manual per stage; dashboard absorbs all Asana functions + all 5 spreadsheet tabs + the new signals; instrumentation lives in an append-only event log separate from the D-029 signal (D-034). Doc in the Drive project folder. Asana task 07 completed
 - T-A.3 Standard client folder v0 approved (D-037): estructura idéntica por cliente + archivo de estado de recolección; fotos antes/después pasan a pull de Gaby vía Everfit. Doc en la carpeta de Drive. Asana task 12 completed. Desbloquea T-B.4
+- Construcción de la recolección automática (spec v1) cerrada (D-040) + decisión de identidad de todo el sistema (D-039): correo como llave, roster como traductor, bandera manual si falla. Meet por correo con búsqueda hacia atrás; Loom con puente correo→nombre; Everfit manual con fotos; recordatorio activo diferido al dashboard. Doc como .docx local por caída del conector de Drive — pendiente subir a la carpeta. La construcción del código es la tarea siguiente
 
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
 
@@ -38,13 +39,15 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 
 ## Next up
 
-- Bernardo: T-A.4 collection build (Meet + Looms) → T-C.2b review tracking → T-E.3 final documentation
+- Bernardo: construcción del código de la recolección (Meet + Looms, puente de identidad vía roster, cableado del fan-out y archivo de estado) → seguimiento de reseñas → documentación final
 - Joey: T-B.3 case study → T-A.5 instructions email → T-D.1 / T-D.2 podcast
 - Miguel: T-B.4 agent spec → T-B.5 build → T-B.6 test
 
 ## Blocked
 
 Nothing rock-wide.
+
+- Referencia colgante a barrer: el mapa de proceso (etapa 3.5) aún dice "fotos antes/después — sube el cliente"; ya se movió a la pasada de Everfit de Gaby (D-037). Corregir cuando se toque en la documentación final
 
 ## Open decisions
 
