@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** July 17, 2026 (by Miguel — T-B.4 closed, D-041)
+**Last updated:** July 17, 2026 (by Miguel — T-B.5 closed, D-042)
 
 ## Current phase
 
@@ -32,17 +32,18 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 - T-A.3 Standard client folder v0 approved (D-037): estructura idéntica por cliente + archivo de estado de recolección; fotos antes/después pasan a pull de Gaby vía Everfit. Doc en la carpeta de Drive. Asana task 12 completed. Desbloquea T-B.4
 - Construcción de la recolección automática (spec v1) cerrada (D-040) + decisión de identidad de todo el sistema (D-039): correo como llave, roster como traductor, bandera manual si falla. Meet por correo con búsqueda hacia atrás; Loom con puente correo→nombre; Everfit manual con fotos; recordatorio activo diferido al dashboard. Doc como .docx local por caída del conector de Drive — pendiente subir a la carpeta. La construcción del código es la tarea siguiente
 - T-B.4 Storytelling agent spec approved (D-041) — trigger, input, knowledge, and output closed; only the question→beat mapping stays open pending Joey's questionnaire sign-off. Asana task 15 completed. Unblocks T-B.5
+- T-B.5 Storytelling agent build delivered (D-042) — Python script + cached style guide/templates, invocable manually per client via Claude Code; matches the approved T-B.4 spec exactly. Question→beat mapping still open pending Joey's questionnaire sign-off. Tested against synthetic fixtures; live client run is T-B.6. Working files handed directly to Miguel (not stored in repo, D-021). Unblocks T-B.6
 
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
 
 - Joey: T-A.1 + T-A.2 (client + coach questionnaires)
-- Miguel: T-B.5 agent build (per the closed T-B.4 spec)
+- Miguel: T-B.6 agent test (live generation against a real client, per the delivered T-B.5 build)
 
 ## Next up
 
 - Bernardo: construcción del código de la recolección (Meet + Looms, puente de identidad vía roster, cableado del fan-out y archivo de estado) → seguimiento de reseñas → documentación final
 - Joey: T-B.3 case study → T-A.5 instructions email → T-D.1 / T-D.2 podcast
-- Miguel: T-B.5 build → T-B.6 test
+- Miguel: T-B.6 test
 
 ## Blocked
 
