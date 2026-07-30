@@ -41,6 +41,7 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 
 - Bernardo: DESPLIEGUE de la recolección automática — falta crear el Sheet del disparador, pegar el código (amarrado al proyecto Testimonial System), llenar propiedades (roster, flags, carpetas, Slack), correr setup + instalarTriggers, y el plan de prueba
 - Miguel: prueba del agente (tarea 19) — ahora se integra a la prueba end-to-end con cliente de confianza (D-049)
+- Asana: creada la tarea 21 (Bernardo — reclutar/alimentar cliente de confianza para la prueba end-to-end); la tarea 19 (Miguel — correr el agente) ahora depende de la 21. Refleja D-049.
 
 ## Next up
 
