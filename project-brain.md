@@ -4,13 +4,13 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** July 17, 2026 (by Miguel — T-B.5 closed, D-042)
+**Last updated:** July 30, 2026 (by Bernardo — recolección: auth sin llave verificada en vivo y código reconstruido; trabajo de Joey reasignado a Bernardo; cuestionarios aprobados; caso de estudio para todos ratificado; cliente del mes definido)
 
 ## Current phase
 
 Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to Project knowledge. Handoff prompts ready; team sent the plan for async review before each person opens their first task chat.
 
-**Status:** ON TRACK
+**Status:** ON TRACK — el lanzamiento (3 ago) está a pocos días; lo crítico pendiente es el despliegue de la recolección + el correo de instrucciones.
 
 ## Done
 
@@ -33,17 +33,19 @@ Phase 2 — Execution (starting). Master Plan built, approved, and uploaded to P
 - Construcción de la recolección automática (spec v1) cerrada (D-040) + decisión de identidad de todo el sistema (D-039): correo como llave, roster como traductor, bandera manual si falla. Meet por correo con búsqueda hacia atrás; Loom con puente correo→nombre; Everfit manual con fotos; recordatorio activo diferido al dashboard. Doc como .docx local por caída del conector de Drive — pendiente subir a la carpeta. La construcción del código es la tarea siguiente
 - T-B.4 Storytelling agent spec approved (D-041) — trigger, input, knowledge, and output closed; only the question→beat mapping stays open pending Joey's questionnaire sign-off. Asana task 15 completed. Unblocks T-B.5
 - T-B.5 Storytelling agent build delivered (D-042) — Python script + cached style guide/templates, invocable manually per client via Claude Code; matches the approved T-B.4 spec exactly. Question→beat mapping still open pending Joey's questionnaire sign-off. Tested against synthetic fixtures; live client run is T-B.6. Working files handed directly to Miguel (not stored in repo, D-021). Unblocks T-B.6
+- Código de la recolección automática construido y reconstruido con autenticación SIN llave (D-043, D-044). Método keyless verificado en vivo el 30 jul (leyó el calendario de un coach actuando como él). Cimientos de despliegue ya montados por Bernardo: proyecto de Cloud "Testimonial System" (1039269378752), Calendar + Drive + IAM Credentials APIs activadas, cuenta de servicio testimonial-collector con delegación de dominio (scopes calendar.readonly + drive) y membership@ como Token Creator, proyecto de Apps Script amarrado + consent screen configurado. Código entregado a Bernardo (pendiente subir a Drive)
+- Cuestionarios de cliente y coach aprobados (D-046) → tareas 05 y 06 completas. Caso de estudio para todos ratificado por Joey (D-047). Cliente del mes definido: voto interno + shout-out + podcast (D-048)
+- Todo el trabajo de Joey reasignado a Bernardo como ejecutor, Joey aprueba solo lo creativo (D-045); Asana 10/11/13/17 reasignadas
 
 ## In progress (Phase 2 — first tasks, all parallel from day 1)
 
-- Joey: T-A.1 + T-A.2 (client + coach questionnaires)
-- Miguel: T-B.6 agent test (live generation against a real client, per the delivered T-B.5 build)
+- Bernardo: DESPLIEGUE de la recolección automática — falta crear el Sheet del disparador, pegar el código (amarrado al proyecto Testimonial System), llenar propiedades (roster, flags, carpetas, Slack), correr setup + instalarTriggers, y el plan de prueba
+- Miguel: prueba del agente (tarea 19) — ahora se integra a la prueba end-to-end con cliente de confianza (D-049)
 
 ## Next up
 
-- Bernardo: construcción del código de la recolección (Meet + Looms, puente de identidad vía roster, cableado del fan-out y archivo de estado) → seguimiento de reseñas → documentación final
-- Joey: T-B.3 case study → T-A.5 instructions email → T-D.1 / T-D.2 podcast
-- Miguel: T-B.6 test
+- Bernardo (ahora dueño de lo de Joey también): terminar despliegue de la recolección → correo de instrucciones (tarea 13, prioridad para el lanzamiento) → template de caso de estudio (10) → seguimiento de reseñas (14) → tareas de podcast (11, 17) → prueba real end-to-end (último paso, D-049) → documentación final (20)
+- Joey: aprueba lo creativo async; recibe un solo documento con los puntos pendientes de su decisión
 
 ## Blocked
 
