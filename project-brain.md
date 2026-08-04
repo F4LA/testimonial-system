@@ -4,13 +4,13 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 4, 2026 (English-rewrite chat — collection engine rewritten to English, Meet redesign finalized and VALIDATED end-to-end in production; launch moved to Aug 10; podcast outline replaced by a client brief)
+**Last updated:** August 4, 2026 (client-instructions-email chat — task 13 closed: kickoff email + no-login preferences form designed; Drive source swap confirmed done)
 
 ## Current phase
 
 Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic collection system is deployed, was tested end-to-end on 31 Jul, and was rewritten to English and re-validated end-to-end in production on 4 Aug.
 
-**Status:** ON TRACK — the collection engine is deployed, rewritten to English, and validated end-to-end in production. Launch was moved to Mon Aug 10 (one-week slip, D-057). What remains before launch is the client-instructions email (task 13).
+**Status:** ON TRACK — the collection engine is deployed, rewritten to English, and validated end-to-end in production. Launch was moved to Mon Aug 10 (one-week slip, D-057). What remains before launch is operational, not design: build the preferences form in Google Forms and wire the folder link into the email (D-059). The client-instructions email itself is done.
 
 ## Done
 
@@ -46,6 +46,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
   - Meet redesign finalized (D-055): Gemini Notes Docs harvested from Drive; auto-save folder matched by PREFIX "Meet Recordings*" (folders renamed by the AI Sales Coach team); Docs matched by email OR name with the email verified in the body; classified by title into 01/<type>; idempotent
   - Operator "Testimonial System" Sheet menu + guarded getUi (D-056)
   - **Re-test (Benjamin Jayne):** ✅ folder · ✅ Meet (2 Gemini Notes copied + classified, idempotent) · ✅ Loom (correct flag — no flag-form entry) · ✅ Slack (app DM). Identity + keyless + delegation green. Closes the retest pending in D-053
+- Client instructions email ("collection kickoff") rewritten (D-059, task 13): approved 11-question video script + video-to-folder-link + no-login preferences form (credit / photo permission / do-not-publish / review self-report). Raffle entry made explicit as hard (photos + review). Asana 13 complete
 
 ## In progress (Phase 2)
 
@@ -55,7 +56,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 ## Next up
 
 - Coach non-negotiables SOP (new backlog task): Gemini note-taker on every call; always book via GoHighLevel (not direct Google Calendar); always put the Loom link in the check-in description; **keep the Meet auto-save folder prefixed "Meet Recordings"** (the AI Sales Coach team renamed Bernardo's — confirm the other coaches'); **name calls with the keyword** (Discovery / Kickoff / Mesocycle) for reliable classification. Directly enables reliable Meet + Loom automation. Needs a master-plan/Asana entry.
-- Bernardo (owns Joey's items too): client-instructions email (task 13, launch priority) → case study template (10) → reviews tracking (14) → client brief ≤2pp (17, D-058) → podcast criteria (11) → real end-to-end test (D-049) → final documentation (20)
+- Bernardo (owns Joey's items too): case study template (10) → reviews tracking (14) → client brief ≤2pp (17, D-058) → podcast criteria (11) → real end-to-end test (D-049) → final documentation (20). **Launch to-do before Aug 10 (operational, from D-059):** build the preferences form in Google Forms (no file-upload question, so no login) and wire the client-video subfolder link into the email; Gaby pastes the auto-created folder link at send time.
 - Joey: approves creative async
 
 ## Launch posture (Meet)
@@ -66,7 +67,6 @@ Meet is validated end-to-end (4 Aug) and runs **automatically**. The per-client 
 
 Nothing rock-wide.
 
-- **Drive source archive swap pending:** the new English `.gs.txt` replaces the old key-era Spanish source (fileId 1ZnL2hFldSyc_ZNUHNdtnZUgZeOJvdp26, in the project folder) — upload new, trash old. One live copy.
 - Old Drive deployment guide (key-based method) is stale/superseded — deployment was done inline in chat, no guide. Archive it; not a reference.
 - Dangling ref to sweep: process map (stage 3.5) still says "before/after photos — client uploads"; moved to Gaby's Everfit pull (D-037). Fix in final documentation.
 
@@ -76,7 +76,7 @@ None standing alone — remaining open items live inside their tasks (Master Pla
 
 ## Key dates
 
-- Mon Aug 10 — full system launch with the first monthly testimonial request (moved from Aug 3, D-057). Collection engine is validated and launch-ready; gated on the client-instructions email (task 13).
+- Mon Aug 10 — full system launch with the first monthly testimonial request (D-057). Collection engine validated and launch-ready; the client-instructions email is done (D-059). Pre-launch operational to-do: build the preferences form + wire the folder link.
 
 ## How to update this doc (Bernardo, Wednesdays — plus any chat that changes status)
 
