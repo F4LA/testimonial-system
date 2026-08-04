@@ -38,7 +38,7 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | **4** | B.3 Case study template | A.4 Collection build (Meet + Looms) | **★ **B.5 Agent build |
 | **5** | A.5 Instructions email (incl. review) | C.2b Review tracking design | **★ **B.6 Real-testimonial test |
 | **6** | D.1 Podcast criteria + selection | **E.3 Final documentation***  last task* | — |
-| **7** | D.2 Episode outline + integration | — | — |
+| **7** | D.2 Client brief (≤2 pp) | — | — |
 
 **The four cross-person handoffs (the only points where someone can be blocked by someone else):**
 
@@ -98,7 +98,7 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | **ID** | **Task** | **Owner** | **What it is** | **AI-first** |
 | --- | --- | --- | --- | --- |
 | **T-D.1** | **Podcast criteria + how we pick the case study of the month  🔶** | **Joey** | Two decisions: (1) invitation criteria and cadence; (2) how the “case study of the month” is chosen — raffle winner ≠ case study person; selection method is open. | [MANUAL] justified — editorial judgment; AI supplies options. |
-| **T-D.2** | **Episode outline + connect podcast to the new flow** | **Joey** | Base outline for the transformation episode + connect the existing podcast stage (SOP §7) to the new process using T-D.1 criteria. | [AI+OK] |
+| **T-D.2** | **Client brief (≤2 pages)** | **Joey (executor Bernardo, D-045)** | A ≤2-page per-client brief from the collected inputs: where the client started, how they felt, their challenges, where they are now, how they feel, what's helping them improve, and their takeaways. Feeds Joey's podcast (run ad-hoc per client — no fixed outline, D-058), the case study, and serves as the legible summary of the collected material. Replaces the podcast episode outline. | [AI+OK] |
 
 ### **WS-E · The full process, documented (+ dashboard seed)**
 
@@ -138,7 +138,7 @@ No dates — order and dependencies only. Aspirational target: everything except
 | **4** | **T-B.3 Case study template** | After B.2. Blocks no one. |
 | **5** | **T-A.5 Instructions email (incl. review entry)** | Questionnaires exist (A.1). Delegable to Bernardo. |
 | **6** | **T-D.1 Podcast criteria + case-study selection** | Anytime — independent. |
-| **7** | **T-D.2 Episode outline + flow integration** | After D.1. |
+| **7** | **T-D.2 Client brief (≤2 pages)** | After collection inputs exist. |
 
 **Continuous — async approvals: **style → templates → spec → test content, as they arrive. Small pieces, never one big block.
 
