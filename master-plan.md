@@ -56,33 +56,33 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 
 ## **3.  The task list (22 tasks)**
 
-**Task count:  **Joey 8  ·  Bernardo 8  ·  Miguel 5 (+1 optional)  ·  20 total. All collection (Meet + Looms + Everfit) is Bernardo’s; Miguel is focused on Google Reviews + the storytelling agent.
+**Task count:  **Joey 8  ·  Bernardo 8  ·  Miguel 6 (+1 optional)  ·  22 total (added T-B.7 landing page → Miguel, and T-E.4 SOPs by role → Bernardo). All collection (Meet + Looms + Everfit) is Bernardo’s; Miguel is focused on Google Reviews + the storytelling agent + the case study landing page.
 
 ### **WS-0 · Technical Spike**
 
 | **ID** | **Task** | **Owner** | **What it is** | **AI-first** |
 | --- | --- | --- | --- | --- |
-| **T-0.1** | **Spike: automatic access to transcripts + Looms  🔶** | **Bernardo** | Find out whether we can programmatically pull (a) Google Meet transcripts — sales, kickoff, end-of-mesocycle — and (b) coach Looms. One spike, one verdict per source: “yes, this way” or “no, manual”, with method and effort. Everfit is OUT — no open API, stays manual (D-007). | [AI+OK] — Claude Code investigates; human gives credentials and validates. |
+| **T-0.1** | **Spike: automatic access to transcripts + Looms  🔶 — ✅ DONE (D-024/D-025)** | **Bernardo** | Find out whether we can programmatically pull (a) Google Meet transcripts — sales, kickoff, end-of-mesocycle — and (b) coach Looms. One spike, one verdict per source: “yes, this way” or “no, manual”, with method and effort. Everfit is OUT — no open API, stays manual (D-007). | [AI+OK] — Claude Code investigates; human gives credentials and validates. |
 
 ### **WS-A · Collection — what we ask for, and where it lands**
 
 | **ID** | **Task** | **Owner** | **What it is** | **AI-first** |
 | --- | --- | --- | --- | --- |
-| **T-A.1** | **Build the client questionnaire  🔶** | **Joey** | Decide what story we capture from the client AND write the final questionnaire (replaces today’s 6 video questions). One task, one delivery. | [AI+OK] — AI drafts, Joey directs and approves. |
-| **T-A.2** | **Build the coach questionnaire  🔶** | **Joey** | Same for the coach: the client’s process, challenges, adjustments, turning points. Happens regardless of spike outcome (D-006). | [AI+OK] |
-| **T-A.3** | **Define the standard client folder  🔶** | **Bernardo** | How every client’s folder is organized: which files, names, order — identical for everyone, so the agent always knows where to look. Must register the data points required by T-E.2. Defines the “where”; T-A.4a/b build the pipes into it. | [AI+OK] design; filling the folder targets [AUTO] in operation. |
+| **T-A.1** | **Build the client questionnaire  🔶 — ✅ DONE (D-046)** | **Joey** | Decide what story we capture from the client AND write the final questionnaire (replaces today’s 6 video questions). One task, one delivery. | [AI+OK] — AI drafts, Joey directs and approves. |
+| **T-A.2** | **Build the coach questionnaire  🔶 — ✅ DONE (D-046)** | **Joey** | Same for the coach: the client’s process, challenges, adjustments, turning points. Happens regardless of spike outcome (D-006). | [AI+OK] |
+| **T-A.3** | **Define the standard client folder  🔶 — ✅ DONE (D-037)** | **Bernardo** | How every client’s folder is organized: which files, names, order — identical for everyone, so the agent always knows where to look. Must register the data points required by T-E.2. Defines the “where”; T-A.4a/b build the pipes into it. | [AI+OK] design; filling the folder targets [AUTO] in operation. |
 | **T-A.4** | **Automatic collection build — Meet + Looms (+ Everfit manual step)  🔶** | **Bernardo** | Build what the spike (T-0.1) concluded: Meet transcripts and Looms arrive in the standard folder with no manual work. Document a justified manual fallback for anything ruled out, and the Everfit pull as a justified manual step (no open API — D-007). | [AUTO] target; [MANUAL] where not feasible. |
-| **T-A.5** | **Rewrite the client instructions email  🔶** | **Joey (delegable to Bernardo)** | Rewrite the email with: new questionnaire, expanded raffle entry requirements (before/after photos + questionnaire + Google review — D-008), and the review request (working assumption: inside this same email). Everfit outreach untouched (D-003). | [AI+OK] — AI drafts; Joey approves. |
+| **T-A.5** | **Rewrite the client instructions email  🔶 — ✅ DONE (D-059)** | **Joey (delegable to Bernardo)** | Rewrite the email with: new questionnaire, expanded raffle entry requirements (before/after photos + questionnaire + Google review — D-008), and the review request (working assumption: inside this same email). Everfit outreach untouched (D-003). | [AI+OK] — AI drafts; Joey approves. |
 
 ### **WS-B · Content Production — the agent and the content structures**
 
 | **ID** | **Task** | **Owner** | **What it is** | **AI-first** |
 | --- | --- | --- | --- | --- |
-| **T-B.1** | **Define the Strong Standard storytelling style  🔶** | **Joey** | Put the storytelling formula in writing: analyze the Canva posts that already work (the Bobby experiment) and extract the rules. This document is the agent’s brain. | [AI+OK] — AI analyzes patterns; Joey directs and approves. |
-| **T-B.2** | **Carousel, reel, and story templates** | **Joey** | Defined structure for each social piece: carousel, reel, 3-frame story. DoD item — Joey-approved. | [AI+OK] |
+| **T-B.1** | **Define the Strong Standard storytelling style  🔶 — ✅ DONE (D-016)** | **Joey** | Put the storytelling formula in writing: analyze the Canva posts that already work (the Bobby experiment) and extract the rules. This document is the agent’s brain. | [AI+OK] — AI analyzes patterns; Joey directs and approves. |
+| **T-B.2** | **Carousel, reel, and story templates — ✅ DONE (D-020)** | **Joey** | Defined structure for each social piece: carousel, reel, 3-frame story. DoD item — Joey-approved. | [AI+OK] |
 | **T-B.3** | **Case study template  🔶 — ✅ DONE (D-060)** | **Joey** | What a full case study contains and how it's used as a lead magnet, PLUS the weekly client-of-the-week email template (scope extended per D-030). Does not block the agent — runs without pressure. | [AI+OK] |
-| **T-B.4** | **Storytelling agent — spec  🔶** | **Miguel** | One page: what the agent reads (the standard folder), what it produces (drafts of the 3 social pieces), what knowledge it uses (style + templates), where it lives. Approved BEFORE building. | [AI+OK] |
-| **T-B.5** | **Storytelling agent — build** | **Miguel** | Build to spec. Zero new decisions mid-build; if one appears, stop and resolve it where it belongs. | AI-built; human verifies. |
+| **T-B.4** | **Storytelling agent — spec  🔶 — ✅ DONE (D-041)** | **Miguel** | One page: what the agent reads (the standard folder), what it produces (drafts of the 3 social pieces), what knowledge it uses (style + templates), where it lives. Approved BEFORE building. | [AI+OK] |
+| **T-B.5** | **Storytelling agent — build — ✅ DONE (D-042)** | **Miguel** | Build to spec. Zero new decisions mid-build; if one appears, stop and resolve it where it belongs. | AI-built; human verifies. |
 | **T-B.6** | **Test the agent with 1–2 real testimonials  🔶** | **Miguel** | Run the agent against real backlog testimonials (~10 waiting) → publishable content approved by Joey. The DoD’s “working” criterion. Contains a decision: backlog clients lack the new questionnaires — partial inputs vs. asking 1–2 of them to fill it. | [AI+OK] — Joey approves the content. |
 | **T-B.7** | **Case study landing page design (Strong Standard branding)** | **Miguel** | Reusable visual design hosting any case study — layout, typography, colors, and the 3 discovery-call CTA placements per task 10 (a case study drops in, the design does not change). Built in Claude (holds the brand guide + a landing-page project). Depends on task 10 + brand guide. Asana #: pending creation. (D-061) | [AI+OK] |
 
@@ -90,8 +90,8 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 
 | **ID** | **Task** | **Owner** | **What it is** | **AI-first** |
 | --- | --- | --- | --- | --- |
-| **T-C.1** | **Create the Google Business Profile** | **Miguel** | Create the business’s Google profile — nothing exists today. Includes Google’s verification (days of dead lead time outside our control). Day 1, first thing. | [MANUAL] justified — Google requires human business verification; AI assists. |
-| **T-C.2a** | **Review technical setup  🔶** | **Miguel** | Direct link/QR and the technical side of capturing reviews; resolve Joey’s “physical component” idea. Starts once Google verifies the profile. | [AI+OK]; verification targets [AUTO] if feasible. |
+| **T-C.1** | **Create the Google Business Profile — ✅ DONE (D-013)** | **Miguel** | Create the business’s Google profile — nothing exists today. Includes Google’s verification (days of dead lead time outside our control). Day 1, first thing. | [MANUAL] justified — Google requires human business verification; AI assists. |
+| **T-C.2a** | **Review technical setup  🔶 — ✅ DONE (D-014/D-015)** | **Miguel** | Direct link/QR and the technical side of capturing reviews; resolve Joey’s “physical component” idea. Starts once Google verifies the profile. | [AI+OK]; verification targets [AUTO] if feasible. |
 | **T-C.2b** | **Review tracking design  🔶** | **Bernardo** | How we know who said yes and who actually left the review; how it fits Gaby’s SOP and whether it lives in the dashboard. Designed generic from the start: any client, not just testimonials (D-009). | [AI+OK] |
 
 ### **WS-D · Podcast**
@@ -105,9 +105,10 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 
 | **ID** | **Task** | **Owner** | **What it is** | **AI-first** |
 | --- | --- | --- | --- | --- |
-| **T-E.1** | **New process map v0 (skeleton)  🔶** | **Bernardo** | Early map of the full process from Joey’s Miro diagram: nomination → outreach (as-is, D-003) → expanded collection → agent → approval → publishing → Google review → podcast → raffle (as-is). Each stage with a tentative AI-first label. Day 1. | [AI+OK] |
-| **T-E.2** | **Dashboard data requirements (one page)  🔶** | **Bernardo** | One page: what the dashboard will show (pipeline, stage timings, reviews, raffle, published content) and therefore what data every stage must register. NOT dashboard design — process instrumentation from day 1 (D-010). Feeds T-A.3, T-C.2b, T-E.3. | [AI+OK] |
+| **T-E.1** | **New process map v0 (skeleton)  🔶 — ✅ DONE (D-028/D-029/D-030)** | **Bernardo** | Early map of the full process from Joey’s Miro diagram: nomination → outreach (as-is, D-003) → expanded collection → agent → approval → publishing → Google review → podcast → raffle (as-is). Each stage with a tentative AI-first label. Day 1. | [AI+OK] |
+| **T-E.2** | **Dashboard data requirements (one page)  🔶 — ✅ DONE (D-033/D-034)** | **Bernardo** | One page: what the dashboard will show (pipeline, stage timings, reviews, raffle, published content) and therefore what data every stage must register. NOT dashboard design — process instrumentation from day 1 (D-010). Feeds T-A.3, T-C.2b, T-E.3. | [AI+OK] |
 | **T-E.3** | **Final process documentation** | **Bernardo** | The master document: final map with all decisions integrated, AI-first justification stage by stage, and the operating runbook (Gaby vs. system). Updates affected SOPs. Last task of the rock. | [AI+OK] — AI drafts; Bernardo validates ops, Joey approves design. |
+| **T-E.4** | **Update the testimonial SOPs by role (Gaby, Miguel, coaches)** | **Bernardo** | End-to-end overview of the new testimonial process + one operating SOP per role (Gaby / Miguel / coaches), containing only what that person does. Folds in the coach non-negotiables (Gemini every call, GoHighLevel booking, Loom in the description, "Meet Recordings" folder name, keyword call naming). Distinct from T-E.3: T-E.3 is the master design doc, T-E.4 is the day-to-day operating docs. Depends on T-E.3. Asana 23. | [AI+OK] |
 
 **In the plan but outside the assignable list:**
 
@@ -153,6 +154,7 @@ No dates — order and dependencies only. Aspirational target: everything except
 | **4** | **T-A.4 Collection build — Meet + Looms (+ Everfit manual)** | Own spike verdict (0.1) + A.3. |
 | **5** | **T-C.2b Review tracking design** | E.2 done; coordinates with Miguel’s C.2a. |
 | **6** | **T-E.3 Final process documentation** | Last task of the rock — everything else closed. |
+| **7** | **T-E.4 SOPs by role** | After T-E.3 (final documentation) is closed. |
 
 ## **5.  Decisions resolved in this Master Plan chat**
 

@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 5, 2026 (case study + weekly email chat — task 10 closed; landing page task added for Miguel)
+**Last updated:** August 5, 2026 (added the per-role SOPs task; retroactive DONE markers in the master plan)
 
 ## Current phase
 
@@ -56,8 +56,8 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 
 ## Next up
 
-- Coach non-negotiables SOP (new backlog task): Gemini note-taker on every call; always book via GoHighLevel (not direct Google Calendar); always put the Loom link in the check-in description; **keep the Meet auto-save folder prefixed "Meet Recordings"** (the AI Sales Coach team renamed Bernardo's — confirm the other coaches'); **name calls with the keyword** (Discovery / Kickoff / Mesocycle) for reliable classification. Directly enables reliable Meet + Loom automation. Needs a master-plan/Asana entry.
-- Bernardo (owns Joey's items too): reviews tracking (14) → client brief ≤2pp (17, D-058) → podcast criteria (11) → real end-to-end test (D-049) → final documentation (20). **Launch to-do before Aug 10 (operational, from D-059):** build the preferences form in Google Forms (no file-upload question, so no login) and wire the client-video subfolder link into the email; Gaby pastes the auto-created folder link at send time.
+- Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation.
+- Bernardo (owns Joey's items too): reviews tracking (14) → client brief ≤2pp (17, D-058) → podcast criteria (11) → real end-to-end test (D-049) → final documentation (20) → update the SOPs by role (task 23, after final documentation). **Launch to-do before Aug 10 (operational, from D-059):** build the preferences form in Google Forms (no file-upload question, so no login) and wire the client-video subfolder link into the email; Gaby pastes the auto-created folder link at send time.
 - Joey: approves creative async
 - Miguel: Design the case study landing page with Strong Standard branding (new task, D-061), built in Claude; depends on the case study template + brand guide. Blocked for now — Bernardo will signal when Miguel can start.
 
