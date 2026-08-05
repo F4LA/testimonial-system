@@ -93,7 +93,7 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | --- | --- | --- | --- | --- |
 | **T-C.1** | **Create the Google Business Profile — ✅ DONE (D-013)** | **Miguel** | Create the business’s Google profile — nothing exists today. Includes Google’s verification (days of dead lead time outside our control). Day 1, first thing. | [MANUAL] justified — Google requires human business verification; AI assists. |
 | **T-C.2a** | **Review technical setup  🔶 — ✅ DONE (D-014/D-015)** | **Miguel** | Direct link/QR and the technical side of capturing reviews; resolve Joey’s “physical component” idea. Starts once Google verifies the profile. | [AI+OK]; verification targets [AUTO] if feasible. |
-| **T-C.2b** | **Review tracking design  🔶** | **Bernardo** | How we know who said yes and who actually left the review; how it fits Gaby’s SOP and whether it lives in the dashboard. Designed generic from the start: any client, not just testimonials (D-009). | [AI+OK] |
+| **T-C.2b** | **Review tracking design  🔶 — ✅ DONE (D-066)** | **Bernardo** | How we know who said yes and who actually left the review; how it fits Gaby’s SOP and whether it lives in the dashboard. Designed generic from the start: any client, not just testimonials (D-009). | [AI+OK] |
 
 ### **WS-D · Podcast**
 
