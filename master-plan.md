@@ -80,10 +80,11 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | --- | --- | --- | --- | --- |
 | **T-B.1** | **Define the Strong Standard storytelling style  🔶** | **Joey** | Put the storytelling formula in writing: analyze the Canva posts that already work (the Bobby experiment) and extract the rules. This document is the agent’s brain. | [AI+OK] — AI analyzes patterns; Joey directs and approves. |
 | **T-B.2** | **Carousel, reel, and story templates** | **Joey** | Defined structure for each social piece: carousel, reel, 3-frame story. DoD item — Joey-approved. | [AI+OK] |
-| **T-B.3** | **Case study template  🔶** | **Joey** | What a full case study contains and how it's used as a lead magnet, PLUS the weekly client-of-the-week email template (scope extended per D-030). Does not block the agent — runs without pressure. | [AI+OK] |
+| **T-B.3** | **Case study template  🔶 — ✅ DONE (D-060)** | **Joey** | What a full case study contains and how it's used as a lead magnet, PLUS the weekly client-of-the-week email template (scope extended per D-030). Does not block the agent — runs without pressure. | [AI+OK] |
 | **T-B.4** | **Storytelling agent — spec  🔶** | **Miguel** | One page: what the agent reads (the standard folder), what it produces (drafts of the 3 social pieces), what knowledge it uses (style + templates), where it lives. Approved BEFORE building. | [AI+OK] |
 | **T-B.5** | **Storytelling agent — build** | **Miguel** | Build to spec. Zero new decisions mid-build; if one appears, stop and resolve it where it belongs. | AI-built; human verifies. |
 | **T-B.6** | **Test the agent with 1–2 real testimonials  🔶** | **Miguel** | Run the agent against real backlog testimonials (~10 waiting) → publishable content approved by Joey. The DoD’s “working” criterion. Contains a decision: backlog clients lack the new questionnaires — partial inputs vs. asking 1–2 of them to fill it. | [AI+OK] — Joey approves the content. |
+| **T-B.7** | **Case study landing page design (Strong Standard branding)** | **Miguel** | Reusable visual design hosting any case study — layout, typography, colors, and the 3 discovery-call CTA placements per task 10 (a case study drops in, the design does not change). Built in Claude (holds the brand guide + a landing-page project). Depends on task 10 + brand guide. Asana #: pending creation. (D-061) | [AI+OK] |
 
 ### **WS-C · Google Reviews**
 
@@ -98,7 +99,7 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | **ID** | **Task** | **Owner** | **What it is** | **AI-first** |
 | --- | --- | --- | --- | --- |
 | **T-D.1** | **Podcast criteria + how we pick the case study of the month  🔶** | **Joey** | Two decisions: (1) invitation criteria and cadence; (2) how the “case study of the month” is chosen — raffle winner ≠ case study person; selection method is open. | [MANUAL] justified — editorial judgment; AI supplies options. |
-| **T-D.2** | **Client brief (≤2 pages)** | **Joey (executor Bernardo, D-045)** | A ≤2-page per-client brief from the collected inputs: where the client started, how they felt, their challenges, where they are now, how they feel, what's helping them improve, and their takeaways. Feeds Joey's podcast (run ad-hoc per client — no fixed outline, D-058), the case study, and serves as the legible summary of the collected material. Replaces the podcast episode outline. | [AI+OK] |
+| **T-D.2** | **Client brief (≤2 pages)** | **Joey (executor Bernardo, D-045)** | A ≤2-page per-client brief from the collected inputs: where the client started, how they felt, their challenges, where they are now, how they feel, what's helping them improve, and their takeaways. Feeds Joey's podcast (run ad-hoc per client — no fixed outline, D-058) and serves as the legible summary of the collected material; is derived from the finished case study (D-060), not an input to it. Replaces the podcast episode outline. | [AI+OK] |
 
 ### **WS-E · The full process, documented (+ dashboard seed)**
 
