@@ -4,13 +4,13 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 5, 2026 (added the per-role SOPs task; retroactive DONE markers in the master plan)
+**Last updated:** August 5, 2026 (pre-launch prep done: preferences form built + kickoff email wired, D-063; engine link-surfacing task added, D-064)
 
 ## Current phase
 
 Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic collection system is deployed, was tested end-to-end on 31 Jul, and was rewritten to English and re-validated end-to-end in production on 4 Aug.
 
-**Status:** ON TRACK — the collection engine is deployed, rewritten to English, and validated end-to-end in production. Launch was moved to Mon Aug 10 (one-week slip, D-057). What remains before launch is operational, not design: build the preferences form in Google Forms and wire the folder link into the email (D-059). The client-instructions email itself is done.
+**Status:** ON TRACK — the collection engine is deployed, rewritten to English, and validated end-to-end in production. Launch was moved to Mon Aug 10 (one-week slip, D-057). The design work and both launch-blocking operational pieces are done (D-063): the client-instructions email, the preferences form (built, no-login verified), and the email link wiring. The only thing left for Aug 10 is Gaby sending the kickoff email by hand, pasting each client's video-folder link — inherent to launch.
 
 ## Done
 
@@ -48,6 +48,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
   - **Re-test (Benjamin Jayne):** ✅ folder · ✅ Meet (2 Gemini Notes copied + classified, idempotent) · ✅ Loom (correct flag — no flag-form entry) · ✅ Slack (app DM). Identity + keyless + delegation green. Closes the retest pending in D-053
 - Client instructions email ("collection kickoff") rewritten (D-059, task 13): approved 11-question video script + video-to-folder-link + no-login preferences form (credit / photo permission / do-not-publish / review self-report). Raffle entry made explicit as hard (photos + review). Asana 13 complete
 - Case study + weekly email templates defined (D-060, task 10): landing-page-hosted case study on the 8-beat arc with source/voice triangulation, one discovery-call CTA in 3 placements; weekly email links to the case study; client brief reversed to derive from the case study. Asana 10 complete.
+- Pre-launch operational prep done (D-063, from D-059): preferences form built in Google Forms (name + email identity questions for attribution; no-login verified; Q6 branches to two closing sections; responses sheet in the project folder), and the kickoff email wired (static form link inserted; video link → each client's "03 · Client video" subfolder; internal send-steps documented).
 
 ## In progress (Phase 2)
 
@@ -57,7 +58,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 ## Next up
 
 - Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation.
-- Bernardo (owns Joey's items too): reviews tracking (14) → client brief ≤2pp (17, D-058) → podcast criteria (11) → real end-to-end test (D-049) → final documentation (20) → update the SOPs by role (task 23, after final documentation). **Launch to-do before Aug 10 (operational, from D-059):** build the preferences form in Google Forms (no file-upload question, so no login) and wire the client-video subfolder link into the email; Gaby pastes the auto-created folder link at send time.
+- Bernardo (owns Joey's items too): reviews tracking (14) → client brief ≤2pp (17, D-058) → podcast criteria (11) → real end-to-end test (D-049) → final documentation (20) → update the SOPs by role (task 23, after final documentation). **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). **Fast-follow (not a launch blocker):** auto-surface that folder link into the Signal sheet so Gaby copies it instead of navigating Drive (D-064, T-A.6, its own chat).
 - Joey: approves creative async
 - Miguel: Design the case study landing page with Strong Standard branding (new task, D-061), built in Claude; depends on the case study template + brand guide. Blocked for now — Bernardo will signal when Miguel can start.
 
@@ -78,7 +79,7 @@ None standing alone — remaining open items live inside their tasks (Master Pla
 
 ## Key dates
 
-- Mon Aug 10 — full system launch with the first monthly testimonial request (D-057). Collection engine validated and launch-ready; the client-instructions email is done (D-059). Pre-launch operational to-do: build the preferences form + wire the folder link.
+- Mon Aug 10 — full system launch with the first monthly testimonial request (D-057). Collection engine validated and launch-ready; the client-instructions email is done (D-059). Pre-launch prep done (D-063): form built + email wired. Remaining: Gaby sends the kickoff email by hand.
 
 ## How to update this doc (Bernardo, Wednesdays — plus any chat that changes status)
 

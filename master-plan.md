@@ -54,9 +54,9 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 
 **Critical path:  ****B.1 → B.2 → B.4 → B.5 → B.6  **(Joey → Joey → Miguel → Miguel → Miguel). If Jul 17 slips, it slips here. Joey’s three approvals on it (style, templates/spec, test content) arrive async, in small pieces.
 
-## **3.  The task list (22 tasks)**
+## **3.  The task list (23 tasks)**
 
-**Task count:  **Joey 8  ·  Bernardo 8  ·  Miguel 6 (+1 optional)  ·  22 total (added T-B.7 landing page → Miguel, and T-E.4 SOPs by role → Bernardo). All collection (Meet + Looms + Everfit) is Bernardo’s; Miguel is focused on Google Reviews + the storytelling agent + the case study landing page.
+**Task count:  **Joey 8  ·  Bernardo 9  ·  Miguel 6 (+1 optional)  ·  23 total (added T-B.7 landing page → Miguel, T-E.4 SOPs by role → Bernardo, and T-A.6 folder-link auto-surface → Bernardo). All collection (Meet + Looms + Everfit) is Bernardo’s; Miguel is focused on Google Reviews + the storytelling agent + the case study landing page.
 
 ### **WS-0 · Technical Spike**
 
@@ -73,6 +73,7 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | **T-A.3** | **Define the standard client folder  🔶 — ✅ DONE (D-037)** | **Bernardo** | How every client’s folder is organized: which files, names, order — identical for everyone, so the agent always knows where to look. Must register the data points required by T-E.2. Defines the “where”; T-A.4a/b build the pipes into it. | [AI+OK] design; filling the folder targets [AUTO] in operation. |
 | **T-A.4** | **Automatic collection build — Meet + Looms (+ Everfit manual step)  🔶** | **Bernardo** | Build what the spike (T-0.1) concluded: Meet transcripts and Looms arrive in the standard folder with no manual work. Document a justified manual fallback for anything ruled out, and the Everfit pull as a justified manual step (no open API — D-007). | [AUTO] target; [MANUAL] where not feasible. |
 | **T-A.5** | **Rewrite the client instructions email  🔶 — ✅ DONE (D-059)** | **Joey (delegable to Bernardo)** | Rewrite the email with: new questionnaire, expanded raffle entry requirements (before/after photos + questionnaire + Google review — D-008), and the review request (working assumption: inside this same email). Everfit outreach untouched (D-003). | [AI+OK] — AI drafts; Joey approves. |
+| **T-A.6** | **Auto-surface the client-video folder link into the Signal sheet** | **Bernardo** | On the fan-out that already creates the client folder, the engine also sets the "03 · Client video" subfolder to "anyone with the link – Editor" and writes that subfolder's shareable link into a Signal-sheet column, so Gaby copy-pastes it into the kickoff email instead of navigating Drive. NOT auto-send (stays manual for launch; full auto-send is a separate future project — email lives in GoHighLevel). Not an Aug 10 blocker: manual path documented in the kickoff-email doc. Read the current engine code before specifying the change. Asana GID 1217203594532990 (number pending alignment). (D-064) | [AI+OK] |
 
 ### **WS-B · Content Production — the agent and the content structures**
 
