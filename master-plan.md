@@ -100,7 +100,7 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | **ID** | **Task** | **Owner** | **What it is** | **AI-first** |
 | --- | --- | --- | --- | --- |
 | **T-D.1** | **Podcast criteria + how we pick the case study of the month  🔶** | **Joey** | Two decisions: (1) invitation criteria and cadence; (2) how the “case study of the month” is chosen — raffle winner ≠ case study person; selection method is open. | [MANUAL] justified — editorial judgment; AI supplies options. |
-| **T-D.2** | **Client brief (≤2 pages)** | **Joey (executor Bernardo, D-045)** | A ≤2-page per-client brief from the collected inputs: where the client started, how they felt, their challenges, where they are now, how they feel, what's helping them improve, and their takeaways. Feeds Joey's podcast (run ad-hoc per client — no fixed outline, D-058) and serves as the legible summary of the collected material; is derived from the finished case study (D-060), not an input to it. Replaces the podcast episode outline. | [AI+OK] |
+| **T-D.2** | **Client brief (≤2 pages) — ✅ DONE (D-067)** | **Joey (executor Bernardo, D-045)** | A ≤2-page per-client brief from the collected inputs: where the client started, how they felt, their challenges, where they are now, how they feel, what's helping them improve, and their takeaways. Feeds Joey's podcast (run ad-hoc per client — no fixed outline, D-058) and serves as the legible summary of the collected material; is derived from the finished case study (D-060), not an input to it. Replaces the podcast episode outline. | [AI+OK] |
 
 ### **WS-E · The full process, documented (+ dashboard seed)**
 
