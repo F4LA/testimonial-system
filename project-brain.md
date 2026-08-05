@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 5, 2026 (pre-launch prep done: preferences form built + kickoff email wired, D-063; engine link-surfacing task added, D-064)
+**Last updated:** August 5, 2026 (pre-launch prep done, D-063; client-video folder link now auto-surfaced into the Signal sheet, D-065)
 
 ## Current phase
 
@@ -49,6 +49,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 - Client instructions email ("collection kickoff") rewritten (D-059, task 13): approved 11-question video script + video-to-folder-link + no-login preferences form (credit / photo permission / do-not-publish / review self-report). Raffle entry made explicit as hard (photos + review). Asana 13 complete
 - Case study + weekly email templates defined (D-060, task 10): landing-page-hosted case study on the 8-beat arc with source/voice triangulation, one discovery-call CTA in 3 placements; weekly email links to the case study; client brief reversed to derive from the case study. Asana 10 complete.
 - Pre-launch operational prep done (D-063, from D-059): preferences form built in Google Forms (name + email identity questions for attribution; no-login verified; Q6 branches to two closing sections; responses sheet in the project folder), and the kickoff email wired (static form link inserted; video link → each client's "03 · Client video" subfolder; internal send-steps documented).
+- Client-video folder link auto-surfaced into the Signal sheet (D-065, task T-A.6 / Asana GID 1217203594532990): the fan-out shares "03 · Client video" as anyone-with-link–editor and writes the link into Signal col E; validated live (link in col E on the real checkbox + external upload confirmed in incognito). Gaby copy-pastes from col E instead of navigating Drive. Asana T-A.6 complete.
 
 ## In progress (Phase 2)
 
@@ -58,7 +59,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 ## Next up
 
 - Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation.
-- Bernardo (owns Joey's items too): reviews tracking (14) → client brief ≤2pp (17, D-058) → podcast criteria (11) → real end-to-end test (D-049) → final documentation (20) → update the SOPs by role (task 23, after final documentation). **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). **Fast-follow (not a launch blocker):** auto-surface that folder link into the Signal sheet so Gaby copies it instead of navigating Drive (D-064, T-A.6, its own chat).
+- Bernardo (owns Joey's items too): reviews tracking (14) → client brief ≤2pp (17, D-058) → podcast criteria (11) → real end-to-end test (D-049) → final documentation (20) → update the SOPs by role (task 23, after final documentation). **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
 - Joey: approves creative async
 - Miguel: Design the case study landing page with Strong Standard branding (new task, D-061), built in Claude; depends on the case study template + brand guide. Blocked for now — Bernardo will signal when Miguel can start.
 
