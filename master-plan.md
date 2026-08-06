@@ -129,7 +129,7 @@ No dates — order and dependencies only. Aspirational target: everything except
 | **2** | **T-C.2a Review technical setup** | Google verifies the profile. Coordinates with Bernardo’s C.2b. |
 | **3** | **★ ****T-B.4 Agent spec** | Style (B.1) + templates (B.2) from Joey + standard folder (A.3) from Bernardo. Spec approved before build. |
 | **4** | **★ ****T-B.5 Agent build** | Spec approved. |
-| **5** | **★ ****T-B.6 Real-testimonial test** | Build done. Joey approves the content. |
+| **5** | **★ ****T-B.6 Validate agent on first real client** | Runs on the first real testimonial after launch; Joey approves before publish (D-069). |
 
 ### **Joey**
 
