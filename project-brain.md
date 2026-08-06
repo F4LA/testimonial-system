@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 6, 2026 (case study landing page template built + task 22 closed, D-077)
+**Last updated:** August 6, 2026 (storytelling agent wired to produce case study + weekly email, D-078)
 
 ## Current phase
 
@@ -56,6 +56,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 - T-E.3 Final process documentation delivered (D-070, task 20 / Asana 1216566585460461): master design doc — 9 stages with decisions integrated, AI-first label + justification per stage, cross-cutting design, and the who-does-what runbook. Dangling-ref sweep done (stage 3.5 photos → Gaby's Everfit pull). Plus production split consolidated (D-071), publishing model + reel-required rule + startup buffer (D-072), vote window 24h (D-073), raffle conditions in the kickoff email (D-074). Delivered as a download to upload. Asana 20 complete.
 - Monthly nomination auto-scheduler built + validated in production (D-076, task 24 / Asana 1217260848462808): hangs off the collection engine; a weekly Monday time trigger posts the nomination message on the Monday nearest the 1st (window never opens on a weekend), idempotent per month; posts to the collection channel as the bot and pings Gaby in a thread. Message = Gaby's existing copy with "Fit4Life Case Studies" → "Strong Standard Case Studies"; 5 AM project time. First automatic send ≈ Aug 31 (September); August goes out by hand as the launch. Blocks no one → no Slack. Asana 24 complete.
 - Case study landing page design built (D-077, task 22): reusable HTML template for Strong Standard branding, built from the live Axel Rubio case study page, locked to 3 CTA placements (sticky header, after Results, after Reflection). Asana 22 complete.
+- Case study + weekly email wired into the storytelling agent (D-078, task 25): the agent now produces 5 pieces per run (carousel, reel, story, case study, weekly email), filling the landing page template directly and applying consent gates from the client's preferences form. Asana 25 complete.
 
 ## In progress (Phase 2)
 
@@ -67,7 +68,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 - Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation.
 - Bernardo: the per-role SOPs (task 23, now unblocked by task 20). Plus the newly in-scope build — the dashboard (task 26, built inside the rock, start when its blockers clear / now if already clear). Plus the pre-close gate: resolve the old backlog before the rock closes (D-032/D-075). Task 23 must fold in two things from D-068: (a) Miguel's monthly production week — after collection closes, Miguel builds all landing pages + edits the in-page videos in one dedicated week, then the vote opens the following week (the reel is the external agency's, not a vote dependency); (b) the client-of-the-month vote + podcast-invitation mechanics for the relevant roles. **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
 - Joey: approves creative async
-- Miguel: wire the case study + weekly email into the agent (new in-scope build, D-075); run the agent on the first real client of the cycle (task 19, D-069) when the first testimonial lands after launch.
+- Miguel: run the agent on the first real client of the cycle (task 19, D-069) when the first testimonial lands after launch.
 
 ## Launch posture (Meet)
 
