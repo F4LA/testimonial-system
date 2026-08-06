@@ -54,9 +54,9 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 
 **Critical path:  ****B.1 → B.2 → B.4 → B.5 → B.6  **(Joey → Joey → Miguel → Miguel → Miguel). If Jul 17 slips, it slips here. Joey’s three approvals on it (style, templates/spec, test content) arrive async, in small pieces.
 
-## **3.  The task list (23 tasks)**
+## **3.  The task list (26 tasks)**
 
-**Task count:  **Joey 8  ·  Bernardo 9  ·  Miguel 6 (+1 optional)  ·  23 total (added T-B.7 landing page → Miguel, T-E.4 SOPs by role → Bernardo, and T-A.6 folder-link auto-surface → Bernardo). All collection (Meet + Looms + Everfit) is Bernardo’s; Miguel is focused on Google Reviews + the storytelling agent + the case study landing page.
+**Task count:  **Joey 8  ·  Bernardo 11  ·  Miguel 7 (+1 optional)  ·  26 total (added T-B.7 landing page → Miguel, T-E.4 SOPs by role → Bernardo, T-A.6 folder-link auto-surface → Bernardo, T-A.7 nomination scheduler → Bernardo, T-B.8 agent wiring → Miguel, and T-E.5 dashboard → Bernardo, per D-075). All collection (Meet + Looms + Everfit) is Bernardo’s; Miguel is focused on Google Reviews + the storytelling agent + the case study landing page.
 
 ### **WS-0 · Technical Spike**
 
@@ -74,6 +74,7 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | **T-A.4** | **Automatic collection build — Meet + Looms (+ Everfit manual step)  🔶** | **Bernardo** | Build what the spike (T-0.1) concluded: Meet transcripts and Looms arrive in the standard folder with no manual work. Document a justified manual fallback for anything ruled out, and the Everfit pull as a justified manual step (no open API — D-007). | [AUTO] target; [MANUAL] where not feasible. |
 | **T-A.5** | **Rewrite the client instructions email  🔶 — ✅ DONE (D-059)** | **Joey (delegable to Bernardo)** | Rewrite the email with: new questionnaire, expanded raffle entry requirements (before/after photos + questionnaire + Google review — D-008), and the review request (working assumption: inside this same email). Everfit outreach untouched (D-003). | [AI+OK] — AI drafts; Joey approves. |
 | **T-A.6** | **Auto-surface the client-video folder link into the Signal sheet — ✅ DONE (D-065)** | **Bernardo** | On the fan-out that already creates the client folder, the engine also sets the "03 · Client video" subfolder to "anyone with the link – Editor" and writes that subfolder's shareable link into a Signal-sheet column, so Gaby copy-pastes it into the kickoff email instead of navigating Drive. NOT auto-send (stays manual for launch; full auto-send is a separate future project — email lives in GoHighLevel). Not an Aug 10 blocker: manual path documented in the kickoff-email doc. Read the current engine code before specifying the change. Asana GID 1217203594532990 (number pending alignment). (D-064) | [AI+OK] |
+| **T-A.7** | **Auto-schedule the monthly nomination message (nearest-Monday)** | **Bernardo** | Builds the scheduler that sends the nomination prompt on the Monday closest to the 1st. (D-075) | [AUTO] |
 
 ### **WS-B · Content Production — the agent and the content structures**
 
@@ -84,8 +85,9 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | **T-B.3** | **Case study template  🔶 — ✅ DONE (D-060)** | **Joey** | What a full case study contains and how it's used as a lead magnet, PLUS the weekly client-of-the-week email template (scope extended per D-030). Does not block the agent — runs without pressure. | [AI+OK] |
 | **T-B.4** | **Storytelling agent — spec  🔶 — ✅ DONE (D-041)** | **Miguel** | One page: what the agent reads (the standard folder), what it produces (drafts of the 3 social pieces), what knowledge it uses (style + templates), where it lives. Approved BEFORE building. | [AI+OK] |
 | **T-B.5** | **Storytelling agent — build — ✅ DONE (D-042)** | **Miguel** | Build to spec. Zero new decisions mid-build; if one appears, stop and resolve it where it belongs. | AI-built; human verifies. |
-| **T-B.6** | **Validate the agent on the first real client of the cycle  🔶 — re-scoped (D-069)** | **Miguel** | Run the agent on the first real client of the launch cycle → publishable content approved by Joey (approval-before-publish is the filter). The DoD's "working" criterion. No recruited test client and no old-backlog run: validation rides on the first real testimonial after launch. The backlog decision (D-032) stays open, informed by this result. | [AI+OK] — Joey approves the content. |
+| **T-B.6** | **Validate the agent on the first real client of the cycle  🔶 — re-scoped (D-069)** | **Miguel** | Run the agent on the first real client of the launch cycle → publishable content approved by Joey (approval-before-publish is the filter). The DoD's "working" criterion. No recruited test client and no old-backlog run: validation rides on the first real testimonial after launch. The backlog decision (D-032) is now a hard pre-close gate for the rock (D-075); still Open, informed by this result. | [AI+OK] — Joey approves the content. |
 | **T-B.7** | **Case study landing page design (Strong Standard branding)** | **Miguel** | Reusable visual design hosting any case study — layout, typography, colors, and the 3 discovery-call CTA placements per task 10 (a case study drops in, the design does not change). Built in Claude (holds the brand guide + a landing-page project). Depends on task 10 + brand guide. Asana #: pending creation. (D-061) | [AI+OK] |
+| **T-B.8** | **Wire the case study + weekly email into the storytelling agent** | **Miguel** | The agent writes all five pieces (3 social + case study + weekly email) from their templates, not just the 3 social ones. (D-075) | [AI+OK] |
 
 ### **WS-C · Google Reviews**
 
@@ -108,14 +110,13 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | --- | --- | --- | --- | --- |
 | **T-E.1** | **New process map v0 (skeleton)  🔶 — ✅ DONE (D-028/D-029/D-030)** | **Bernardo** | Early map of the full process from Joey’s Miro diagram: nomination → outreach (as-is, D-003) → expanded collection → agent → approval → publishing → Google review → podcast → raffle (as-is). Each stage with a tentative AI-first label. Day 1. | [AI+OK] |
 | **T-E.2** | **Dashboard data requirements (one page)  🔶 — ✅ DONE (D-033/D-034)** | **Bernardo** | One page: what the dashboard will show (pipeline, stage timings, reviews, raffle, published content) and therefore what data every stage must register. NOT dashboard design — process instrumentation from day 1 (D-010). Feeds T-A.3, T-C.2b, T-E.3. | [AI+OK] |
-| **T-E.3** | **Final process documentation** | **Bernardo** | The master document: final map with all decisions integrated, AI-first justification stage by stage, and the operating runbook (Gaby vs. system). Updates affected SOPs. Last task of the rock. | [AI+OK] — AI drafts; Bernardo validates ops, Joey approves design. |
+| **T-E.3** | **Final process documentation** | **Bernardo** | The master document: final map with all decisions integrated, AI-first justification stage by stage, and the operating runbook (Gaby vs. system). Updates affected SOPs. | [AI+OK] — AI drafts; Bernardo validates ops, Joey approves design. |
 | **T-E.4** | **Update the testimonial SOPs by role (Gaby, Miguel, coaches)** | **Bernardo** | End-to-end overview of the new testimonial process + one operating SOP per role (Gaby / Miguel / coaches), containing only what that person does. Folds in the coach non-negotiables (Gemini every call, GoHighLevel booking, Loom in the description, "Meet Recordings" folder name, keyword call naming). Distinct from T-E.3: T-E.3 is the master design doc, T-E.4 is the day-to-day operating docs. Depends on T-E.3. Asana 23. | [AI+OK] |
+| **T-E.5** | **Testimonial Dashboard (spec → approval → build → operational)** | **Bernardo** | Built inside the rock, as soon as its blockers clear; close not tied to surviving a full cycle. (D-075) | [AI+OK] |
 
 **In the plan but outside the assignable list:**
 
 - **T-C.3 — Extend review collection to all clients **(optional, OUTSIDE the DoD): connect the review request to the client satisfaction questionnaire for the whole client base. Owner: Miguel. Only if time remains; does not block the rock (D-009).
-
-- **Phase 3 — Testimonial Dashboard (post-trip, D-004): **spec → approval → build → direct cutover, Asana frozen as fallback until it survives one full cycle. Spec starts from T-E.2’s data requirements — the process ships already instrumented for it. No tasks/owners yet; defined at/after the 6-month planning.
 
 ## **4.  Execution order per person**
 
