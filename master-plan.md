@@ -156,7 +156,7 @@ No dates — order and dependencies only. Aspirational target: everything except
 | **3** | **T-A.3 Standard client folder** | E.2 done + Joey’s questionnaires (may start earlier with placeholders). Output → Miguel (unblocks spec) + feeds A.4. |
 | **4** | **T-A.4 Collection build — Meet + Looms (+ Everfit manual)** | Own spike verdict (0.1) + A.3. |
 | **5** | **T-C.2b Review tracking design** | E.2 done; coordinates with Miguel’s C.2a. |
-| **6** | **T-E.3 Final process documentation** | Last task of the rock — everything else closed. |
+| **6** | **T-E.3 Final process documentation — ✅ DONE (D-070)** | E.2 done + all decisions integrated. |
 | **7** | **T-E.4 SOPs by role** | After T-E.3 (final documentation) is closed. |
 | **8** | **T-A.7 Nomination auto-scheduler** | Anytime — independent. |
 | **9** | **T-E.5 Testimonial Dashboard** | When its blockers clear; start now if already clear. |
