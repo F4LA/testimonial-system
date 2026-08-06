@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 5, 2026 (pre-launch prep done, D-063; client-video folder link auto-surfaced into the Signal sheet, D-065; Google review tracking designed, D-066; client brief designed, D-067; podcast criteria + client-of-the-month selection designed, D-068)
+**Last updated:** August 5, 2026 (pre-launch prep done, D-063; client-video folder link auto-surfaced into the Signal sheet, D-065; Google review tracking designed, D-066; client brief designed, D-067; podcast criteria + client-of-the-month selection designed, D-068; real end-to-end test re-scoped to the first real client of the cycle, D-069)
 
 ## Current phase
 
@@ -56,15 +56,15 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 
 ## In progress (Phase 2)
 
-- Miguel: agent test (task 19), folded into the end-to-end test with a trusted client (D-049); Asana 21 (Bernardo — recruit/feed the trusted client), task 19 depends on 21
+- Miguel: agent run (task 19) re-scoped to the first real client of the launch cycle (D-069) — no recruited test client; starts when the first real testimonial lands after Aug 10, with Joey approving before publish. Task 21 (recruit/feed a trusted client) retired.
 - The automatic collection is deployed, rewritten to English, and validated end-to-end in production (D-054/D-055) — launch-ready
 
 ## Next up
 
 - Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation.
-- Bernardo (owns Joey's items too): real end-to-end test (D-049) → final documentation (20) → update the SOPs by role (task 23, after final documentation). Task 23 must fold in two things from D-068: (a) Miguel's monthly production week — after collection closes, Miguel builds all landing pages + edits the in-page videos in one dedicated week, then the vote opens the following week (the reel is the external agency's, not a vote dependency); (b) the client-of-the-month vote + podcast-invitation mechanics for the relevant roles. **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
+- Bernardo (owns Joey's items too): final documentation (20) → update the SOPs by role (task 23, after final documentation). The real end-to-end test is no longer a separate step — it runs on the first real client of the cycle (D-069). Task 23 must fold in two things from D-068: (a) Miguel's monthly production week — after collection closes, Miguel builds all landing pages + edits the in-page videos in one dedicated week, then the vote opens the following week (the reel is the external agency's, not a vote dependency); (b) the client-of-the-month vote + podcast-invitation mechanics for the relevant roles. **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
 - Joey: approves creative async
-- Miguel: Design the case study landing page with Strong Standard branding (new task, D-061), built in Claude; depends on the case study template + brand guide. Blocked for now — Bernardo will signal when Miguel can start.
+- Miguel: case study landing page with Strong Standard branding (task 22, D-061), built in Claude; depends on the case study template + brand guide. Cleared to start (Bernardo gave the go-ahead Aug 5). Plus: run the agent on the first real client of the cycle (task 19, D-069) when the first testimonial lands after launch.
 
 ## Launch posture (Meet)
 
