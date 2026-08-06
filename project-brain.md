@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 5, 2026 (pre-launch prep done, D-063; client-video folder link auto-surfaced into the Signal sheet, D-065; Google review tracking designed, D-066; client brief designed, D-067)
+**Last updated:** August 5, 2026 (pre-launch prep done, D-063; client-video folder link auto-surfaced into the Signal sheet, D-065; Google review tracking designed, D-066; client brief designed, D-067; podcast criteria + client-of-the-month selection designed, D-068)
 
 ## Current phase
 
@@ -52,6 +52,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 - Client-video folder link auto-surfaced into the Signal sheet (D-065, task T-A.6 / Asana GID 1217203594532990): the fan-out shares "03 · Client video" as anyone-with-link–editor and writes the link into Signal col E; validated live (link in col E on the real checkbox + external upload confirmed in incognito). Gaby copy-pastes from col E instead of navigating Drive. Asana T-A.6 complete.
 - Google review tracking designed (D-066, task 14): two separated signals — client self-report ("said yes", from the preferences form) vs. human confirmation of a real review matched by displayed name ("confirmed") — never collapsed; the raffle opens on self-report, confirmation is an audit layer; instrumented into the append-only event log with a per-client state derived from it; generic by design (any client), full-base extension out of scope. Reviews carry the reviewer's public name, but there's no automatic email→review match, so confirmation is manual. Feeds Gaby's weekly process (verification step), the SOPs by role (task 23), and final documentation (task 20). Asana 14 complete.
 - Client brief (≤2 pages) designed (D-067, task 17): single-job human-readable summary of everything relevant about a client — NOT a prep sheet (no questions/podcast-running guidance, dropped by Bernardo); Joey preps himself from it. Derived by compression from the finished case study (not a fresh folder read). Keeps the factual arc + concrete data (start → now) + 2–3 verbatim client quotes; drops the case study's voice/CTA/triangulation/length. Structure: one-line header + 5 blocks (Starting point · Challenges · What's working · Where they are now · Takeaways) + In their words. Left agent-compatible (deterministic from the case study) without wiring it. Not an Aug 10 blocker; unblocks no one → no Slack. Asana 17 complete.
+- Podcast criteria + client-of-the-month selection designed (D-068, task 11): client of the month chosen by an internal coach vote for the best story of the month's completed testimonials (one vote per coach, self-vote allowed, NOT a community vote); coaches review the landing page once it exists, else the case study draft or the ≤2-page brief, with the client video + coach form as the always-available floor; the vote runs at the close of the cycle (after Miguel's production week), 48h, in Slack; ties broken by Joey. Podcast: one episode/month, the client of the month is invited (best/most inspiring story), consent captured at collection; if they decline, they stay client of the month and Joey invites the runner-up or skips the month. Editorial → Joey's async review packet (D-045). Asana 11 complete.
 
 ## In progress (Phase 2)
 
@@ -61,7 +62,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 ## Next up
 
 - Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation.
-- Bernardo (owns Joey's items too): podcast criteria (11) → real end-to-end test (D-049) → final documentation (20) → update the SOPs by role (task 23, after final documentation). **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
+- Bernardo (owns Joey's items too): real end-to-end test (D-049) → final documentation (20) → update the SOPs by role (task 23, after final documentation). Task 23 must fold in two things from D-068: (a) Miguel's monthly production week — after collection closes, Miguel builds all landing pages + edits the in-page videos in one dedicated week, then the vote opens the following week (the reel is the external agency's, not a vote dependency); (b) the client-of-the-month vote + podcast-invitation mechanics for the relevant roles. **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
 - Joey: approves creative async
 - Miguel: Design the case study landing page with Strong Standard branding (new task, D-061), built in Claude; depends on the case study template + brand guide. Blocked for now — Bernardo will signal when Miguel can start.
 
@@ -79,6 +80,8 @@ Nothing rock-wide.
 ## Open decisions
 
 None standing alone — remaining open items live inside their tasks (Master Plan §6). Backlog strategy (~10 stored testimonials) still OPEN (D-032).
+
+- To verify (not blocking Aug 10): confirm the preferences form captures a podcast-consent checkbox (D-068 assumes consent is captured at collection). If missing, it's a small form addition; the first podcast comes after launch.
 
 ## Key dates
 
