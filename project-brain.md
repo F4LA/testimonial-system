@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 7, 2026 (collection engine — Meet retrieval hardened + reporting corrected + sales-account search + actionable review flag, D-081; sales calls must be calendar invites, D-082)
+**Last updated:** August 7, 2026 (coach recognition form built + wired, D-083; collection engine hardening D-081; sales calls must be calendar invites D-082)
 
 ## Current phase
 
@@ -58,6 +58,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 - Case study landing page design built (D-077, task 22): reusable HTML template for Strong Standard branding, built from the live Axel Rubio case study page, locked to 3 CTA placements (sticky header, after Results, after Reflection). Asana 22 complete.
 - Case study + weekly email wired into the storytelling agent (D-078, task 25): the agent now produces 5 pieces per run (carousel, reel, story, case study, weekly email), filling the landing page template directly and applying consent gates from the client's preferences form. Asana 25 complete.
 - Collection engine — Meet retrieval hardened + reporting corrected + sales-account coverage + actionable review flag (D-081), validated in production Aug 7 across six clients: (1) the client email is verified against the doc's HTML export so person-chip emails aren't dropped; (2) search extended to sales closers via a new SALES_ACCOUNT_EMAILS property (Deniz added); (3) success/flag decided by matched not copied — idempotent re-runs read as "✅ already there", not a false "0 matched"; docs deduped across accounts; (4) a name-match-without-email now writes a "Needs review — call recordings.md" in 01 listing each candidate with a direct link. Outcomes seen: copied-new (Karen/Amy/Tammera), already-there (Karen re-run), Loom valid (Amy) + no-transcript (Karen/Tammera), real 0-match with review file (Laurel). Latest Code.gs pasted into the bound project.
+- Coach recognition form built + wired (D-083): the "04" coach input — one general Google Form, client dropdown fed live from the roster (daily refresh, coach picks never types), 3 approved recognition questions, coach email as audit trail. Engine routes responses to each client's "04" folder (onCoachFormSubmit) and the coach's Slack notice links to it. Validated end-to-end Aug 7. Closes the gap where the questionnaire content was approved but the form itself had never been created.
 
 ## In progress (Phase 2)
 
