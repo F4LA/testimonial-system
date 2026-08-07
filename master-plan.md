@@ -112,7 +112,14 @@ One column per person; order runs top to bottom.  **★ = critical path.**  Each
 | **T-E.2** | **Dashboard data requirements (one page)  🔶 — ✅ DONE (D-033/D-034)** | **Bernardo** | One page: what the dashboard will show (pipeline, stage timings, reviews, raffle, published content) and therefore what data every stage must register. NOT dashboard design — process instrumentation from day 1 (D-010). Feeds T-A.3, T-C.2b, T-E.3. | [AI+OK] |
 | **T-E.3** | **Final process documentation — ✅ DONE (D-070)** | **Bernardo** | The master document: final map with all decisions integrated, AI-first justification stage by stage, and the operating runbook (Gaby vs. system). Updates affected SOPs. | [AI+OK] — AI drafts; Bernardo validates ops, Joey approves design. |
 | **T-E.4** | **Update the testimonial SOPs by role (Gaby, Miguel, coaches)** | **Bernardo** | End-to-end overview of the new testimonial process + one operating SOP per role (Gaby / Miguel / coaches), containing only what that person does. Folds in the coach non-negotiables (Gemini every call, GoHighLevel booking, Loom in the description, "Meet Recordings" folder name, keyword call naming). Distinct from T-E.3: T-E.3 is the master design doc, T-E.4 is the day-to-day operating docs. Depends on T-E.3. Asana 23. | [AI+OK] |
-| **T-E.5** | **Testimonial Dashboard (spec → approval → build → operational)** | **Bernardo** | Built inside the rock, as soon as its blockers clear; close not tied to surviving a full cycle. Asana 26. (D-075) | [AI+OK] |
+| **T-E.5** | **Testimonial Dashboard (spec → approval → build → operational)** | **Bernardo** | Built inside the rock, as soon as its blockers clear; close not tied to surviving a full cycle. Asana 26. Spec approved (D-079), build underway in its own repo F4LA/testimonial-dashboard, by phases. | [AI+OK] |
+
+**Dashboard follow-ups (post-design), owner Bernardo (with Joey/Miguel), tracked alongside T-E.5 — needed for the dashboard's designed chains to run for real (D-079/D-080):**
+
+1. Podcast sub-process (Bernardo + Joey): create the podcast booking calendar in GoHighLevel; write/approve the podcast invitation copy; Joey approves the calendar.
+2. Shout-out copy + posting account (Bernardo + Joey): define the client-of-the-month shout-out copy and which account posts it.
+3. Teach Miguel the Master-Sheet month-add (Bernardo → Miguel): video showing how to add the extra free month in the client Master Sheet and where to leave the note (D-080).
+4. Verify podcast consent capture (Bernardo): confirm the preferences form has a podcast-consent checkbox; add it if missing.
 
 **In the plan but outside the assignable list:**
 

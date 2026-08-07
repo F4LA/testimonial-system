@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 6, 2026 (storytelling agent wired to produce case study + weekly email, D-078)
+**Last updated:** August 6, 2026 (dashboard design approved + spec delivered, D-079; process decisions D-080)
 
 ## Current phase
 
@@ -62,11 +62,19 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 
 - Miguel: agent run (task 19) re-scoped to the first real client of the launch cycle (D-069) — no recruited test client; starts when the first real testimonial lands after Aug 10, with Joey approving before publish. Task 21 (recruit/feed a trusted client) retired.
 - The automatic collection is deployed, rewritten to English, and validated end-to-end in production (D-054/D-055) — launch-ready
+- Bernardo: Testimonial Dashboard (task 26) — design approved, full build spec delivered (D-079); build started in its own repo F4LA/testimonial-dashboard, 5 phases (Foundation · Pipeline+card · Action queue+alerts · Calendar+buffer · Recognitions), vanilla modular on GitHub Pages reading/writing the event log. Phases 1–3 are the usable core.
 
 ## Next up
 
 - Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation.
-- Bernardo: the per-role SOPs (task 23, now unblocked by task 20). Plus the newly in-scope build — the dashboard (task 26, built inside the rock, start when its blockers clear / now if already clear). Plus the pre-close gate: resolve the old backlog before the rock closes (D-032/D-075). Task 23 must fold in two things from D-068: (a) Miguel's monthly production week — after collection closes, Miguel builds all landing pages + edits the in-page videos in one dedicated week, then the vote opens the following week (the reel is the external agency's, not a vote dependency); (b) the client-of-the-month vote + podcast-invitation mechanics for the relevant roles. **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
+- Bernardo: the per-role SOPs (task 23, now unblocked by task 20). Plus the pre-close gate: resolve the old backlog before the rock closes (D-032/D-075). Task 23 must fold in two things from D-068: (a) Miguel's monthly production week — after collection closes, Miguel builds all landing pages + edits the in-page videos in one dedicated week, then the vote opens the following week (the reel is the external agency's, not a vote dependency); (b) the client-of-the-month vote + podcast-invitation mechanics for the relevant roles. **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
+- Dashboard (task 26): spec approved (D-079); build in progress in F4LA/testimonial-dashboard by phases. Pre-close gate alongside the backlog (D-032/D-075).
+  DASHBOARD FOLLOW-UP TASKS (surfaced from the dashboard design; to do after/alongside the build — the dashboard is designed on these decisions but they need Bernardo's action to be real):
+  1. Podcast sub-process (Bernardo + Joey): create the podcast booking calendar in GoHighLevel; write/approve the podcast invitation copy; Joey approves the calendar. Needed before the dashboard's podcast invite chain runs for real.
+  2. Shout-out copy + posting account (Bernardo + Joey): define the client-of-the-month shout-out copy and which account posts it. Needed before the dashboard's shout-out task is real.
+  3. Teach Miguel the Master-Sheet month-add (Bernardo → Miguel): send Miguel a video showing how to add the extra free month in the client Master Sheet and where to leave the note (D-080). Needed before the first raffle winner.
+  4. Verify podcast consent capture (Bernardo): confirm the preferences form has a podcast-consent checkbox; add it if missing. Needed before the first podcast invite.
+  Also set during the build (not before): the days-per-stage alert thresholds and the system message copy (client-facing copy already exists in the SOPs).
 - Joey: approves creative async
 - Miguel: run the agent on the first real client of the cycle (task 19, D-069) when the first testimonial lands after launch.
 
