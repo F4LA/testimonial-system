@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 6, 2026 (dashboard design approved + spec delivered, D-079; process decisions D-080)
+**Last updated:** August 7, 2026 (collection engine — Meet retrieval hardened + reporting corrected + sales-account search + actionable review flag, D-081; sales calls must be calendar invites, D-082)
 
 ## Current phase
 
@@ -15,7 +15,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 ## Done
 
 - Rock defined, brief written, architecture decided
-- Decision Log active (D-001 through D-075; D-001→D-006, D-018→D-021, D-004, D-049 superseded)
+- Decision Log active (D-001 through D-082; D-001→D-006, D-018→D-021, D-004, D-049 superseded)
 - Current-system documentation loaded into Project knowledge
 - AI-first definition and hierarchy adopted (Brief §2)
 - Master Plan v1 built, approved, uploaded (Jul 9): 20 tasks, owners, dependencies, execution order + map. D-012: all collection reassigned to Bernardo end to end
@@ -57,6 +57,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 - Monthly nomination auto-scheduler built + validated in production (D-076, task 24 / Asana 1217260848462808): hangs off the collection engine; a weekly Monday time trigger posts the nomination message on the Monday nearest the 1st (window never opens on a weekend), idempotent per month; posts to the collection channel as the bot and pings Gaby in a thread. Message = Gaby's existing copy with "Fit4Life Case Studies" → "Strong Standard Case Studies"; 5 AM project time. First automatic send ≈ Aug 31 (September); August goes out by hand as the launch. Blocks no one → no Slack. Asana 24 complete.
 - Case study landing page design built (D-077, task 22): reusable HTML template for Strong Standard branding, built from the live Axel Rubio case study page, locked to 3 CTA placements (sticky header, after Results, after Reflection). Asana 22 complete.
 - Case study + weekly email wired into the storytelling agent (D-078, task 25): the agent now produces 5 pieces per run (carousel, reel, story, case study, weekly email), filling the landing page template directly and applying consent gates from the client's preferences form. Asana 25 complete.
+- Collection engine — Meet retrieval hardened + reporting corrected + sales-account coverage + actionable review flag (D-081), validated in production Aug 7 across six clients: (1) the client email is verified against the doc's HTML export so person-chip emails aren't dropped; (2) search extended to sales closers via a new SALES_ACCOUNT_EMAILS property (Deniz added); (3) success/flag decided by matched not copied — idempotent re-runs read as "✅ already there", not a false "0 matched"; docs deduped across accounts; (4) a name-match-without-email now writes a "Needs review — call recordings.md" in 01 listing each candidate with a direct link. Outcomes seen: copied-new (Karen/Amy/Tammera), already-there (Karen re-run), Loom valid (Amy) + no-transcript (Karen/Tammera), real 0-match with review file (Laurel). Latest Code.gs pasted into the bound project.
 
 ## In progress (Phase 2)
 
@@ -66,7 +67,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 
 ## Next up
 
-- Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation.
+- Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation. Now also covers the CLOSERS (Joey, Deniz): sales/discovery + kickoff calls must be scheduled as calendar invites with the client as a guest, so the Gemini note carries the client email and attaches automatically (D-082); instant/ad-hoc Meets have no email and go to manual review.
 - Bernardo: the per-role SOPs (task 23, now unblocked by task 20). Plus the pre-close gate: resolve the old backlog before the rock closes (D-032/D-075). Task 23 must fold in two things from D-068: (a) Miguel's monthly production week — after collection closes, Miguel builds all landing pages + edits the in-page videos in one dedicated week, then the vote opens the following week (the reel is the external agency's, not a vote dependency); (b) the client-of-the-month vote + podcast-invitation mechanics for the relevant roles. **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
 - Dashboard (task 26): spec approved (D-079); build in progress in F4LA/testimonial-dashboard by phases. Pre-close gate alongside the backlog (D-032/D-075).
   DASHBOARD FOLLOW-UP TASKS (surfaced from the dashboard design; to do after/alongside the build — the dashboard is designed on these decisions but they need Bernardo's action to be real):
@@ -80,7 +81,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 
 ## Launch posture (Meet)
 
-Meet is validated end-to-end (4 Aug) and runs **automatically**. The per-client "review manually" flag remains only for genuine misses (a call whose Gemini note doesn't carry the client email, or a client with a different email at the origin) — correct behavior, not a fallback. Folder + Loom + Slack also run automatically. Consistent with the zero-cost fallback (D-004/D-031).
+Meet is validated end-to-end (4 Aug) and hardened + re-validated across six clients (7 Aug, D-081); runs **automatically**. The client email is verified against the doc's HTML export (person-chip emails survive), search covers team + coaches + sales closers (SALES_ACCOUNT_EMAILS), and success/flag is decided by matched — so idempotent re-runs read as success, not a false miss. The per-client "review manually" flag remains only for genuine misses (a Gemini note with no client email — e.g. an instant Meet with no calendar invite, or a client with a different email at the origin) — correct behavior, not a fallback; when candidates are found by name without the email, the flag is now ACTIONABLE (a "Needs review — call recordings.md" file lists each candidate with a direct link). Going forward, sales/kickoff calls must be scheduled as calendar invites so the email is captured (D-082). Folder + Loom + Slack also run automatically. Consistent with the zero-cost fallback (D-004/D-031).
 
 ## Blocked
 
