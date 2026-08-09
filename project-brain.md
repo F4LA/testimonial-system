@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 9, 2026 (dashboard↔spreadsheet integration built + validated end to end, D-091; write-proxy hardened, D-092; pipeline move UX decided — buttons now, drag later, D-093)
+**Last updated:** August 9, 2026 — late session (task/alert engine BUILT and validated to the v2 model, D-094; kickoff checklist split into 2 steps to unlock the video ladder, D-095)
 
 ## Current phase
 
@@ -15,7 +15,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 ## Done
 
 - Rock defined, brief written, architecture decided
-- Decision Log active (D-001 through D-093; D-001→D-006, D-018→D-021, D-004, D-049 superseded; D-071, D-072 partially superseded by D-086; D-089 delivered by D-091)
+- Decision Log active (D-001 through D-095; D-001→D-006, D-018→D-021, D-004, D-049 superseded; D-071, D-072 partially superseded by D-086; D-089 delivered by D-091; D-090's production-half detail refined by D-094)
 - Current-system documentation loaded into Project knowledge
 - AI-first definition and hierarchy adopted (Brief §2)
 - Master Plan v1 built, approved, uploaded (Jul 9): 20 tasks, owners, dependencies, execution order + map. D-012: all collection reassigned to Bernardo end to end
@@ -63,27 +63,27 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 - Reel moves in-house with Miguel; Pipix and Sofi are OUT of the process (D-086) — reverts the reel/agency portions of D-071 and D-072 (both marked superseded there; the collaboration-post model and reel-required publishing rule still stand).
 - Dashboard↔spreadsheet integration built + validated end to end (D-091), closing the open piece from D-089 (delivered by this row). Option C (polling): the dashboard's "Fire the kickoff fan-out" button writes a confirmed row into the engine's Signal sheet via the proxy; a new engine time-trigger `processPendingSignals` (every minute) picks it up and runs the existing fan-out. Engine untouched (onSignalEdit/fanOut_ unchanged); the manual checkbox stays as the free fallback. Validated live Aug 9 with a fresh test client (Cameron Colbo): board move → Signal row → fan-out ran within a minute → card advanced on real events.
 - Dashboard write-proxy hardened (D-092) after a silent-failure incident: dropped no-cors so real errors surface; feedback moved next to the button + a fixed toast; added a PROXY_VERSION handshake that warns when the deployed proxy is older than the repo. Root cause was an undeployed fix on a stale Web App deployment — fixed by editing that specific deployment. Pending post-launch cleanup: archive the duplicate proxy deployments and rename the survivor "ACTIVE — used by dashboard/config.js"; rule going forward is always edit the existing deployment, never "New deployment."
+- Task/alert engine BUILT and validated to the v2 model (D-094) — the last build piece before Phase 4. Declarative 7-flow rule table (owner + threshold + text + escalation); every task belongs to a real dashboard user, coaches are never owners (a coach not responding becomes Gaby's "chase the coach" task); all 12 thresholds seeded into Settings via syncSettings; all copy sourced from the SOPs (outreach FU#1/#2, video follow-ups matching Flow 3, new tell-the-coach/coach-form copy), no em dashes. Simulated-clock URL param (?sim=+120h) built and validated for testing escalations without waiting real hours. Write-proxy bumped to PROXY_VERSION 3 (adds the v2 stage vocabulary + syncSettings). Kickoff checklist split into 2 explicit steps (D-095) to unlock Flow 3's video clock, which anchors on step 2 (instructions email sent), not the fan-out; the 8 existing test clients have no running video clock until someone marks the email sent.
 - Pipeline move UX decided (D-093): buttons are the working base for launch (tested end to end); drag-and-drop is a planned post-launch enhancement layered on top, with the same confirmation/block layer. Move taxonomy set — confirmations only on outward-facing/hard-to-reverse moves (Outreach→Invited, Scheduled→Published, any→Declined/Dropped), one hard block (Collecting→Producing, D-087), everything else flows freely. Manual-add-to-Nominated built (roster dropdown, never free text). No-undo/forward-only logged as an OPEN post-launch decision.
 
 ## In progress (Phase 2)
 
 - Miguel: agent run (task 19) re-scoped to the first real client of the launch cycle (D-069) — no recruited test client; starts when the first real testimonial lands after Aug 10, with Joey approving before publish. Task 21 (recruit/feed a trusted client) retired.
 - The automatic collection is deployed, rewritten to English, and validated end-to-end in production (D-054/D-055) — launch-ready
-- Bernardo: Testimonial Dashboard (task 26) — Phases 1-3 built and live (D-084); read/write/identity/fold all validated. The dashboard↔spreadsheet integration is now built and validated (D-091). Task engine being rebuilt to the v2 task model (D-090) — the next build item — before Phase 4. The two-source-of-truth guard (D-088) is still open. Phases 4 (calendar+buffer) and 5 (recognitions) not started.
+- Bernardo: Testimonial Dashboard (task 26) — Phases 1-3 built and live (D-084); the dashboard↔spreadsheet integration (D-091) and the task/alert engine v2 (D-094) are both built and validated. Phase 4 (calendar+buffer) is the only major build piece left, then Phase 5 (recognitions). The two-source-of-truth guard (D-088) is still open.
 
 ## Next up
 
 - Coach non-negotiables: now folded into the per-role SOPs task (23, T-E.4). Brief the coaches informally BEFORE the Aug 10 launch so Meet/Loom automation is reliable; the formal SOP is written in task 23 after final documentation. Now also covers the CLOSERS (Joey, Deniz): sales/discovery + kickoff calls must be scheduled as calendar invites with the client as a guest, so the Gemini note carries the client email and attaches automatically (D-082); instant/ad-hoc Meets have no email and go to manual review.
 - Bernardo: the per-role SOPs (task 23, now unblocked by task 20). Plus the pre-close gate: resolve the old backlog before the rock closes (D-032/D-075). Task 23 must fold in two things from D-068: (a) Miguel's monthly production week — after collection closes, Miguel builds all landing pages + edits the in-page videos in one dedicated week, then the vote opens the following week (the reel is now edited in-house by Miguel too, per D-086 — not a vote dependency); (b) the client-of-the-month vote + podcast-invitation mechanics for the relevant roles. **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
-- Dashboard (task 26): Phases 1-3 built and live (D-084); the dashboard↔spreadsheet integration is done (D-091). Next build item: the task-engine rebuild to the v2 model (D-090); then Phases 4-5. Pre-close gate alongside the backlog (D-032/D-075).
+- Dashboard (task 26): Phases 1-3 built and live (D-084); the dashboard↔spreadsheet integration (D-091) and the task/alert engine v2 (D-094) are both done. Remaining: Phase 4 (calendar+buffer), then Phase 5 (recognitions). Pre-close gate alongside the backlog (D-032/D-075).
   DASHBOARD FOLLOW-UP TASKS (surfaced from the dashboard design; to do after/alongside the build — the dashboard is designed on these decisions but they need Bernardo's action to be real):
   1. Podcast sub-process (Bernardo + Joey): create the podcast booking calendar in GoHighLevel; write/approve the podcast invitation copy; Joey approves the calendar. Needed before the dashboard's podcast invite chain runs for real.
   2. Shout-out copy + posting account (Bernardo + Joey): define the client-of-the-month shout-out copy and which account posts it. Needed before the dashboard's shout-out task is real.
   3. Teach Miguel the Master-Sheet month-add (Bernardo → Miguel): send Miguel a video showing how to add the extra free month in the client Master Sheet and where to leave the note (D-080). Needed before the first raffle winner.
   4. Verify podcast consent capture (Bernardo): confirm the preferences form has a podcast-consent checkbox; add it if missing. Needed before the first podcast invite.
-  Also set during the build (not before): the per-client escalation-ladder timings (per D-090's relative-cadence model, not absolute hour-clocks) and the system message copy (client-facing copy already exists in the SOPs).
 - Two-source-of-truth guard (D-088) — OPEN: the Slack digest (Digest.gs) re-implements the dashboard's fold as a second source of truth. To add: (a) selfCheck() promoted to a ~48h scheduled job that emails Bernardo on divergence; (b) a written "change both places" rule in CLAUDE.md and/or DASHBOARD-SYSTEM.md.
-- Post-launch (none blocking Aug 10): (a) rebuild the task engine to the v2 model (D-090), then Phase 4; (b) UX redesign pass — density, collapsible sections, feedback polish, and drag-and-drop (D-093); (c) archive the duplicate proxy deployments and rename the survivor "ACTIVE — used by dashboard/config.js" (D-092); (d) decide the no-undo "Pipeline — correction" event (D-093, open).
+- Post-launch (none blocking Aug 10): (a) UX redesign pass — density, collapsible sections, feedback polish, and drag-and-drop (D-093); (b) archive the duplicate proxy deployments and rename the survivor "ACTIVE — used by dashboard/config.js" (D-092); (c) decide the no-undo "Pipeline — correction" event (D-093, open); (d) the two-source-of-truth selfCheck email (D-088, see above).
 - Pre-launch data wipe (Aug 10, Bernardo, manual): all current dashboard/engine data is test data — wipe by hand in four places before launch: the Event Log (keep header), the 7 test-client Drive folders (including Cameron Colbo, plus the extra Signal rows and fan-out events his kickoff test produced), the coach-form responses sheet TEST rows, and the Signal sheet. No tracking file needed.
 - Digest activation (launch-day step, Aug 10): needs team Slack addresses, the management channel ID, and bot-token confirmation. Preview with previewDigest() first, then wire the trigger.
 - Joey: approves creative async
@@ -104,6 +104,8 @@ Nothing rock-wide.
 None standing alone — remaining open items live inside their tasks (Master Plan §6). Backlog strategy (~10 stored testimonials) still OPEN (D-032), now a hard pre-close gate for the rock (D-075) — decided once the first real client shows what the new pipeline produces.
 
 - To verify (not blocking Aug 10): confirm the preferences form captures a podcast-consent checkbox (D-068 assumes consent is captured at collection). If missing, it's a small form addition; the first podcast comes after launch.
+
+- Working principle for future sessions: searching a single file/revision and declaring something absent has bitten this build twice (the coach-form trigger gap, D-085; the missing video-follow-up copy that led to D-095) — a multi-revision doc or codebase can differ materially between versions, and the newest one isn't always the most complete. Check history/other revisions before concluding something doesn't exist.
 
 ## Key dates
 
