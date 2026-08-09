@@ -14,6 +14,7 @@ Your job in this repo: receive change content (usually pasted from a chat in the
 2. Apply the change with **targeted edits only**. Never rewrite or regenerate a whole document. Edit exactly what the person handed you and nothing else. If the pasted content conflicts with what's already in the file (e.g., a decision ID already taken), STOP and tell the person before editing.
 3. **Always commit and push immediately after editing.** Never leave local changes unpushed — an unpushed change does not exist for the rest of the team.
 4. After pushing, report the commit hash and a one-line summary of what changed.
+5. **Never declare something absent from a single file or revision.** A multi-revision doc or codebase can differ materially between versions, and the newest one isn't always the most complete — check history/other revisions before concluding a thing (a trigger, a piece of copy, a property) doesn't exist. This has bitten the project twice already (a missing coach-form event write, D-085; missing video follow-up copy, D-095) — both looked like clean absences until an older revision turned out to have the piece.
 
 ## Rules per document
 

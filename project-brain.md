@@ -105,7 +105,7 @@ None standing alone — remaining open items live inside their tasks (Master Pla
 
 - To verify (not blocking Aug 10): confirm the preferences form captures a podcast-consent checkbox (D-068 assumes consent is captured at collection). If missing, it's a small form addition; the first podcast comes after launch.
 
-- Working principle for future sessions: searching a single file/revision and declaring something absent has bitten this build twice (the coach-form trigger gap, D-085; the missing video-follow-up copy that led to D-095) — a multi-revision doc or codebase can differ materially between versions, and the newest one isn't always the most complete. Check history/other revisions before concluding something doesn't exist.
+- Operating rule for Claude Code sessions on this project (searching before declaring something absent) lives in `CLAUDE.md`, not here — added after this bit the build twice (D-085, D-095).
 
 ## Key dates
 
