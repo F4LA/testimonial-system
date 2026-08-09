@@ -82,7 +82,6 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
   1. Podcast sub-process (Bernardo + Joey): create the podcast booking calendar in GoHighLevel; write/approve the podcast invitation copy; Joey approves the calendar. Needed before the dashboard's podcast invite chain runs for real.
   2. Shout-out copy + posting account (Bernardo + Joey): define the client-of-the-month shout-out copy and which account posts it. Needed before the dashboard's shout-out task is real.
   3. Teach Miguel the Master-Sheet month-add (Bernardo → Miguel): send Miguel a video showing how to add the extra free month in the client Master Sheet and where to leave the note (D-080). Needed before the first raffle winner.
-  4. Verify podcast consent capture (Bernardo): confirm the preferences form has a podcast-consent checkbox; add it if missing. Needed before the first podcast invite.
 - Two-source-of-truth guard (D-088) — OPEN: the Slack digest (Digest.gs) re-implements the dashboard's fold as a second source of truth. To add: (a) selfCheck() promoted to a ~48h scheduled job that emails Bernardo on divergence; (b) a written "change both places" rule in CLAUDE.md and/or DASHBOARD-SYSTEM.md. The digest fast-follow now also carries the server-side buffer number + buffer-low alert (with the fix/blockedBy text, never a bare number) and the selfCheck must compare the buffer too (D-096).
 - Post-launch (none blocking Aug 10): (a) UX redesign pass — density, collapsible sections, feedback polish, and drag-and-drop (D-093); (b) archive the duplicate proxy deployments and rename the survivor "ACTIVE — used by dashboard/config.js" (D-092); (c) decide the no-undo "Pipeline — correction" event (D-093, open); (d) the two-source-of-truth selfCheck email (D-088, see above).
 - Pre-launch data wipe (Aug 10, Bernardo, manual): all current dashboard/engine data is test data — wipe by hand in four places before launch: the Event Log (keep header), the 7 test-client Drive folders (including Cameron Colbo, plus the extra Signal rows and fan-out events his kickoff test produced), the coach-form responses sheet TEST rows, and the Signal sheet. No tracking file needed.
@@ -104,7 +103,7 @@ Nothing rock-wide.
 
 None standing alone — remaining open items live inside their tasks (Master Plan §6). Backlog strategy (~10 stored testimonials) still OPEN (D-032), now a hard pre-close gate for the rock (D-075) — decided once the first real client shows what the new pipeline produces.
 
-- To verify (not blocking Aug 10): confirm the preferences form captures a podcast-consent checkbox (D-068 assumes consent is captured at collection). If missing, it's a small form addition; the first podcast comes after launch.
+- Podcast consent is now captured in the preferences form (D-097): a required Yes/No question, kept separate from the raffle (the podcast is not a raffle entry condition — the three conditions remain photo permission + questionnaire + review, D-008/D-059). The form wording was aligned so all three real raffle conditions state they're part of entry.
 
 - Operating rule for Claude Code sessions on this project (searching before declaring something absent) lives in `CLAUDE.md`, not here — added after this bit the build twice (D-085, D-095).
 
