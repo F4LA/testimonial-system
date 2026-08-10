@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 9, 2026 — late session (Phase 5 STARTED: the preferences bridge built and validated live, D-098, then its classifier fixed, D-099; raffle month assignment designed, D-100; the raffle compliance view is in build)
+**Last updated:** August 9, 2026 — late session (Phase 5 STARTED: the preferences bridge built and validated live, D-098, then its classifier fixed, D-099; raffle month assignment designed, D-100; the raffle compliance view is in build; append-only made absolute, D-101)
 
 ## Current phase
 
