@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 9, 2026 — late session (Phase 5 STARTED: the preferences-form → event-log bridge built and validated live, D-098 — the data foundation the raffle and reviews views read)
+**Last updated:** August 9, 2026 — late session (Phase 5 STARTED: the preferences bridge built and validated live, D-098, then its classifier fixed, D-099; raffle month assignment designed, D-100; the raffle compliance view is in build)
 
 ## Current phase
 
@@ -15,7 +15,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 ## Done
 
 - Rock defined, brief written, architecture decided
-- Decision Log active (D-001 through D-098; D-001→D-006, D-018→D-021, D-004, D-049 superseded; D-071, D-072 partially superseded by D-086; D-089 delivered by D-091; D-090's production-half detail refined by D-094; D-066's self-report event built by D-098)
+- Decision Log active (D-001 through D-100; D-098's classifier amended by D-099; D-001→D-006, D-018→D-021, D-004, D-049 superseded; D-071, D-072 partially superseded by D-086; D-089 delivered by D-091; D-090's production-half detail refined by D-094; D-066's self-report event built by D-098)
 - Current-system documentation loaded into Project knowledge
 - AI-first definition and hierarchy adopted (Brief §2)
 - Master Plan v1 built, approved, uploaded (Jul 9): 20 tasks, owners, dependencies, execution order + map. D-012: all collection reassigned to Bernardo end to end
@@ -83,6 +83,11 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
   1. Podcast sub-process (Bernardo + Joey): create the podcast booking calendar in GoHighLevel; write/approve the podcast invitation copy; Joey approves the calendar. Needed before the dashboard's podcast invite chain runs for real.
   2. Shout-out copy + posting account (Bernardo + Joey): define the client-of-the-month shout-out copy and which account posts it. Needed before the dashboard's shout-out task is real.
   3. Teach Miguel the Master-Sheet month-add (Bernardo → Miguel): send Miguel a video showing how to add the extra free month in the client Master Sheet and where to leave the note (D-080). Needed before the first raffle winner.
+- **PHASE 5 OPEN ITEMS (dashboard build — carry these into the draw chunk, do not lose them):**
+  1. **Manual "move to another month's raffle" button** (D-100) — designed and approved, NOT built. Gaby moves a client whose content arrived late into the next month's raffle; the move writes an attributed event, never a decision held in her head. It is a WRITE, so it ships with the draw chunk (which does the live ALLOWED_STAGES check before writing). The read-only compliance view already respects the override event if one exists, so nothing needs recomputing when the button lands.
+  2. **Known limit — the bridge writes no cycle** (D-098/D-100): a blank cycle folds to 1, so a client's CYCLE-2 preferences submission attaches to cycle 1, the wrong testimonial. Harmless at launch (everyone is cycle 1), wrong on the first re-nomination. Not fixable inside a read-only chunk; must be resolved before the first part-2 testimonial, and must be restated in the raffle close row.
+  3. **Draw scope still open** (D-100): cohort-only vs everyone-currently-qualifying-who-has-not-won. The cohort reading is what is being built; decide at the draw chunk.
+  4. **D-088 applies the moment the digest says anything raffle-shaped** — the compliance view is read-only and emits no task or alert, so `Digest.gs` needs no change today. The instant any digest output depends on raffle qualification, the qualification logic must exist in BOTH `dashboard/raffle.js` and `Digest.gs`, with `selfCheck()` comparing them — in the SAME commit, so no silent second source is created.
 - Two-source-of-truth guard (D-088) — OPEN: the Slack digest (Digest.gs) re-implements the dashboard's fold as a second source of truth. To add: (a) selfCheck() promoted to a ~48h scheduled job that emails Bernardo on divergence; (b) a written "change both places" rule in CLAUDE.md and/or DASHBOARD-SYSTEM.md. The digest fast-follow now also carries the server-side buffer number + buffer-low alert (with the fix/blockedBy text, never a bare number) and the selfCheck must compare the buffer too (D-096).
 - Post-launch (none blocking Aug 10): (a) UX redesign pass — density, collapsible sections, feedback polish, and drag-and-drop (D-093); (b) archive the duplicate proxy deployments and rename the survivor "ACTIVE — used by dashboard/config.js" (D-092); (c) decide the no-undo "Pipeline — correction" event (D-093, open); (d) the two-source-of-truth selfCheck email (D-088, see above).
 - Pre-launch data wipe (Aug 10, Bernardo, manual): all current dashboard/engine data is test data — wipe by hand in FIVE places before launch: (1) the Event Log (keep header; this includes Cameron Colbo's three "Preferences — …" rows 85-87 from the D-098 test); (2) the 7 test-client Drive folders (including Cameron Colbo, plus the extra Signal rows and fan-out events his kickoff test produced); (3) the coach-form responses sheet TEST rows; (4) the Signal sheet; (5) the **"Testimonial preferences — responses"** sheet — the D-098 bridge test left one submission row there. No tracking file needed.
