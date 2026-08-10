@@ -15,7 +15,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 ## Done
 
 - Rock defined, brief written, architecture decided
-- Decision Log active (D-001 through D-100; D-098's classifier amended by D-099; D-001→D-006, D-018→D-021, D-004, D-049 superseded; D-071, D-072 partially superseded by D-086; D-089 delivered by D-091; D-090's production-half detail refined by D-094; D-066's self-report event built by D-098)
+- Decision Log active (D-001 through D-101; D-098's classifier amended by D-099; D-101 made the append-only rule absolute and defined what Status may record; D-001→D-006, D-018→D-021, D-004, D-049 superseded; D-071, D-072 partially superseded by D-086; D-089 delivered by D-091; D-090's production-half detail refined by D-094; D-066's self-report event built by D-098)
 - Current-system documentation loaded into Project knowledge
 - AI-first definition and hierarchy adopted (Brief §2)
 - Master Plan v1 built, approved, uploaded (Jul 9): 20 tasks, owners, dependencies, execution order + map. D-012: all collection reassigned to Bernardo end to end
