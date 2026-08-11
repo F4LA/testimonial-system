@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 11, 2026 (Gaby's per-role operating procedure written, delivered, and verified against the live dashboard code, D-105/D-107; her raffle messages + client-of-the-month vote post approved, D-106; calendar publish-marking ownership decided, D-108)
+**Last updated:** August 11, 2026 (initial outreach message written and approved, D-109; awaiting dashboard load)
 
 ## Current phase
 
@@ -90,6 +90,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
   3. Teach Miguel the Master-Sheet month-add (Bernardo → Miguel): send Miguel a video showing how to add the extra free month in the client Master Sheet and where to leave the note (D-080). Needed before the first raffle winner.
   4. Load the approved raffle-message copy (winner/non-winner) into the dashboard's message library, so the "Copy message" button works for that step (D-107).
   5. Restrict or attribute to Miguel the "Instagram scheduled" / "Email scheduled" / "Published" marks on the calendar, currently unowned in the code (D-108).
+  6. Load the approved initial-outreach message copy (D-109) into the dashboard's message library — same pending-load pattern as follow-up 4 for the raffle messages.
 - **Raffle carry-forward (D-103, still open):** the bridge writes no cycle (D-098/D-100) — a blank cycle folds to 1, so a client's CYCLE-2 preferences submission attaches to cycle 1, the wrong testimonial; harmless at launch (everyone is cycle 1), wrong on the first re-nomination — must be resolved before the first part-2 testimonial.
 - Two-source-of-truth guard (D-088): satisfied for everything the digest currently mirrors — raffle (D-103), buffer (D-096), and now the full non-raffle task/alert logic (D-104); the digest is no longer a diverging source. Still OPEN only for reviews and podcast/client-of-the-month: once those views are built, their logic must land in Digest.gs too, in the same commit, with selfCheck() proving the match — the pattern D-103/D-104 already established. Also still to add generally: (a) promoting selfCheck() to a recurring (~48h) scheduled job that emails Bernardo on divergence; (b) a written "change both places" rule in CLAUDE.md and/or DASHBOARD-SYSTEM.md.
 - Post-launch (none blocking Aug 10): (a) UX redesign pass — density, collapsible sections, feedback polish, and drag-and-drop (D-093); (b) archive the duplicate proxy deployments and rename the survivor "ACTIVE — used by dashboard/config.js" (D-092); (c) decide the no-undo "Pipeline — correction" event (D-093, open — now also covers a confirmed raffle winner, D-103); (d) the two-source-of-truth selfCheck email (D-088, see above).
