@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 18, 2026 (procedimiento de los coaches escrito, tarea 23 cerrada, D-123)
+**Last updated:** August 19, 2026 (mensaje mensual de nominación corregido + error de fecha del programador, y el ciclo en el puente de preferencias, D-125/D-126)
 
 ## Current phase
 
@@ -98,10 +98,12 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
   2. Shout-out copy + posting account (Bernardo + Joey): define the client-of-the-month shout-out copy and which account posts it. Needed before the dashboard's shout-out task is real.
   3. Teach Miguel the Master-Sheet month-add (Bernardo → Miguel): send Miguel a video showing how to add the extra free month in the client Master Sheet and where to leave the note (D-080). Needed before the first raffle winner.
   4. Restrict or attribute to Miguel the "Instagram scheduled" / "Email scheduled" / "Published" marks on the calendar, currently unowned in the code (D-108).
-- **Raffle carry-forward (D-103, still open):** the bridge writes no cycle (D-098/D-100) — a blank cycle folds to 1, so a client's CYCLE-2 preferences submission attaches to cycle 1, the wrong testimonial; harmless at launch (everyone is cycle 1), wrong on the first re-nomination — must be resolved before the first part-2 testimonial.
+- **Raffle carry-forward (D-103) — CERRADO (D-126):** el puente del formulario de preferencias ya escribe el ciclo real, así que las respuestas de un cliente re-nominado aterrizan en su testimonio nuevo y no en el viejo. Validado con un caso real de ciclo 2 en producción, no solo el camino feliz. Ya no es una compuerta antes del primer testimonio de parte 2.
 - Two-source-of-truth guard (D-088): satisfied for everything the digest currently mirrors — raffle (D-103), buffer (D-096), and now the full non-raffle task/alert logic (D-104); the digest is no longer a diverging source. Still OPEN only for reviews and podcast/client-of-the-month: once those views are built, their logic must land in Digest.gs too, in the same commit, with selfCheck() proving the match — the pattern D-103/D-104 already established. Also still to add generally: (a) promoting selfCheck() to a recurring (~48h) scheduled job that emails Bernardo on divergence; (b) a written "change both places" rule in CLAUDE.md and/or DASHBOARD-SYSTEM.md.
 - Post-launch (none blocking Aug 10): (a) UX redesign pass — density, collapsible sections, feedback polish, and drag-and-drop (D-093); (b) archive the duplicate proxy deployments and rename the survivor "ACTIVE — used by dashboard/config.js" (D-092); (c) decide the no-undo "Pipeline — correction" event (D-093, open — now also covers a confirmed raffle winner, D-103); (d) the two-source-of-truth selfCheck email (D-088, see above); (e) el banner de la vista del sorteo dice que el sorteo abre el último día del mes; el código lo abre cuando el mes ya terminó (D-122). Texto corrido un día, sin efecto en el comportamiento.
 - MOTOR, sin resolver: las notas de llamadas se copian PARCIALMENTE sin que nada lo levante. Visto en la ficha de Jennifer Dickey el 12 de agosto: de 4 notas encontradas, 3 copiadas y 1 fallida por límite de tasa de Google ("User rate limit exceeded"), y la entrada de Meet igual aparece en verde como recibida. Se pierde en silencio una grabación que sí existía. Necesita su propio pase en el motor (probablemente un reintento), no está en el trabajo del dashboard.
+- MOTOR, sin resolver: todas las escrituras del motor menos el puente de preferencias siguen dejando el ciclo en blanco (fan-out, formulario del coach, notas de llamadas, Looms), y un ciclo en blanco se pliega a 1. En la primera re-nominación, la respuesta del coach de la parte 2 se pegará a la parte 1 y la parte 2 mostrará esa entrada como faltante para siempre, generándole a Gaby una tarea de perseguir al coach que no se puede cerrar. Decidido a propósito no arreglarlo con la misma regla del puente (D-126): "el ciclo más alto" es verdadero para el formulario del cliente y falso para un evento que llega tarde de un testimonio anterior. Necesita su propio pase.
+- MOTOR, sin resolver: el código del motor no está versionado en ningún repo. Vive solo en el editor de Apps Script, y los cuatro fragmentos que hay en el repo del dashboard son parches sueltos, no el archivo. Esta sesión empezó sin poder leer la función del programador de nominaciones por eso. Cualquier arreglo futuro del motor depende de que alguien pegue el código en el chat.
 - Joey: approves creative async
 - Miguel: run the agent on the first real client of the cycle (task 19, D-069) when the first testimonial lands after launch.
 
@@ -126,7 +128,7 @@ None standing alone — remaining open items live inside their tasks (Master Pla
 ## Key dates
 
 - Mon Aug 10 — full system launch, DONE: the August nomination message was sent by hand (real cycle started), the pre-launch wipe is done, and the daily Slack digest went live (D-104). Collection engine validated; the client-instructions email (D-059) and preferences form (D-063) were live for the launch.
-- Mon Aug 31 — first automatic nomination message (September cycle, D-076); August's was the last manual one.
+- Mon Aug 31 — first automatic nomination message (September cycle, D-076); August's was the last manual one. OJO: hasta el 19 de agosto este envío NO iba a ocurrir — la función solo miraba el lunes del mes actual y el de septiembre cae el 31 de agosto. Arreglado y validado (D-125), con la copia ya corregida a Bernardo.
 - Post-launch, within the rock: build the dashboard (D-075) and resolve the backlog before closing the rock.
 
 ## How to update this doc (Bernardo, Wednesdays — plus any chat that changes status)
