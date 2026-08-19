@@ -1,3 +1,9 @@
+// Nota (19 ago 2026): un clasp push corrido sin .claspignore
+// dejo pegados 4 archivos de engine/history/ en este proyecto
+// de Apps Script. Corregido con .claspignore + este cambio de
+// contenido, que fue necesario para forzar a clasp a reconciliar
+// (con Code.gs sin cambios, clasp decidia "ya esta al dia" y
+// ni llamaba a la API).
 /**
  * ============================================================================
  * TESTIMONIAL SYSTEM — AUTOMATIC COLLECTION
