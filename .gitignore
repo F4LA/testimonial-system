@@ -1,0 +1,6 @@
+# clasp / Google OAuth credentials — never commit these
+.clasprc.json
+*.clasprc.json
+.clasp-credentials.json
+client_secret*.json
+credentials.json
