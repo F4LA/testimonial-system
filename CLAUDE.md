@@ -31,9 +31,15 @@ Your job in this repo: receive change content (usually pasted from a chat in the
 ### master-plan.md
 - Only accepts changes backed by a Decision Log row. If asked to change it without a corresponding D-XXX, ask for the decision ID first.
 
+### engine/Code.gs — the collection engine's source
+
+- The collection engine's code lives in `engine/Code.gs`, in this repo, and **this is the source**. It is edited here and pushed to the Apps Script editor with `clasp push`. Never ask a person to paste the file by hand, and never assume the engine can't be read — it's right here.
+- **Before proposing any change to the engine, run `clasp pull` and confirm `git diff` comes back empty.** If it doesn't, someone edited live and the repo is behind — resolve that first, before touching anything else.
+- Engine changes happen in THIS session, never in the dashboard session (F4LA/testimonial-dashboard) — session separation applies to the engine's code the same way it applies to the three living documents.
+
 ## Scope
 
-Only the three live documents belong here, plus repo infrastructure (`CLAUDE.md`, `setup-claude-code.md`, `setup-checks.md`). Do not add other project artifacts — the Sheets tracker, Project Brief, SOPs and transcripts live elsewhere on purpose (D-021).
+The three live documents, plus repo infrastructure (`CLAUDE.md`, `setup-claude-code.md`, `setup-checks.md`), plus `engine/` (the collection engine's versioned source, D-127 — an explicit, deliberate exception to "only the three documents"). Do not add other project artifacts — the Sheets tracker, Project Brief, SOPs and transcripts live elsewhere on purpose (D-021).
 
 ## Commit messages
 
