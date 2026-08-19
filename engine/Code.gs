@@ -602,6 +602,12 @@ function collectMeet_(client, folder) {
   var matched = 0, copied = 0, already = 0, copyFailed = 0;
   var seenDocs = {};   // dedupe the same shared doc found under several accounts
   var unmatched = [];  // read but no email match — listed in the review file when nothing matches
+  var failed = [];     // matched but the copy failed — listed in the review file too
+  // Docs we could not even READ (export failed). Keyed by name because another
+  // account may still read the same shared doc; a later success deletes the key.
+  // Before this existed such a doc fell into NO counter at all and vanished
+  // without a number anywhere — worse than the copy failure it accompanies.
+  var unreadable = {};
   var trace = [];      // one short note per account — written to the event log only on a flag
 
   accounts.forEach(function (account) {
@@ -625,9 +631,11 @@ function collectMeet_(client, folder) {
         try {
           text = driveExportDocHtml_(token, doc.id);
         } catch (err) {
+          unreadable[doc.name] = { name: doc.name, id: doc.id, account: account, why: err.message };
           logEvent_(client.email, 'Collection — Meet', 'Could not read "' + doc.name + '" (' + account + '): ' + err.message, 'AUTO');
           return;                                     // don't mark seen — another account may still read it
         }
+        delete unreadable[doc.name];                  // a later account read it — no longer a hole
         seenDocs[doc.name] = true;                    // read once; never reprocess this doc under another account
 
         // The client email is the authority (the Gemini "Invited" line), case-insensitive.
@@ -650,6 +658,7 @@ function collectMeet_(client, folder) {
           copied++;
         } catch (err) {
           copyFailed++;
+          failed.push({ name: doc.name, id: doc.id, account: account, why: err.message });
           logEvent_(client.email, 'Collection — Meet', 'Could not copy "' + doc.name + '" (' + account + '): ' + err.message, 'AUTO');
         }
       });
@@ -659,79 +668,164 @@ function collectMeet_(client, folder) {
     }
   });
 
-  // Report by what actually happened. `matched` decides success vs flag.
-  if (matched > 0) {
-    var bits = [];
-    if (copied)     bits.push(copied + ' copied');
-    if (already)    bits.push(already + ' already there');
-    if (copyFailed) bits.push(copyFailed + ' copy failed');
-    var detail = matched + ' matched by email' + (bits.length ? ' (' + bits.join(', ') + ')' : '');
-
-    // Matched but nothing landed AND at least one copy errored = a real problem.
-    if (copied === 0 && already === 0 && copyFailed > 0) {
-      markStatus_(folder, 'Call recordings', '❌ copy failed — ' + today_() + ' (' + detail + ')');
-      logEvent_(client.email, 'Collection — Meet', detail + ' — copies failed, review manually', 'AUTO');
-      return { summary: '❌ Meet (copy failed)' };
-    }
-
-    markStatus_(folder, 'Call recordings', '✅ arrived — ' + today_() + ' (' + detail + ')');
-    logEvent_(client.email, 'Collection — Meet', detail, 'AUTO');
-    return { summary: '✅ Meet (' + matched + ')' };
+  // Report through meetReport_, the single place that decides ✅ vs 🚩. It is a
+  // PURE function so checkMeetRetry can assert every combination — including the
+  // real Jennifer Dickey one — without waiting for Google to rate-limit us again.
+  var unreadableList = Object.keys(unreadable).map(function (k) { return unreadable[k]; });
+  var reviewName = '';
+  if (unmatched.length || failed.length || unreadableList.length) {
+    reviewName = writeMeetReviewFile_(c01, client, unmatched, failed, unreadableList);
   }
 
-  // matched === 0 → no Gemini note carried this client's email. The system NEVER
-  // guesses by name. But if candidates were FOUND by name (just without the email —
-  // e.g. an instant Meet with no calendar invite), we make the flag ACTIONABLE:
-  // drop a review file in "01" listing each candidate with a direct link, so a
-  // human confirms in seconds instead of hunting.
-  if (unmatched.length > 0) {
-    var reviewName = writeMeetReviewFile_(c01, client, unmatched);
-    markStatus_(folder, 'Call recordings', '🚩 review manually — ' + today_() + ' (' + unmatched.length + ' candidate note(s) found by name but no email match — see "' + reviewName + '" in 01)');
-    logEvent_(client.email, 'Collection — Meet', 'Flag: 0 matched by email; ' + unmatched.length + ' candidate(s) listed for manual review. Trace — ' + trace.join(' | '), 'AUTO');
-    return { summary: '🚩 Meet (0 — ' + unmatched.length + ' to review)' };
-  }
+  var r = meetReport_({
+    matched: matched, copied: copied, already: already,
+    copyFailed: copyFailed, readFailed: unreadableList.length,
+    unmatched: unmatched.length, reviewName: reviewName, trace: trace
+  });
 
-  // Nothing found at all — not even a name match.
-  markStatus_(folder, 'Call recordings', '🚩 review manually — ' + today_() + ' (no call notes found for this client)');
-  logEvent_(client.email, 'Collection — Meet', 'Flag: 0 Gemini notes found. Trace — ' + trace.join(' | '), 'AUTO');
-  return { summary: '🚩 Meet (0 — flag)' };
+  markStatus_(folder, 'Call recordings', r.status);
+  logEvent_(client.email, 'Collection — Meet', r.event, 'AUTO');
+  return { summary: r.summary };
 }
 
-// When Meet matching finds candidate docs by NAME but none carry the client email
-// (e.g. an instant Meet with no calendar invite, so Gemini never captured the
-// attendee email), we do NOT guess. Instead we drop this review file in "01" so a
-// human confirms each candidate in seconds, with a direct link. Returns the file
-// name for the status line. Idempotent: overwrites on re-run.
-function writeMeetReviewFile_(c01, client, unmatched) {
+// The ONE place that turns counters into a status line, an event and a summary.
+// PURE (only today_() for the date) so it can be asserted from checkMeetRetry.
+//
+// THE RULE THAT CHANGED (Aug 19 2026): a partial result is NOT a success. The old
+// code only reported failure when NOTHING landed (copied === 0 && already === 0),
+// so 3-of-4 printed "✅ arrived" with "1 copy failed" buried in the parenthesis,
+// and the dashboard — which reads the newest event on this input — showed green.
+// A recording that existed was lost in silence. Now ANY doc we could not attach
+// or could not even read flags the input, which is what puts it in Gaby's review
+// queue with a file of direct links. Flags never block the pipeline (they are
+// automatic inputs), so this can never strand a testimonial.
+// The event text starts with "Flag: " on purpose: that is the string the
+// dashboard already classifies as flagged, so no dashboard change is needed.
+function meetReport_(c) {
+  var bits = [];
+  if (c.copied)     bits.push(c.copied + ' copied');
+  if (c.already)    bits.push(c.already + ' already there');
+  if (c.copyFailed) bits.push(c.copyFailed + ' copy failed');
+  if (c.readFailed) bits.push(c.readFailed + ' unreadable');
+  var detail = c.matched + ' matched by email' + (bits.length ? ' (' + bits.join(', ') + ')' : '');
+  var seeFile = c.reviewName ? '; see "' + c.reviewName + '" in 01' : '';
+  var lost = (c.copyFailed || 0) + (c.readFailed || 0);
+
+  // 1 · Something we found could not be attached → flag, whatever else succeeded.
+  if (lost > 0) {
+    var why = [];
+    if (c.copyFailed) why.push(c.copyFailed + ' could not be attached');
+    if (c.readFailed) why.push(c.readFailed + ' could not be read to verify');
+    var reason = why.join(' and ');
+    return {
+      state:   'flagged',
+      status:  '🚩 review manually — ' + today_() + ' (' + detail + ' — ' + reason + seeFile + ')',
+      event:   'Flag: ' + detail + ' — ' + reason + ', review manually' + seeFile,
+      summary: '🚩 Meet (' + c.matched + ' — ' + lost + ' to review)'
+    };
+  }
+
+  // 2 · Everything we matched actually landed → success (a re-run counts as one).
+  if (c.matched > 0) {
+    return {
+      state:   'received',
+      status:  '✅ arrived — ' + today_() + ' (' + detail + ')',
+      event:   detail,
+      summary: '✅ Meet (' + c.matched + ')'
+    };
+  }
+
+  // 3 · Candidates found by NAME but no email in any of them. We never guess.
+  if (c.unmatched > 0) {
+    return {
+      state:   'flagged',
+      status:  '🚩 review manually — ' + today_() + ' (' + c.unmatched + ' candidate note(s) found by name but no email match' + seeFile + ')',
+      event:   'Flag: 0 matched by email; ' + c.unmatched + ' candidate(s) listed for manual review. Trace — ' + (c.trace || []).join(' | '),
+      summary: '🚩 Meet (0 — ' + c.unmatched + ' to review)'
+    };
+  }
+
+  // 4 · Nothing found at all — very often this client simply has no call notes.
+  return {
+    state:   'flagged',
+    status:  '🚩 review manually — ' + today_() + ' (no call notes found for this client)',
+    event:   'Flag: 0 Gemini notes found. Trace — ' + (c.trace || []).join(' | '),
+    summary: '🚩 Meet (0 — flag)'
+  };
+}
+
+// The one file a human opens when the call-notes step needs a hand. Three kinds
+// of trouble can land here, and a client can have more than one at once:
+//   1. found by NAME but no client email in the doc — we never guess (D-081)
+//   2. matched, but the copy failed (usually a Google rate limit)
+//   3. matched the search, but the doc could not even be read to verify
+// Sections 2 and 3 were added Aug 19 2026: before that a failed copy left no file
+// and no flag, so nobody was ever told. Idempotent: overwritten on re-run.
+var MEET_REVIEW_FILE = 'Needs review \u2014 call recordings.md';
+
+function writeMeetReviewFile_(c01, client, unmatched, failed, unreadable) {
+  unmatched  = unmatched  || [];
+  failed     = failed     || [];
+  unreadable = unreadable || [];
+
   var lines = [
-    '# Call recordings — needs manual review',
+    '# Call recordings \u2014 needs manual review',
     'Client: ' + client.name + ' (' + client.email + ')',
-    '',
-    'The search found these call notes by NAME, but none carried this client\u2019s',
-    'email on the "Invited" line, so the system did NOT attach them (it never guesses',
-    'by name). Open each one: if it is really this client\u2019s call, copy it into the',
-    'matching subfolder here in "01 \u00b7 Call recordings". If it only mentions the',
-    'client, ignore it.',
-    '',
-    'Most common reason: the call was an instant Meet (no calendar invite), so the',
-    'client email was never captured in the notes. Going forward, schedule sales and',
-    'kickoff calls as a calendar invite with the client as a guest and this becomes',
-    'automatic.',
     ''
   ];
-  unmatched.forEach(function (d, i) {
-    lines.push((i + 1) + '. ' + d.name);
-    lines.push('   https://docs.google.com/document/d/' + d.id + '/edit');
-    lines.push('   (found in ' + d.account + '\u2019s Meet Recordings)');
-  });
-  lines.push('');
+
+  function listDocs(items) {
+    items.forEach(function (d, i) {
+      lines.push((i + 1) + '. ' + d.name);
+      lines.push('   https://docs.google.com/document/d/' + d.id + '/edit');
+      lines.push('   (found in ' + d.account + '\u2019s Meet Recordings' + (d.why ? '; reason: ' + d.why : '') + ')');
+    });
+    lines.push('');
+  }
+
+  if (failed.length) {
+    lines.push('## ' + failed.length + ' note(s) belong to this client but could NOT be copied');
+    lines.push('');
+    lines.push('These ARE this client\u2019s calls \u2014 their email was verified in the doc. The');
+    lines.push('copy itself failed, almost always because Google rate-limited a burst of');
+    lines.push('copies. The system retried and still could not finish. Open each one and');
+    lines.push('copy it into the matching subfolder here in "01 \u00b7 Call recordings".');
+    lines.push('');
+    listDocs(failed);
+  }
+
+  if (unreadable.length) {
+    lines.push('## ' + unreadable.length + ' note(s) could not be opened to check');
+    lines.push('');
+    lines.push('The search found these, but the system could not read them, so it could not');
+    lines.push('confirm whether they belong to this client. Open each one: if it really is');
+    lines.push('this client\u2019s call, copy it into the matching subfolder here.');
+    lines.push('');
+    listDocs(unreadable);
+  }
+
+  if (unmatched.length) {
+    lines.push('## ' + unmatched.length + ' note(s) found by NAME, with no email match');
+    lines.push('');
+    lines.push('The search found these by NAME, but none carried this client\u2019s email on the');
+    lines.push('"Invited" line, so the system did NOT attach them (it never guesses by name).');
+    lines.push('Open each one: if it is really this client\u2019s call, copy it into the matching');
+    lines.push('subfolder here. If it only mentions the client, ignore it.');
+    lines.push('');
+    lines.push('Most common reason: the call was an instant Meet (no calendar invite), so the');
+    lines.push('client email was never captured in the notes. Going forward, schedule sales and');
+    lines.push('kickoff calls as a calendar invite with the client as a guest and this becomes');
+    lines.push('automatic.');
+    lines.push('');
+    listDocs(unmatched);
+  }
+
   lines.push('_Generated: ' + now_() + '_');
 
-  var name = 'Needs review \u2014 call recordings.md';
-  var prev = c01.getFilesByName(name);
+  var prev = c01.getFilesByName(MEET_REVIEW_FILE);
   if (prev.hasNext()) prev.next().setContent(lines.join('\n'));
-  else c01.createFile(name, lines.join('\n'), MimeType.PLAIN_TEXT);
-  return name;
+  else c01.createFile(MEET_REVIEW_FILE, lines.join('\n'), MimeType.PLAIN_TEXT);
+  return MEET_REVIEW_FILE;
 }
 
 function classifyCall_(text) {
@@ -744,6 +838,47 @@ function classifyCall_(text) {
   return 'Unclassified';   // the title only classifies, it NEVER filters — nothing is lost
 }
 
+// ============================================================================
+// 8b · DRIVE CALLS WITH RETRY — transient quota failures are not real failures
+// Every Drive call below goes through driveFetchRetry_. Google answers a burst of
+// copies with 403 userRateLimitExceeded / 429; that is "wait a moment", not "this
+// file cannot be copied". Aug 12 2026: Jennifer Dickey had 4 call notes, 3 copied
+// and the 4th lost to exactly that. We retry it with growing waits.
+// The happy path is untouched: nothing sleeps unless a call actually failed.
+// A NON-quota 403 (a real permission problem) is returned immediately — retrying
+// it would burn three attempts and the execution clock for nothing.
+// ============================================================================
+
+var DRIVE_RETRY = { attempts: 3, baseWaitMs: 1200 };   // mutable so checkMeetRetry can test fast
+
+// Is this response worth another attempt? Quota/rate answers and 5xx only.
+function driveRetryable_(res) {
+  var code = res.getResponseCode();
+  if (code === 429 || (code >= 500 && code <= 599)) return true;
+  if (code !== 403) return false;
+  var body = '';
+  try { body = String(res.getContentText()); } catch (e) { body = ''; }
+  return /rateLimitExceeded|userRateLimitExceeded|quotaExceeded|backendError|rate limit/i.test(body);
+}
+
+// `fetcher` and `sleeper` exist ONLY so checkMeetRetry can prove this works
+// without waiting for Google to be angry. Production passes neither.
+function driveFetchRetry_(url, params, label, fetcher, sleeper) {
+  var doFetch = fetcher || function (u, p) { return UrlFetchApp.fetch(u, p); };
+  var doSleep = sleeper || function (ms) { Utilities.sleep(ms); };
+  var res = null;
+  for (var i = 1; i <= DRIVE_RETRY.attempts; i++) {
+    res = doFetch(url, params);
+    if (res.getResponseCode() < 400 || !driveRetryable_(res)) return res;
+    if (i < DRIVE_RETRY.attempts) {
+      Logger.log('Drive retry ' + i + '/' + (DRIVE_RETRY.attempts - 1) + ' on ' + label +
+                 ' after ' + res.getResponseCode());
+      doSleep(DRIVE_RETRY.baseWaitMs * Math.pow(2, i - 1));
+    }
+  }
+  return res;   // exhausted — the caller's own status check reports it
+}
+
 // Folders whose name STARTS WITH `prefix`, visible to the account. Returns [id, ...].
 // Prefix (not exact) because the auto-save folder gets renamed per account — e.g.
 // "Meet Recordings - Bernardo Sales Calls" — while still holding every call type
@@ -754,7 +889,7 @@ function driveFindFoldersByName_(token, prefix) {
   var q = "name contains '" + p + "' and mimeType = 'application/vnd.google-apps.folder' and trashed = false";
   var url = 'https://www.googleapis.com/drive/v3/files?q=' + encodeURIComponent(q) +
     '&fields=files(id,name)&pageSize=50&supportsAllDrives=true&includeItemsFromAllDrives=true';
-  var res = UrlFetchApp.fetch(url, { headers: { Authorization: 'Bearer ' + token }, muteHttpExceptions: true });
+  var res = driveFetchRetry_(url, { headers: { Authorization: 'Bearer ' + token }, muteHttpExceptions: true }, 'folder lookup');
   if (res.getResponseCode() !== 200) throw new Error('folder lookup ' + res.getResponseCode() + ': ' + res.getContentText().slice(0, 150));
   return (JSON.parse(res.getContentText()).files || [])
     .filter(function (f) { return String(f.name).indexOf(String(prefix)) === 0; })
@@ -776,7 +911,7 @@ function driveSearchDocs_(token, folderId, client) {
     var url = 'https://www.googleapis.com/drive/v3/files?q=' + encodeURIComponent(q) +
       '&fields=nextPageToken,files(id,name)&pageSize=100&supportsAllDrives=true&includeItemsFromAllDrives=true' +
       (pageToken ? '&pageToken=' + pageToken : '');
-    var res = UrlFetchApp.fetch(url, { headers: { Authorization: 'Bearer ' + token }, muteHttpExceptions: true });
+    var res = driveFetchRetry_(url, { headers: { Authorization: 'Bearer ' + token }, muteHttpExceptions: true }, 'doc search');
     if (res.getResponseCode() !== 200) throw new Error('doc search ' + res.getResponseCode() + ': ' + res.getContentText().slice(0, 150));
     var data = JSON.parse(res.getContentText());
     (data.files || []).forEach(function (f) { out.push({ id: f.id, name: f.name }); });
@@ -793,30 +928,30 @@ function driveSearchDocs_(token, folderId, client) {
 // <a href="mailto:...">, so the client email is present for verification. A loose,
 // unresolved email survives in both formats, so HTML is strictly safer.
 function driveExportDocHtml_(token, docId) {
-  var res = UrlFetchApp.fetch('https://www.googleapis.com/drive/v3/files/' + docId + '/export?mimeType=text/html', {
+  var res = driveFetchRetry_('https://www.googleapis.com/drive/v3/files/' + docId + '/export?mimeType=text/html', {
     headers: { Authorization: 'Bearer ' + token }, muteHttpExceptions: true
-  });
+  }, 'doc export');
   if (res.getResponseCode() !== 200) throw new Error('doc export ' + res.getResponseCode());
   return res.getContentText();
 }
 
 function shareWithTeam_(ownerToken, fileId) {
   var team = prop_('TEAM_ACCOUNT_EMAIL');
-  UrlFetchApp.fetch('https://www.googleapis.com/drive/v3/files/' + fileId + '/permissions?sendNotificationEmail=false&supportsAllDrives=true', {
+  driveFetchRetry_('https://www.googleapis.com/drive/v3/files/' + fileId + '/permissions?sendNotificationEmail=false&supportsAllDrives=true', {
     method: 'post', contentType: 'application/json',
     headers: { Authorization: 'Bearer ' + ownerToken },
     payload: JSON.stringify({ role: 'reader', type: 'user', emailAddress: team }),
     muteHttpExceptions: true
-  });
+  }, 'share with team');
 }
 
 function copyDriveFile_(fileId, name, destFolderId) {
-  var res = UrlFetchApp.fetch('https://www.googleapis.com/drive/v3/files/' + fileId + '/copy?supportsAllDrives=true', {
+  var res = driveFetchRetry_('https://www.googleapis.com/drive/v3/files/' + fileId + '/copy?supportsAllDrives=true', {
     method: 'post', contentType: 'application/json',
     headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() },  // the script runs as the team account
     payload: JSON.stringify({ name: name, parents: [destFolderId] }),
     muteHttpExceptions: true
-  });
+  }, 'copy doc');
   if (res.getResponseCode() >= 300) throw new Error('copy ' + res.getResponseCode() + ': ' + res.getContentText().slice(0, 200));
 }
 
@@ -1780,4 +1915,113 @@ function removePrefsFormTrigger() {
     if (t.getHandlerFunction() === 'onPrefsFormSubmit') { ScriptApp.deleteTrigger(t); n++; }
   });
   return 'Removed ' + n + ' preferences trigger(s).';
+}
+
+
+// ============================================================================
+// 8c · checkMeetRetry() — read-only proof that the call-notes fix is live
+// Run from the Apps Script editor (or the sheet menu) after a clasp push. Writes
+// nothing, touches no client, calls no Google API. It asserts the two halves of
+// the Aug 19 2026 fix:
+//   A) the reporting rule — every counter combination, including the real
+//      Jennifer Dickey case (4 found, 3 copied, 1 lost to a rate limit), which
+//      MUST come out flagged and used to come out green;
+//   B) the retry — driven by a fake fetcher, so we prove it without waiting for
+//      Google to rate-limit us again.
+// ============================================================================
+
+function checkMeetRetry() {
+  var out = [], pass = 0, fail = 0;
+
+  function check(label, got, want) {
+    var ok = (got === want);
+    out.push((ok ? 'PASS  ' : 'FAIL  ') + label + '  →  got "' + got + '", wanted "' + want + '"');
+    if (ok) pass++; else fail++;
+  }
+
+  out.push('A · THE REPORTING RULE (which states come out flagged vs received)');
+  out.push('');
+
+  check('4 found, 3 copied, 1 copy failed  (the real Jennifer Dickey case)',
+        meetReport_({ matched: 4, copied: 3, already: 0, copyFailed: 1, readFailed: 0, unmatched: 0 }).state, 'flagged');
+  check('3 found, 3 copied, 1 unreadable   (the hole with no counter)',
+        meetReport_({ matched: 3, copied: 3, already: 0, copyFailed: 0, readFailed: 1, unmatched: 0 }).state, 'flagged');
+  check('2 found, 2 copied, nothing failed (clean run)',
+        meetReport_({ matched: 2, copied: 2, already: 0, copyFailed: 0, readFailed: 0, unmatched: 0 }).state, 'received');
+  check('2 found, 2 already there          (idempotent re-run)',
+        meetReport_({ matched: 2, copied: 0, already: 2, copyFailed: 0, readFailed: 0, unmatched: 0 }).state, 'received');
+  check('2 found, both copies failed       (total failure, flagged before too)',
+        meetReport_({ matched: 2, copied: 0, already: 0, copyFailed: 2, readFailed: 0, unmatched: 0 }).state, 'flagged');
+  check('4 found, 3 already there, 1 failed (re-run that still loses one)',
+        meetReport_({ matched: 4, copied: 0, already: 3, copyFailed: 1, readFailed: 0, unmatched: 0 }).state, 'flagged');
+  check('0 matched, 2 found by name only   (never guesses)',
+        meetReport_({ matched: 0, copied: 0, already: 0, copyFailed: 0, readFailed: 0, unmatched: 2 }).state, 'flagged');
+  check('nothing found at all              (usually: this client has none)',
+        meetReport_({ matched: 0, copied: 0, already: 0, copyFailed: 0, readFailed: 0, unmatched: 0 }).state, 'flagged');
+
+  // The dashboard reads the newest event on this input and classifies it. It
+  // already treats a leading "Flag: " as flagged, which is why no dashboard
+  // change was needed — assert that our flagged event really carries it.
+  var jenny = meetReport_({ matched: 4, copied: 3, already: 0, copyFailed: 1, readFailed: 0,
+                            unmatched: 0, reviewName: MEET_REVIEW_FILE });
+  check('the flagged event starts with "Flag: " (what the dashboard reads)',
+        /^Flag: /.test(jenny.event) ? 'yes' : 'no', 'yes');
+  out.push('');
+  out.push('  Status line the client folder would show:');
+  out.push('  ' + jenny.status);
+  out.push('  Event the dashboard would read:');
+  out.push('  ' + jenny.event);
+  out.push('');
+
+  out.push('B · THE RETRY (fake responses — no Google call is made)');
+  out.push('');
+
+  function fakeRes(code, body) {
+    return { getResponseCode: function () { return code; },
+             getContentText: function () { return body || ''; } };
+  }
+
+  var savedWait = DRIVE_RETRY.baseWaitMs;
+  DRIVE_RETRY.baseWaitMs = 1;                       // don't actually wait while testing
+  try {
+    var calls, res;
+
+    calls = 0;
+    res = driveFetchRetry_('x', {}, 'test', function () {
+      calls++;
+      return calls < 3 ? fakeRes(403, '{"error":{"errors":[{"reason":"userRateLimitExceeded"}]}}')
+                       : fakeRes(200, 'ok');
+    }, function () {});
+    check('rate-limited twice, then succeeds → attempts', String(calls), '3');
+    check('rate-limited twice, then succeeds → final code', String(res.getResponseCode()), '200');
+
+    calls = 0;
+    res = driveFetchRetry_('x', {}, 'test', function () {
+      calls++; return fakeRes(403, '{"error":{"errors":[{"reason":"insufficientPermissions"}]}}');
+    }, function () {});
+    check('a real permission 403 is NOT retried → attempts', String(calls), '1');
+
+    calls = 0;
+    res = driveFetchRetry_('x', {}, 'test', function () {
+      calls++; return fakeRes(429, 'too many requests');
+    }, function () {});
+    check('429 every time → gives up after the cap', String(calls), String(DRIVE_RETRY.attempts));
+
+    calls = 0;
+    res = driveFetchRetry_('x', {}, 'test', function () { calls++; return fakeRes(200, 'ok'); }, function () {});
+    check('a clean call never retries and never waits', String(calls), '1');
+  } finally {
+    DRIVE_RETRY.baseWaitMs = savedWait;             // always restore, even on a throw
+  }
+
+  out.push('');
+  out.push(fail === 0 ? '✅ ALL GREEN — ' + pass + ' checks passed.'
+                      : '❌ ' + fail + ' CHECK(S) FAILED (' + pass + ' passed). Do not trust the fix.');
+  out.push('Retry setting in the code now: ' + DRIVE_RETRY.attempts + ' attempts, first wait ' +
+           DRIVE_RETRY.baseWaitMs + 'ms.');
+
+  var text = out.join('\n');
+  Logger.log(text);
+  uiAlert_(text);
+  return text;
 }
