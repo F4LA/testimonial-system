@@ -606,6 +606,7 @@ function collectMeet_(client, folder) {
   // SUCCESS, not a false "0 matched" flag. `matched` — not `copied` — decides
   // success vs flag: a matched doc that was already copied is still a success.
   var matched = 0, copied = 0, already = 0, copyFailed = 0;
+  var matchedCycles = [];   // one entry per matched doc whose date resolved to a cycle
   var seenDocs = {};   // dedupe the same shared doc found under several accounts
   var unmatched = [];  // read but no email match — listed in the review file when nothing matches
   var failed = [];     // matched but the copy failed — listed in the review file too
@@ -654,6 +655,10 @@ function collectMeet_(client, folder) {
           return;
         }
         matched++;
+        if (doc.createdTime) {
+          var mc = resolveCycleByDate_(client.email, new Date(doc.createdTime)).cycle;
+          if (mc != null) matchedCycles.push(mc);
+        }
 
         var type = classifyCall_(doc.name);          // the title classifies, never filters
         var dest = subfolder_(c01, type);
@@ -689,8 +694,14 @@ function collectMeet_(client, folder) {
     unmatched: unmatched.length, reviewName: reviewName, trace: trace
   });
 
+  var distinctMeetCycles = matchedCycles.filter(function (c, idx) { return matchedCycles.indexOf(c) === idx; });
+  var meetCycle = distinctMeetCycles.length === 1 ? distinctMeetCycles[0] : null;
+  var meetCycleNote = distinctMeetCycles.length > 1
+    ? ' (spans cycles ' + distinctMeetCycles.sort().join(',') + ' — logged without a cycle stamp; review manually)'
+    : '';
+
   markStatus_(folder, 'Call recordings', r.status);
-  logEvent_(client.email, 'Collection — Meet', r.event, 'AUTO');
+  logEvent_(client.email, 'Collection — Meet', r.event + meetCycleNote, 'AUTO', meetCycle);
   return { summary: r.summary };
 }
 
@@ -915,12 +926,12 @@ function driveSearchDocs_(token, folderId, client) {
   do {
     var q = "'" + folderId + "' in parents and mimeType = 'application/vnd.google-apps.document' and trashed = false" + filter;
     var url = 'https://www.googleapis.com/drive/v3/files?q=' + encodeURIComponent(q) +
-      '&fields=nextPageToken,files(id,name)&pageSize=100&supportsAllDrives=true&includeItemsFromAllDrives=true' +
+      '&fields=nextPageToken,files(id,name,createdTime)&pageSize=100&supportsAllDrives=true&includeItemsFromAllDrives=true' +
       (pageToken ? '&pageToken=' + pageToken : '');
     var res = driveFetchRetry_(url, { headers: { Authorization: 'Bearer ' + token }, muteHttpExceptions: true }, 'doc search');
     if (res.getResponseCode() !== 200) throw new Error('doc search ' + res.getResponseCode() + ': ' + res.getContentText().slice(0, 150));
     var data = JSON.parse(res.getContentText());
-    (data.files || []).forEach(function (f) { out.push({ id: f.id, name: f.name }); });
+    (data.files || []).forEach(function (f) { out.push({ id: f.id, name: f.name, createdTime: f.createdTime }); });
     pageToken = data.nextPageToken || '';
   } while (pageToken);
   return out;
@@ -1047,7 +1058,13 @@ function collectLooms_(client, folder) {
     var cell = String(data[r][iLoom] || '');
     var m = cell.match(/https?:\/\/(?:www\.)?loom\.com\/share\/([a-f0-9]{32})[^\s"']*/g) || [];
     m.forEach(function (u) {
-      urls.push({ url: u, date: iDate >= 0 ? String(data[r][iDate]) : '' });
+      var rawDate = iDate >= 0 ? data[r][iDate] : null;
+      var whenDate = rawDate instanceof Date ? rawDate : new Date(rawDate);
+      urls.push({
+        url: u,
+        date: iDate >= 0 ? String(rawDate) : '',
+        cycle: resolveCycleByDate_(client.email, whenDate).cycle
+      });
     });
     // Rows with no link (check-ins without Loom, "N/A", notes in the wrong cell)
     // are simply skipped — harmless noise.
@@ -1081,12 +1098,19 @@ function collectLooms_(client, folder) {
   if (prev.hasNext()) prev.next().setContent(index.join('\n'));
   else c02.createFile(indexName, index.join('\n'), MimeType.PLAIN_TEXT);
 
+  var loomCycles = urls.map(function (it) { return it.cycle; }).filter(function (c) { return c != null; });
+  var distinctLoomCycles = loomCycles.filter(function (c, idx) { return loomCycles.indexOf(c) === idx; });
+  var loomCycle = distinctLoomCycles.length === 1 ? distinctLoomCycles[0] : null;
+  var loomCycleNote = distinctLoomCycles.length > 1
+    ? ' (spans cycles ' + distinctLoomCycles.sort().join(',') + ' — logged without a cycle stamp; review manually)'
+    : '';
+
   var detail = urls.length + ' videos, ' + ok + ' transcripts' + (failed ? ', ' + failed + ' failed' : '');
   var status = failed === 0
     ? '✅ arrived — ' + today_() + ' (' + detail + ')'
     : '❌ partially failed — ' + today_() + ' (' + detail + '; endpoint is unofficial — manual fallback)';
   markStatus_(folder, 'Coach videos', status);
-  logEvent_(client.email, 'Collection — Loom', detail, 'AUTO');
+  logEvent_(client.email, 'Collection — Loom', detail + loomCycleNote, 'AUTO', loomCycle);
   return { summary: (failed === 0 ? '✅' : '⚠') + ' Loom (' + ok + '/' + urls.length + ')' };
 }
 
@@ -1749,6 +1773,98 @@ function prefsCycleFor_(email) {
   } catch (err) {
     return 1;
   }
+}
+
+/**
+ * Resolves which cycle an artifact belongs to by its OWN date, for engine
+ * writes that cannot know the cycle at write time (call notes, Looms — the
+ * "MOTOR, unresolved" gap in project-brain.md). NOT the same mechanism as
+ * prefsCycleFor_: that one takes "the newest cycle" because the client fills
+ * that form once, in the present, about the testimonial just nominated. A
+ * call note or a Loom can be dated BEFORE the newest cycle even after a
+ * re-nomination — a coach's mesocycle check-in for part 1 can land after
+ * part 2 already exists — so "newest" would silently misfile it. This finds
+ * the cycle whose window actually contains the artifact's date instead.
+ *
+ * WINDOWS COME FROM THE LOG ITSELF: the dashboard already stamps a cycle
+ * (column F) on the nomination/re-nomination event it writes. Those are the
+ * only trustworthy cycle-start markers today — this reads them directly, it
+ * does not invent a second source of boundaries.
+ *
+ * RULE: cycle N's window is [the earliest known start of N, the earliest
+ * known start of N+1). An artifact dated before every known start goes to
+ * the earliest known cycle — there is nothing earlier to place it in.
+ *
+ * NEVER GUESSES WHEN IT CAN'T TELL: if `when` isn't a usable date, returns
+ * {cycle: null}; the caller must leave the event's cycle column blank —
+ * exactly today's behavior — rather than stamp a wrong cycle.
+ */
+function resolveCycleByDate_(email, when) {
+  var e = String(email || '').trim().toLowerCase();
+  var out = { cycle: null, windows: [] };
+  if (!e || !(when instanceof Date) || isNaN(when.getTime())) return out;
+
+  try {
+    var ss  = SpreadsheetApp.getActiveSpreadsheet();
+    var tab = ss ? ss.getSheetByName(prop_('EVENTS_TAB')) : null;
+    if (!tab) tab = SpreadsheetApp.openById(prop_('SIGNAL_SHEET_ID')).getSheetByName(prop_('EVENTS_TAB'));
+    if (!tab) return out;
+    var last = tab.getLastRow();
+    if (last < 2) return out;
+    var vals = tab.getRange(2, 1, last - 1, 6).getValues();   // columns A..F
+
+    var starts = {};   // cycle -> earliest Date seen for it
+    for (var i = 0; i < vals.length; i++) {
+      if (String(vals[i][0]).trim().toLowerCase() !== e) continue;
+      var c = parseInt(vals[i][5], 10);
+      if (!(c > 0)) continue;                      // only rows that carry a real cycle
+      var t;
+      try { t = Utilities.parseDate(String(vals[i][2]), TZ, 'd MMM yyyy, HH:mm'); }
+      catch (err) { continue; }                     // unparseable row — skip, don't corrupt the windows
+      if (!starts[c] || t < starts[c]) starts[c] = t;
+    }
+
+    var windows = Object.keys(starts).map(function (k) { return { cycle: parseInt(k, 10), start: starts[k] }; })
+      .sort(function (a, b) { return a.start - b.start; });
+    out.windows = windows;
+
+    if (windows.length === 0) { out.cycle = 1; return out; }   // no boundary logged yet — today's default, unchanged
+
+    var chosen = windows[0].cycle;   // fallback: nothing is earlier than the earliest known start
+    for (var j = 0; j < windows.length; j++) {
+      if (when >= windows[j].start) chosen = windows[j].cycle;
+    }
+    out.cycle = chosen;
+    return out;
+  } catch (err) {
+    return out;   // read failed — leave cycle null, same as a blank column today
+  }
+}
+
+/**
+ * READ-ONLY. Shows the cycle windows resolveCycleByDate_ sees for one client,
+ * and — if a test date is passed — what cycle that date would resolve to.
+ * Writes nothing.
+ */
+function checkCycleWindowsFor(email, testDateStr) {
+  var out = [];
+  var w = resolveCycleByDate_(email, new Date());   // dummy date, just to read the windows
+  out.push('Cycle windows found for ' + email + ':');
+  if (w.windows.length === 0) {
+    out.push('  (none logged yet — every artifact defaults to cycle 1)');
+  } else {
+    w.windows.forEach(function (win) {
+      out.push('  cycle ' + win.cycle + ' starts ' + Utilities.formatDate(win.start, TZ, 'd MMM yyyy, HH:mm'));
+    });
+  }
+  if (testDateStr) {
+    var d = new Date(testDateStr);
+    var r = resolveCycleByDate_(email, d);
+    out.push('Test date ' + testDateStr + ' → cycle ' + (r.cycle == null ? '(unresolvable — would log blank)' : r.cycle));
+  }
+  var msg = out.join('\n');
+  Logger.log(msg);
+  return msg;
 }
 
 /**
