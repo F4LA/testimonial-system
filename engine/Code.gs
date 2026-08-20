@@ -197,6 +197,14 @@ function setup() {
     sTab.setColumnWidth(5, 420);
   }
 
+  // Cycle (column F) — the dashboard's "Fire the kickoff fan-out" button knows
+  // the cycle at click time (D-131) and writes it here; the manual checkbox
+  // fallback leaves it blank, same degraded behavior as before this fix.
+  if (!sTab.getRange('F1').getValue()) {
+    sTab.getRange('F1').setValue('Cycle').setFontWeight('bold');
+    sTab.setColumnWidth(6, 80);
+  }
+
   // --- Roster mirror (for the name dropdown) ---
   var mTab = ss.getSheetByName(prop_('MIRROR_TAB')) || ss.insertSheet(prop_('MIRROR_TAB'));
   var rosterId = prop_('ROSTER_SHEET_ID');
@@ -356,7 +364,8 @@ function onSignalEdit(e) {
       return;
     }
 
-    var out = fanOut_(client);
+    var cycle = parseInt(sheet.getRange(row, 6).getValue(), 10);   // col F — Cycle (blank si Gaby tildea a mano)
+    var out = fanOut_(client, cycle);
     sheet.getRange(row, 4).setValue(out.result);
     if (out.videoLink) sheet.getRange(row, 5).setValue(out.videoLink);  // col E — Client video link
   } finally {
@@ -370,7 +379,7 @@ function onSignalEdit(e) {
 // failure is written to the status file and the event log.
 // ============================================================================
 
-function fanOut_(client) {
+function fanOut_(client, cycle) {
   var parts = [];
   var videoLink = '';   // shareable link of "03 · Client video" — written to the Signal sheet
 
@@ -378,10 +387,10 @@ function fanOut_(client) {
   var folder;
   try {
     folder = createClientFolder_(client);
-    logEvent_(client.email, 'Collection — folder', 'Folder created: ' + folder.getName(), 'AUTO');
+    logEvent_(client.email, 'Collection — folder', 'Folder created: ' + folder.getName(), 'AUTO', cycle);
     parts.push('✅ folder');
   } catch (err) {
-    logEvent_(client.email, 'Collection — folder', 'FAILED to create the folder: ' + err.message, 'AUTO');
+    logEvent_(client.email, 'Collection — folder', 'FAILED to create the folder: ' + err.message, 'AUTO', cycle);
     return { result: '❌ Folder creation failed: ' + err.message + ' — nothing else ran.', videoLink: '' };
   }
 
@@ -391,10 +400,10 @@ function fanOut_(client) {
   // log it and leave the manual path (Gaby shares 03 by hand).
   try {
     videoLink = shareClientVideoFolder_(folder);
-    logEvent_(client.email, 'Collection — client video link', 'Folder 03 shared (anyone with link – editor); link surfaced to the Signal sheet', 'AUTO');
+    logEvent_(client.email, 'Collection — client video link', 'Folder 03 shared (anyone with link – editor); link surfaced to the Signal sheet', 'AUTO', cycle);
     parts.push('✅ video link');
   } catch (err) {
-    logEvent_(client.email, 'Collection — client video link', 'Could not share/surface folder 03: ' + err.message + ' — Gaby shares it by hand (manual fallback)', 'AUTO');
+    logEvent_(client.email, 'Collection — client video link', 'Could not share/surface folder 03: ' + err.message + ' — Gaby shares it by hand (manual fallback)', 'AUTO', cycle);
     parts.push('⚠ video link (manual)');
   }
 
@@ -421,10 +430,10 @@ function fanOut_(client) {
   // 4) Coach notice via Slack with the form link
   try {
     notifyCoach_(client);
-    logEvent_(client.email, 'Collection — coach notice', 'DM sent to ' + (client.coach || client.coachSlackEmail), 'AUTO');
+    logEvent_(client.email, 'Collection — coach notice', 'DM sent to ' + (client.coach || client.coachSlackEmail), 'AUTO', cycle);
     parts.push('✅ coach notice');
   } catch (err) {
-    logEvent_(client.email, 'Collection — coach notice', 'FAILED: ' + err.message, 'AUTO');
+    logEvent_(client.email, 'Collection — coach notice', 'FAILED: ' + err.message, 'AUTO', cycle);
     parts.push('❌ coach notice');
   }
 
@@ -1579,7 +1588,7 @@ function processPendingSignals() {
     var last = sheet.getLastRow();
     if (last < 2) return 'Nothing to do.';
 
-    var rows = sheet.getRange(2, 1, last - 1, 3).getValues();
+    var rows = sheet.getRange(2, 1, last - 1, 6).getValues();   // A..F, F = Cycle (opcional)
     var done = 0;
     var log = [];
 
@@ -1588,6 +1597,7 @@ function processPendingSignals() {
       var name = String(rows[i][0] || '').trim();
       var confirmed = rows[i][1];
       var processed = rows[i][2];
+      var cycle = parseInt(rows[i][5], 10);   // col F, NaN si el botón no mandó nada
 
       if (!name) continue;
       if (confirmed !== true) continue;         // strict: a text "TRUE" is not a tick
@@ -1605,7 +1615,7 @@ function processPendingSignals() {
         continue;
       }
 
-      var out = fanOut_(client);
+      var out = fanOut_(client, cycle);
       sheet.getRange(row, 4).setValue(out.result);
       if (out.videoLink) sheet.getRange(row, 5).setValue(out.videoLink);
       log.push('row ' + row + ': ' + name + ' → ' + out.result);
