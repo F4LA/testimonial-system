@@ -121,6 +121,7 @@ var CFG_DEFAULTS = {
   CLIENT_FORM_HDR_EMAIL: 'Email',
   CLIENT_FORM_HDR_VIDEO: 'Video',
   COACH_FORM_HDR_CLIENT: 'Client',
+  COACH_FORM_HDR_TESTIMONIAL_COUNT: 'How many testimonials has this client already given us?',
 
   // Sales/closer accounts whose "Meet Recordings" folders hold discovery/sales
   // calls (run by closers, not the coach). Comma/newline/semicolon-separated
@@ -1231,6 +1232,18 @@ function onClientVideoSubmit(e) {
 }
 
 // --- Coach form → folder 04 ---
+// Maps the coach form's plain-language count question to the internal cycle
+// number. Never guesses: "More than three", blank, or anything unexpected
+// returns null and the write below records it unresolved instead of
+// stamping a wrong number. Same habit as resolveCycleByDate_ (D-129).
+function coachCycleFromAnswer_(answer) {
+  var a = String(answer || '').trim().toLowerCase();
+  if (a === 'this is their first') return 1;
+  if (a === 'this is their second') return 2;
+  if (a === 'this is their third') return 3;
+  return null;
+}
+
 function onCoachFormSubmit(e) {
   var row = formRow_(e);
   var clientName = String(row[prop_('COACH_FORM_HDR_CLIENT')] || '').trim();
@@ -1247,6 +1260,9 @@ function onCoachFormSubmit(e) {
   }
   var c04 = subfolder_(folder, '04');
 
+  var countAnswer = row[prop_('COACH_FORM_HDR_TESTIMONIAL_COUNT')];
+  var cycle = coachCycleFromAnswer_(countAnswer);
+
   var lines = ['# Coach form — ' + client.name, 'Received: ' + now_(), ''];
   Object.keys(row).forEach(function (question) {
     if (question === prop_('COACH_FORM_HDR_CLIENT') || question.toLowerCase() === 'timestamp' || question.toLowerCase() === 'marca temporal') return;
@@ -1255,7 +1271,12 @@ function onCoachFormSubmit(e) {
   c04.createFile('Coach form — ' + Utilities.formatDate(new Date(), TZ, 'yyyy-MM-dd HHmm') + '.md', lines.join('\n'), MimeType.PLAIN_TEXT);
 
   markStatus_(folder, 'Coach form', '✅ arrived — ' + today_());
-  logEvent_(client.email, 'Collection — coach form', 'Response routed to folder 04', 'AUTO');
+
+  if (cycle) {
+    logEvent_(client.email, 'Collection — coach form', 'Response routed to folder 04', 'AUTO', cycle);
+  } else {
+    logEvent_(client.email, 'Collection — coach form', 'Response routed to folder 04; answer "' + countAnswer + '" does not resolve to a cycle — review manually', 'AUTO');
+  }
 }
 
 // Turns the onFormSubmit event into a {question: answer} object
