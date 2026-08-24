@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-**Last updated:** August 21, 2026 (chequeo de deriva promovido a trabajo recurrente y repo del tablero versionado con clasp, D-135/D-136)
+**Last updated:** August 24, 2026 (comprobación de direcciones de Slack ejecutable y ejecutada, D-138)
 
 ## Current phase
 
@@ -105,10 +105,9 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
   1. Podcast sub-process (Bernardo + Joey): create the podcast booking calendar in GoHighLevel; write/approve the podcast invitation copy; Joey approves the calendar. Needed before the dashboard's podcast invite chain runs for real.
   2. Shout-out copy + posting account (Bernardo + Joey): define the client-of-the-month shout-out copy and which account posts it. Needed before the dashboard's shout-out task is real.
   3. HECHO: a Miguel Salas ya se le enseñó el mes extra en la Master Sheet, y la primera vez la ejecutó Bernardo (ganadora de agosto, Heather Spillers).
-  4. HECHO (D-137): las tareas nuevas ya se marcan dentro del resumen diario, para Miguel Salas y Gaby, más el aislamiento del envío por persona. Falta correr previewDigest() y dSelfCheckSend_() en el editor en vivo para confirmarlo contra el proyecto real.
+  4. HECHO Y VERIFICADO EN VIVO (D-137/D-138): las tareas nuevas se marcan dentro del resumen diario para Miguel Salas y Gaby, el envío está aislado por persona, y la comprobación de direcciones de Slack ya se puede correr y se corrió — las cuatro resuelven. El disparador diario está confirmado activo desde el 10 de agosto. El lunes 25 es la primera mañana en que Miguel Salas recibe un mensaje del sistema.
 - **Raffle carry-forward (D-103) — CERRADO (D-126):** el puente del formulario de preferencias ya escribe el ciclo real, así que las respuestas de un cliente re-nominado aterrizan en su testimonio nuevo y no en el viejo. Validado con un caso real de ciclo 2 en producción, no solo el camino feliz. Ya no es una compuerta antes del primer testimonio de parte 2.
 - Two-source-of-truth guard (D-088): raffle (D-103), buffer (D-096) y tareas y alertas (D-133/D-134) confirmados en vivo. La comparación ya NO depende de que alguien la corra a mano (D-135): un chequeo diario compara el tablero real contra el digest y avisa por Slack solo si difieren, con reconocimiento temporal para divergencia esperada durante un cambio en curso. El repo del tablero además ya tiene el mismo tratamiento de clasp que el motor (D-136): repo como fuente, prueba de deriva byte a byte. Sigue OPEN solo para reviews y podcast/cliente del mes: cuando esas vistas se construyan, su lógica tiene que aterrizar en Digest.gs en el mismo commit — el chequeo diario las recoge solo, sin necesitar edición.
-- TABLERO, sin resolver: el texto de la tarea de contenido cuenta al revés. La vista previa del 25 de agosto imprime "0 of 5 pieces still open" para Jennifer Dickey, que tiene las cinco piezas sin empezar; la ficha muestra 0 de 5 HECHAS, así que el número que viaja es el de completadas y el texto lo anuncia como pendientes. Debería decir 5 of 5. Es el primer mensaje que Miguel Salas va a recibir del sistema y lo leería como "no hay nada pendiente" el día que tiene diez piezas por hacer. Hay que averiguar si el defecto está en el digest o si el motor de tareas ya lo dice mal en la cola. Su propio pase en el repo del dashboard.
 - Post-launch (none blocking Aug 10): (a) UX redesign pass — density, collapsible sections, feedback polish, and drag-and-drop (D-093); (b) archive the duplicate proxy deployments and rename the survivor "ACTIVE — used by dashboard/config.js" (D-092); (c) decide the no-undo "Pipeline — correction" event (D-093, open — now also covers a confirmed raffle winner, D-103); (d) the two-source-of-truth selfCheck email (D-088, see above); (e) el banner de la vista del sorteo dice que el sorteo abre el último día del mes; el código lo abre cuando el mes ya terminó (D-122). Texto corrido un día, sin efecto en el comportamiento.
 - MOTOR, resuelto (D-128): el reporte falso de las notas de llamadas parcialmente copiadas ya no existe. Ver "Done" arriba.
 - MOTOR, resuelto (D-129): notas de llamada y Looms ya resuelven su propio ciclo por fecha contra las ventanas que el tablero escribe en el registro; nunca adivinan cuando la fecha no se puede leer o cuando una corrida mezcla ciclos. Validación en vivo contra un cliente real de ciclo 2 sigue pendiente — `checkCycleWindowsFor(email, fecha)` está listo para esa prueba.
@@ -135,6 +134,8 @@ None standing alone — remaining open items live inside their tasks (Master Pla
 - Operating rule for Claude Code sessions on this project (searching before declaring something absent) lives in `CLAUDE.md`, not here — added after this bit the build twice (D-085, D-095).
 
 - OJO CON EL NOMBRE "MIGUEL" (D-137): hay dos en el workspace y los dos están en este proyecto. Miguel Salas es el de contenido y dueño de tareas del tablero; Miguel Méndez es coach y recibe el DM del formulario de reconocimiento. Las dos configuraciones son correctas, pero la documentación usa "Miguel" a secas para los dos. Usar apellido donde el rol no sea obvio.
+
+- UNA REPRODUCCIÓN LOCAL NO ES UNA CORRIDA REAL (D-138). Pasó dos veces en agosto: un ejemplo tecleado a mano en un stub se leyó como salida del sistema y mandó a una sesión a cazar un bug inexistente, y una prueba que sustituía la función bajo prueba borró su propia guarda y reportó un fallo imposible. Se sustituye la frontera (la capa de red), nunca la función que se está probando. Y ninguna salida se presenta como ejecución real si no salió del proyecto en vivo.
 
 ## Key dates
 
