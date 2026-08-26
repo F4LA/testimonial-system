@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-Last updated: August 24, 2026 — Storytelling Agent v4; regeneración de Heather y Jennifer tras feedback de Joey (D-139)
+Last updated: August 26, 2026 — Storytelling Agent v5; regeneración de Heather y Jennifer tras segunda ronda de feedback de Joey (D-140)
 
 ## Current phase
 
@@ -92,7 +92,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 
 ## In progress (Phase 2)
 
-- Miguel Salas: corrida de validación del agente (tarea 19, D-069) en su segunda vuelta. Joey dio feedback detallado por formato sobre el primer draft (Heather y Jennifer, 19 Aug) — el problema central era lenguaje genérico y una sobre-aplicación de la regla de consentimiento familiar. El agente se actualizó a v4 (D-139) y las diez piezas de ambas clientas se regeneraron aplicando las correcciones. Pendiente: que Joey revise este segundo lote antes de aprobar para publicar; confirmación humana de permiso de fotos para las dos clientas antes de que cualquier pieza con foto pueda publicarse.
+- Miguel Salas: corrida de validación del agente (tarea 19, D-069) en su tercera vuelta. Joey dio una segunda ronda de feedback puntual ("Corrections V2") sobre el lote v4 de Heather — el agente se actualizó a v5 (D-140) y las diez piezas de ambas clientas (Heather y Jennifer) se regeneraron aplicando las correcciones. Pendiente: que Joey revise este tercer lote antes de aprobar para publicar; confirmación humana de permiso de fotos para las dos clientas antes de que cualquier pieza con foto pueda publicarse.
 - The automatic collection is deployed, rewritten to English, and validated end-to-end in production (D-054/D-055) — launch-ready
 - Bernardo: Testimonial Dashboard (task 26) — Phases 1-4 built and live (D-084/D-091/D-094/D-096). **Phase 5 (recognitions) is IN PROGRESS:** the raffle (compliance + draw) is done and validated (D-103); Gaby's raffle-message copy is written, approved, and loaded (D-106/D-111). Remaining in Phase 5: the reviews view, the podcast/client-of-the-month view, and the "Preferences — unresolved" alert (identity failures from the D-098 bridge) still to surface as a Gaby task. The daily Slack digest is live (D-104) y el archivo desplegado vuelve a coincidir con el repo (D-133/D-134). The two-source-of-truth guard (D-088) is satisfied for the raffle and buffer mirrors, and now also for the non-raffle task/alert logic, con la huella comparada en vivo el 20 de agosto y coincidiendo en los dos lados. Sigue OPEN solo para reviews/podcast cuando esas vistas existan. Las correcciones del primer ciclo real (D-116 a D-119) y el aplazamiento a otro mes (D-121) están aplicados y desplegados. Estado vivo al 20 de agosto: Allen Donald esperando septiembre, con su tarea de retomar el outreach programada sola para el 1 de septiembre; el sorteo de agosto ya se corrió, ganadora Heather Spillers, y el tablero no muestra ninguna tarea de sorteo abierta.
 
