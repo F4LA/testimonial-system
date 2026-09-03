@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-Last updated: August 26, 2026 — Storytelling Agent v5; regeneración de Heather y Jennifer tras segunda ronda de feedback de Joey (D-140)
+Last updated: September 2, 2026 — el token de Slack murió por el tope de 10 apps del plan gratuito y dejó el sistema mudo entre una y dos semanas; reinstalado y validado (D-141)
 
 ## Current phase
 
@@ -89,6 +89,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 - El archivo desplegado del resumen diario VUELVE A COINCIDIR con el repo (D-133), cerrando el pendiente más viejo abierto del sistema. Le faltaba entero el espejo del aplazamiento, así que podía pedirle a Gaby el outreach de un cliente que el tablero ya muestra aplazado; pasaba de verdad con Allen Donald desde el 18. Medido antes de decidir, el cambio para el equipo era una resta de una sola línea para una sola persona. Corregido de paso el diagnóstico anotado: el atraso real era de 271 líneas, el archivo en vivo era exactamente el de las correcciones del primer ciclo real, y no había ninguna edición hecha a mano que el reemplazo fuera a destruir.
 - El digest YA RECONOCE A LOS EX CLIENTES (D-134), segunda desincronización encontrada al correr la comparación de huellas. Leía solo el Roster, que lista clientes activos, así que todo cliente con contrato terminado le salía como identidad sin resolver: tarea diaria falsa para Gaby y, peor, su nombre reemplazado por su correo en cualquier otra tarea. La brecha era 128 activos contra 334 con contratos. Ahora resuelve contra las dos fuentes en el mismo orden que el tablero, sin adivinar nunca, y ampliar la identidad no amplió el ruteo: cliente y coach siguen sin poder recibir mensajes.
 - El chequeo de deriva entre tablero y digest ya es un trabajo recurrente (D-135): corre diario, solo, y avisa por Slack si el tablero real y el digest dejan de coincidir. Ya no depende de que alguien corra selfCheck() a mano.
+- Token de Slack recuperado tras caída silenciosa (D-141, 2 sep): el plan gratuito de Slack expulsó la app al llegar al tope de 10 instaladas, matando el mensaje mensual, el aviso al coach, el resumen diario y las alertas de deriva. Token nuevo en los dos proyectos, app reinvitada al canal privado, validado en vivo por los dos lados.
 
 ## In progress (Phase 2)
 
@@ -114,6 +115,10 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 - MOTOR: la familia del ciclo en blanco queda cerrada (D-098→D-131). No queda ningún pendiente de este tipo.
 - Joey: approves creative async
 - Miguel: run the agent on the first real client of the cycle (task 19, D-069) when the first testimonial lands after launch.
+- SEPTIEMBRE SALE A MANO: el mensaje mensual lo publica Bernardo el 3 de septiembre. El automático no lo puede recuperar; su próximo envío es el 28 de septiembre y corresponde a octubre.
+- Construir una opción de menú que mande el mensaje mensual real fuera de su fecha, sin marca de prueba. Hoy un envío perdido no se puede recuperar por el camino del sistema (D-141).
+- Decidir el plan del workspace de Slack, o acordar que nadie instala apps sin avisar. Tras la reinstalación quedamos otra vez en 10 de 10 y la expulsión puede repetirse (D-141).
+- Pensar cómo el sistema avisa que Slack está caído, dado que todos sus avisos viajan por Slack (D-141).
 
 ## Launch posture (Meet)
 
