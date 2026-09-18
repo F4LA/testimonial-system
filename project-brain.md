@@ -102,7 +102,7 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a medida que se completa cada cosa — no se borra la línea, solo se marca, para que quede el historial de qué se hizo y cuándo (mismo espíritu append-only del decision log, aplicado a esta lista)._
 
 **Guardrails / bugs abiertos (encontrados 18 sep, sesión de Flow 10)**
-- [ ] Agregar guía explícita `CANONICAL_URL` vs `DISCOVERY_CALL_URL` a las instrucciones del Storytelling Agent (D-143) — **bloqueado: falta saber dónde viven esas instrucciones como archivo/doc editable**
+- [ ] Agregar guía explícita `CANONICAL_URL` vs `DISCOVERY_CALL_URL` a las instrucciones del Storytelling Agent (D-143) — **EN PROGRESO 18 sep: Miguel lo está resolviendo con otro agente en paralelo; pendiente que pase la data acá para confirmar y marcar cerrado**
 - [ ] Decidir si se borran los archivos viejos con el bug de canonical en las carpetas de Heather/Jennifer (D-143) — no viven en el repo `strongstandar`, deben estar en Drive o localmente
 
 **Fase 5 del dashboard — construida solo a medias (task 26)**
