@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-Last updated: September 18, 2026 — Flow 10 (schedule + publish) cierra el hueco post-aprobación que D-142 dejó abierto (D-146); ver DECISION-LOG.md del repo del tablero para el detalle
+Last updated: September 18, 2026 — Next up reorganizado como checklist con casillas, para ir marcando tareas una por una; agregados los dos hallazgos de hoy (guardrail de CANONICAL_URL, archivos viejos de Heather/Jennifer) y cerrado Ashley Lee
 
 ## Current phase
 
@@ -93,33 +93,51 @@ Phase 2 — Execution. Master Plan built, approved, uploaded. The automatic coll
 
 ## In progress (Phase 2)
 
-- Miguel Salas: Storytelling Agent en v6 (D-144), con las seis reglas nuevas del tercer feedback de Joey aplicadas retroactivamente a Heather y Jennifer, cuyo contenido ya está aprobado y programado. Producción avanzó al cohorte de septiembre: Ashley Lee (coach Jackie Llovet) es la primera clienta procesada bajo v6, con las cinco piezas redactadas aplicando también la regla de encuadre D-145 (tiempo transcurrido + intentos fallidos, no detalles técnicos de proceso). Pendiente antes de publicar: el permiso de fotos de Ashley requiere difuminar su rostro en todos los frames donde aparece; su video crudo de testimonio (710MB) no se pudo transcribir en sesión, así que las citas usadas vienen adaptadas de notas de llamada — hay que sacar 2-3 líneas textuales antes de la publicación final. También sigue abierto (D-143): agregar la guía explícita de CANONICAL_URL a las instrucciones del agente, y decidir si se borran los archivos viejos con el bug en las carpetas de Heather y Jennifer.
+- Miguel Salas: Storytelling Agent en v6 (D-144), con las seis reglas nuevas del tercer feedback de Joey aplicadas retroactivamente a Heather y Jennifer, cuyo contenido ya está aprobado y programado. Producción avanzó al cohorte de septiembre: Ashley Lee (coach Jackie Llovet) es la primera clienta procesada bajo v6, con las cinco piezas redactadas aplicando también la regla de encuadre D-145 (tiempo transcurrido + intentos fallidos, no detalles técnicos de proceso). CERRADO 18 sep: las fotos con rostro difuminado y las 2-3 líneas textuales del video ya están listas — Ashley queda lista para publicar.
 - The automatic collection is deployed, rewritten to English, and validated end-to-end in production (D-054/D-055) — launch-ready
 - Bernardo: Testimonial Dashboard (task 26) — Phases 1-4 built and live (D-084/D-091/D-094/D-096). **Phase 5 (recognitions) is IN PROGRESS:** the raffle (compliance + draw) is done and validated (D-103); Gaby's raffle-message copy is written, approved, and loaded (D-106/D-111). Remaining in Phase 5: the reviews view, the podcast/client-of-the-month view, and the "Preferences — unresolved" alert (identity failures from the D-098 bridge) still to surface as a Gaby task. The daily Slack digest is live (D-104) y el archivo desplegado vuelve a coincidir con el repo (D-133/D-134). The two-source-of-truth guard (D-088) is satisfied for the raffle and buffer mirrors, and now also for the non-raffle task/alert logic, con la huella comparada en vivo el 20 de agosto y coincidiendo en los dos lados. Sigue OPEN solo para reviews/podcast cuando esas vistas existan. Las correcciones del primer ciclo real (D-116 a D-119) y el aplazamiento a otro mes (D-121) están aplicados y desplegados. Estado vivo al 20 de agosto: Allen Donald esperando septiembre, con su tarea de retomar el outreach programada sola para el 1 de septiembre; el sorteo de agosto ya se corrió, ganadora Heather Spillers, y el tablero no muestra ninguna tarea de sorteo abierta. El hueco post-aprobación (D-142) ya está cerrado (D-146): Flow 10 nuevo cubre asignación de semana + programar/publicar + escalada, y el resumen diario ya avisa cuando el buffer cae bajo la meta.
 
 ## Next up
 
-- Coach non-negotiables: DONE, entregados en el procedimiento de los coaches (D-123), incluida la regla de la invitación de calendario para kickoff y llamadas de venta con los closers (D-082). Falta solo repartir el documento al equipo de coaching.
-- Bernardo: los procedimientos por rol (tarea 23) están CERRADOS — Gaby, Miguel y coaches escritos, verificados contra el código y actualizados con el primer ciclo real (D-105, D-113, D-122, D-123). Plus the pre-close gate: resolve the old backlog before the rock closes (D-032/D-075). Task 23 must fold in two things: (a) Miguel's actual production model, corrected from the mapping session's batched "production week" assumption — production is continuous, client by client, with the landing page always interrupting whatever he's doing (D-113); (b) the client-of-the-month vote + podcast-invitation mechanics for the relevant roles. **For Aug 10:** form + email wiring are done (D-063); Gaby sends the kickoff email by hand, pasting each client's "03 · Client video" link (manual steps documented in the email doc). The folder-link auto-surface is DONE (D-065): Gaby copies the "03 · Client video" link from Signal col E; the manual share-by-hand path remains the documented fallback if external sharing is ever blocked.
-- Dashboard (task 26): Phases 1-4 built and live (D-084/D-091/D-094/D-096). Phase 5 (recognitions): the raffle is done (D-103); Gaby's raffle-message copy is written, approved, and loaded (D-106/D-111). Remaining: the reviews view, the podcast/client-of-the-month view, and the "Preferences — unresolved" alert. Pre-close gate alongside the backlog (D-032/D-075).
-  DASHBOARD FOLLOW-UP TASKS (surfaced from the dashboard design; to do after/alongside the build — the dashboard is designed on these decisions but they need Bernardo's action to be real):
-  1. Podcast sub-process (Bernardo + Joey): create the podcast booking calendar in GoHighLevel; write/approve the podcast invitation copy; Joey approves the calendar. Needed before the dashboard's podcast invite chain runs for real.
-  2. Shout-out copy + posting account (Bernardo + Joey): define the client-of-the-month shout-out copy and which account posts it. Needed before the dashboard's shout-out task is real.
-  3. HECHO: a Miguel Salas ya se le enseñó el mes extra en la Master Sheet, y la primera vez la ejecutó Bernardo (ganadora de agosto, Heather Spillers).
-  4. HECHO Y VERIFICADO EN VIVO (D-137/D-138): las tareas nuevas se marcan dentro del resumen diario para Miguel Salas y Gaby, el envío está aislado por persona, y la comprobación de direcciones de Slack ya se puede correr y se corrió — las cuatro resuelven. El disparador diario está confirmado activo desde el 10 de agosto. El lunes 25 es la primera mañana en que Miguel Salas recibe un mensaje del sistema.
-- **Raffle carry-forward (D-103) — CERRADO (D-126):** el puente del formulario de preferencias ya escribe el ciclo real, así que las respuestas de un cliente re-nominado aterrizan en su testimonio nuevo y no en el viejo. Validado con un caso real de ciclo 2 en producción, no solo el camino feliz. Ya no es una compuerta antes del primer testimonio de parte 2.
-- Two-source-of-truth guard (D-088): raffle (D-103), buffer (D-096) y tareas y alertas (D-133/D-134) confirmados en vivo. La comparación ya NO depende de que alguien la corra a mano (D-135): un chequeo diario compara el tablero real contra el digest y avisa por Slack solo si difieren, con reconocimiento temporal para divergencia esperada durante un cambio en curso. El repo del tablero además ya tiene el mismo tratamiento de clasp que el motor (D-136): repo como fuente, prueba de deriva byte a byte. Sigue OPEN solo para reviews y podcast/cliente del mes: cuando esas vistas se construyan, su lógica tiene que aterrizar en Digest.gs en el mismo commit — el chequeo diario las recoge solo, sin necesitar edición.
-- Post-launch (none blocking Aug 10): (a) UX redesign pass — density, collapsible sections, feedback polish, and drag-and-drop (D-093); (b) archive the duplicate proxy deployments and rename the survivor "ACTIVE — used by dashboard/config.js" (D-092); (c) decide the no-undo "Pipeline — correction" event (D-093, open — now also covers a confirmed raffle winner, D-103); (d) the two-source-of-truth selfCheck email (D-088, see above); (e) el banner de la vista del sorteo dice que el sorteo abre el último día del mes; el código lo abre cuando el mes ya terminó (D-122). Texto corrido un día, sin efecto en el comportamiento.
-- ARREGLADO (D-142): la asignación de semana del calendario ya funciona. Llevaba desde Phase 4 rota sin manifestarse porque nadie había asignado una semana de verdad. El lector del tablero ya tolera que Sheets convierta la semana en fecha, y el proxy la deja como texto. Redespliegue hecho, Versión 13.
-- MOTOR, resuelto (D-128): el reporte falso de las notas de llamadas parcialmente copiadas ya no existe. Ver "Done" arriba.
-- MOTOR, resuelto (D-129): notas de llamada y Looms ya resuelven su propio ciclo por fecha contra las ventanas que el tablero escribe en el registro; nunca adivinan cuando la fecha no se puede leer o cuando una corrida mezcla ciclos. Validación en vivo contra un cliente real de ciclo 2 sigue pendiente — `checkCycleWindowsFor(email, fecha)` está listo para esa prueba.
-- MOTOR: la familia del ciclo en blanco queda cerrada (D-098→D-131). No queda ningún pendiente de este tipo.
-- Joey: approves creative async
-- Miguel: run the agent on the first real client of the cycle (task 19, D-069) when the first testimonial lands after launch.
-- SEPTIEMBRE SALE A MANO: el mensaje mensual lo publica Bernardo el 3 de septiembre. El automático no lo puede recuperar; su próximo envío es el 28 de septiembre y corresponde a octubre.
-- Construir una opción de menú que mande el mensaje mensual real fuera de su fecha, sin marca de prueba. Hoy un envío perdido no se puede recuperar por el camino del sistema (D-141).
-- Decidir el plan del workspace de Slack, o acordar que nadie instala apps sin avisar. Tras la reinstalación quedamos otra vez en 10 de 10 y la expulsión puede repetirse (D-141).
-- Pensar cómo el sistema avisa que Slack está caído, dado que todos sus avisos viajan por Slack (D-141).
+_Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a medida que se completa cada cosa — no se borra la línea, solo se marca, para que quede el historial de qué se hizo y cuándo (mismo espíritu append-only del decision log, aplicado a esta lista)._
+
+**Guardrails / bugs abiertos (encontrados 18 sep, sesión de Flow 10)**
+- [ ] Agregar guía explícita `CANONICAL_URL` vs `DISCOVERY_CALL_URL` a las instrucciones del Storytelling Agent (D-143) — **bloqueado: falta saber dónde viven esas instrucciones como archivo/doc editable**
+- [ ] Decidir si se borran los archivos viejos con el bug de canonical en las carpetas de Heather/Jennifer (D-143) — no viven en el repo `strongstandar`, deben estar en Drive o localmente
+
+**Fase 5 del dashboard — construida solo a medias (task 26)**
+- [ ] Vista de reviews (las dos señales, tarea semanal de verificación empujada)
+- [ ] Vista de podcast / cliente del mes (candidatos, marcar ganador, tarea de shout-out)
+- [ ] Mostrar la alerta "Preferences — unresolved" como tarea de Gaby (fallos de identidad del puente D-098)
+- [ ] Podcast sub-process (Bernardo + Joey): crear el calendario de podcast en GoHighLevel; escribir/aprobar el copy de invitación; Joey aprueba el calendario
+- [ ] Shout-out copy + cuenta que publica (Bernardo + Joey): definir el copy del cliente del mes y qué cuenta lo publica
+- [ ] Two-source-of-truth guard (D-088): queda OPEN solo para reviews/podcast — cuando esas vistas se construyan, su lógica debe aterrizar en `Digest.gs` en el MISMO commit, o el chequeo diario de deriva las va a marcar como desincronizadas desde el día uno
+
+**Riesgo operativo (Slack, D-141)**
+- [ ] Decidir plan pago del workspace de Slack, o acordar que nadie instala apps sin avisar (sigue en 10/10 apps, riesgo de expulsar el bot otra vez)
+- [ ] Pensar cómo el sistema avisa si Slack mismo se cae (hoy no hay forma — todos los avisos viajan por Slack)
+- [ ] Construir una opción de menú que mande el mensaje mensual real fuera de fecha, sin marca de prueba (hoy un envío perdido no se recupera por el camino del sistema)
+
+**Backlog / compuertas antes de cerrar el "rock" (D-032/D-075)**
+- [ ] Decidir la estrategia del backlog de ~10 testimonios guardados — compuerta dura antes de cerrar el rock
+- [ ] Validación en vivo pendiente: `checkCycleWindowsFor(email, fecha)` contra un cliente real de ciclo 2 (D-129 — la lógica ya está lista, falta la prueba real)
+- [ ] Repartir el documento de "coach non-negotiables" al equipo de coaching (D-123 — ya escrito, solo falta mandarlo)
+
+**Post-launch, sin urgencia (D-093/D-092/D-122)**
+- [ ] Rediseño de UX del tablero (densidad, secciones colapsables, feedback, drag-and-drop)
+- [ ] Archivar los deployments duplicados del proxy viejo, renombrar el que sí se usa como "ACTIVE — used by dashboard/config.js"
+- [ ] Decidir el evento "sin undo" de corrección de pipeline ("Pipeline — correction") — ahora también cubre un ganador de sorteo confirmado
+- [ ] Arreglar el texto del banner de la vista del sorteo (dice que abre el último día del mes; el código lo abre cuando el mes ya terminó — solo texto, sin efecto en el comportamiento)
+
+**Ya cerrado (referencia — no re-abrir, agregar una fila nueva si algo cambia)**
+- [x] Coach non-negotiables escritos y entregados (D-123/D-082)
+- [x] Procedimientos por rol de Bernardo (tarea 23) — Gaby, Miguel y coaches
+- [x] Raffle carry-forward (D-103 → D-126)
+- [x] Asignación de semana del calendario arreglada (D-142)
+- [x] MOTOR: reporte falso de notas de llamadas parciales (D-128)
+- [x] MOTOR: familia del ciclo en blanco (D-098 → D-131)
+- [x] Flow 10 (schedule + publish), validado en vivo con huella idéntica tablero↔digest (D-146)
+- [x] Ashley Lee: fotos con rostro difuminado y líneas textuales del video del testimonio (cerrado 18 sep, confirmado por Miguel)
 
 ## Launch posture (Meet)
 
