@@ -127,7 +127,7 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 - [ ] Rediseño de UX del tablero (densidad, secciones colapsables, feedback, drag-and-drop)
 - [ ] Archivar los deployments duplicados del proxy viejo, renombrar el que sí se usa como "ACTIVE — used by dashboard/config.js"
 - [ ] Decidir el evento "sin undo" de corrección de pipeline ("Pipeline — correction") — ahora también cubre un ganador de sorteo confirmado
-- [ ] Arreglar el texto del banner de la vista del sorteo (dice que abre el último día del mes; el código lo abre cuando el mes ya terminó — solo texto, sin efecto en el comportamiento)
+- [x] Arreglar el texto del banner de la vista del sorteo — cerrado 20 sep: cambiado a "una vez que [mes] termine". Es puro frontend (`raffle-view.js`), se despliega solo con GitHub Pages, no necesita pegar nada en Apps Script.
 
 **Ya cerrado (referencia — no re-abrir, agregar una fila nueva si algo cambia)**
 - [x] Coach non-negotiables escritos y entregados (D-123/D-082)
