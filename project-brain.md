@@ -120,7 +120,7 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 
 **Backlog / compuertas antes de cerrar el "rock" (D-032/D-075)**
 - [ ] Decidir la estrategia del backlog de ~10 testimonios guardados — compuerta dura antes de cerrar el rock
-- [ ] Validación en vivo pendiente: `checkCycleWindowsFor(email, fecha)` contra un cliente real de ciclo 2 (D-129 — la lógica ya está lista, falta la prueba real)
+- [ ] **EN ESPERA, no bloqueado por nosotros** — validación en vivo de `checkCycleWindowsFor(email, fecha)` contra un cliente real de ciclo 2 (D-129 — la lógica ya está lista y probada con datos sintéticos; falta que exista de verdad un cliente re-nominado por segunda vez). Confirmado 20 sep: los 10 testimonios activos son todos ciclo 1 todavía. No hay nada que trabajar hasta que Bernardo re-nomine a alguien — no es un pendiente olvidado, es uno que se resuelve solo cuando el mundo real lo produzca. Cuando pase, correr `checkCycleWindowsFor("email@cliente.com")` desde el editor del motor y confirmar.
 - [ ] Repartir el documento de "coach non-negotiables" al equipo de coaching (D-123 — ya escrito, solo falta mandarlo)
 
 **Post-launch, sin urgencia (D-093/D-092/D-122)**
