@@ -103,7 +103,7 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 
 **Guardrails / bugs abiertos (encontrados 18 sep, sesión de Flow 10)**
 - [x] Agregar guía explícita `CANONICAL_URL` vs `DISCOVERY_CALL_URL` a las instrucciones del Storytelling Agent (D-143) — cerrado 18 sep (D-147/D-148): instrucciones consolidadas en documento editable, con la guía de ambas URLs agregada y corregida. Heather ya corregida en vivo; Jennifer corregida por Miguel directamente.
-- [ ] Decidir si se borran los archivos viejos con el bug de canonical en las carpetas de Heather/Jennifer (D-143) — no viven en el repo `strongstandar`, deben estar en Drive o localmente
+- [x] Decidir si se borran los archivos viejos con el bug de canonical en las carpetas de Heather/Jennifer — cerrado 20 sep (D-152): se quedan donde están, como backup inofensivo. Encontrados y listados los 9 borradores viejos en Drive; nada borrado.
 
 **Fase 5 del dashboard — construida solo a medias (task 26)**
 - [x] Vista de reviews (las dos señales, tarea semanal de verificación empujada) — cerrado y DESPLEGADO EN VIVO 20 sep (D-066): `dashboard/reviews.js` + `reviews-view.js`, mirror completo en `Digest.gs`, `PROXY_VERSION` → 10. Validado con huella idéntica tablero↔digest, incluida la tarea nueva (`Gaby|reviewsCheck|verify|due|`). `invariants: ok`.
