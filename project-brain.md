@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-Last updated: September 20, 2026 — D-149 desplegado y validado en vivo (código pegado, deriva confirmada en cero, triggers reinstalados, BERNARDO_EMAIL configurado y probado): cerrados dos de los tres huecos de D-141; solo queda el plan de Slack, que es decisión de Bernardo
+Last updated: September 20, 2026 — D-150: los tres huecos de D-141 quedan cerrados. No hace falta plan pago de Slack ni acuerdo de apps — se pueden crear varios webhooks dentro de las dos apps que ya existen
 
 ## Current phase
 
@@ -114,7 +114,7 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 - [ ] Two-source-of-truth guard (D-088): queda OPEN solo para reviews/podcast — cuando esas vistas se construyan, su lógica debe aterrizar en `Digest.gs` en el MISMO commit, o el chequeo diario de deriva las va a marcar como desincronizadas desde el día uno
 
 **Riesgo operativo (Slack, D-141)**
-- [ ] Decidir plan pago del workspace de Slack, o acordar que nadie instala apps sin avisar (sigue en 10/10 apps, riesgo de expulsar el bot otra vez) — **el único de los tres que sigue abierto; es decisión de Bernardo, no de código**
+- [x] Decidir plan pago del workspace de Slack, o acordar que nadie instala apps sin avisar — cerrado 20 sep (D-150): **no hace falta ninguna de las dos.** Un app de Slack no está limitado a un webhook — se pueden crear varios webhooks dentro de la misma app (Slack → configuración del app → Incoming Webhooks → Add New Webhook). Si algún día se necesita un webhook nuevo, se agrega dentro de una de las dos apps que ya existen, nunca creando una tercera. Esa tercera app fue justo lo que llevó el workspace a 10/10 la primera vez (D-141).
 - [x] Pensar cómo el sistema avisa si Slack mismo se cae — cerrado y DESPLEGADO EN VIVO 20 sep (D-149): `slackHealthCheck_()`, trigger diario que llama `auth.test` y, si falla, manda un correo directo a Bernardo por MailApp (no depende de Slack). `BERNARDO_EMAIL` configurado, probado a mano (corrida limpia, Slack sano → silencio, como se diseñó), y el trigger diario instalado junto con los otros dos (`installSignalPollTrigger`, `installPrefsFormTrigger`) que `installTriggers()` había borrado.
 - [x] Construir una opción de menú que mande el mensaje mensual real fuera de fecha, sin marca de prueba — cerrado y DESPLEGADO EN VIVO 20 sep (D-149): `sendMissedNominationMessage()` en el menú "Testimonial System"
 
