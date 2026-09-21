@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-Last updated: September 20, 2026 — D-149: cerrados dos de los tres huecos de D-141 (recuperación de envío mensual perdido, aviso por correo si Slack se cae); solo queda el plan de Slack, que es decisión de Bernardo
+Last updated: September 20, 2026 — D-149 desplegado y validado en vivo (código pegado, deriva confirmada en cero, triggers reinstalados, BERNARDO_EMAIL configurado y probado): cerrados dos de los tres huecos de D-141; solo queda el plan de Slack, que es decisión de Bernardo
 
 ## Current phase
 
@@ -115,8 +115,8 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 
 **Riesgo operativo (Slack, D-141)**
 - [ ] Decidir plan pago del workspace de Slack, o acordar que nadie instala apps sin avisar (sigue en 10/10 apps, riesgo de expulsar el bot otra vez) — **el único de los tres que sigue abierto; es decisión de Bernardo, no de código**
-- [x] Pensar cómo el sistema avisa si Slack mismo se cae — cerrado 20 sep (D-149): `slackHealthCheck_()`, trigger diario que llama `auth.test` y, si falla, manda un correo directo a Bernardo por MailApp (no depende de Slack). Falta un Script Property nuevo, `BERNARDO_EMAIL`, antes de instalar el trigger.
-- [x] Construir una opción de menú que mande el mensaje mensual real fuera de fecha, sin marca de prueba — cerrado 20 sep (D-149): `sendMissedNominationMessage()` en el menú "Testimonial System"
+- [x] Pensar cómo el sistema avisa si Slack mismo se cae — cerrado y DESPLEGADO EN VIVO 20 sep (D-149): `slackHealthCheck_()`, trigger diario que llama `auth.test` y, si falla, manda un correo directo a Bernardo por MailApp (no depende de Slack). `BERNARDO_EMAIL` configurado, probado a mano (corrida limpia, Slack sano → silencio, como se diseñó), y el trigger diario instalado junto con los otros dos (`installSignalPollTrigger`, `installPrefsFormTrigger`) que `installTriggers()` había borrado.
+- [x] Construir una opción de menú que mande el mensaje mensual real fuera de fecha, sin marca de prueba — cerrado y DESPLEGADO EN VIVO 20 sep (D-149): `sendMissedNominationMessage()` en el menú "Testimonial System"
 
 **Backlog / compuertas antes de cerrar el "rock" (D-032/D-075)**
 - [ ] Decidir la estrategia del backlog de ~10 testimonios guardados — compuerta dura antes de cerrar el rock
