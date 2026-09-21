@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-Last updated: September 20, 2026 — Vista de Podcast/Cliente del mes (Fase 5, D-068) construida y subida al repo del tablero; falta desplegar Digest.gs en vivo y validar huella. D-151: cerrado el evento "sin undo" de pipeline sin construir nada. Vista de Reviews (D-066) cerrada y validada en vivo.
+Last updated: September 20, 2026 — Fase 5 del dashboard completa: Podcast/Cliente del mes (D-068) y Reviews (D-066) cerrados y validados en vivo, huella idéntica tablero↔digest en los dos. Two-source-of-truth guard (D-088) ya no tiene ninguna vista pendiente. D-151: cerrado el evento "sin undo" de pipeline sin construir nada.
 
 ## Current phase
 
@@ -107,11 +107,11 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 
 **Fase 5 del dashboard — construida solo a medias (task 26)**
 - [x] Vista de reviews (las dos señales, tarea semanal de verificación empujada) — cerrado y DESPLEGADO EN VIVO 20 sep (D-066): `dashboard/reviews.js` + `reviews-view.js`, mirror completo en `Digest.gs`, `PROXY_VERSION` → 10. Validado con huella idéntica tablero↔digest, incluida la tarea nueva (`Gaby|reviewsCheck|verify|due|`). `invariants: ok`.
-- [ ] Vista de podcast / cliente del mes (candidatos, marcar ganador, tarea de shout-out) — **código construido y subido 20 sep (repo del tablero, commit 36f1df9):** `dashboard/podcast.js` + `podcast-view.js` nuevos, mirror completo en `Digest.gs`, sin necesitar `PROXY_VERSION` nuevo (los 9 strings ya estaban permitidos). Falta: pegar `Digest.gs` en el editor en vivo y validar huella tablero↔digest.
+- [x] Vista de podcast / cliente del mes (candidatos, marcar ganador, tarea de shout-out) — cerrado y DESPLEGADO EN VIVO 20 sep (D-068): `dashboard/podcast.js` + `podcast-view.js`, mirror completo en `Digest.gs`. Validado con huella idéntica tablero↔digest, incluidos dos meses cohorte distintos (2026-08 y 2026-09) correctamente distinguidos. `invariants: ok`.
 - [x] Mostrar la alerta "Preferences — unresolved" como tarea de Gaby — cerrado 20 sep, sin necesitar código nuevo: verificado en vivo que `alerts.js` ya convierte CUALQUIER evento "Flag: " sin email en una tarea de revisión para Gaby, de forma genérica (línea 64, "Unattributed engine flag"). Como `onPrefsFormSubmit` escribe `Preferences — unresolved` con email vacío y texto que empieza con "Flag: ", ya cae ahí solo — no hacía falta este ítem, solo faltaba confirmarlo.
 - [ ] Podcast sub-process (Bernardo + Joey): crear el calendario de podcast en GoHighLevel; escribir/aprobar el copy de invitación; Joey aprueba el calendario
 - [ ] Shout-out copy + cuenta que publica (Bernardo + Joey): definir el copy del cliente del mes y qué cuenta lo publica
-- [ ] Two-source-of-truth guard (D-088): cerrado para reviews (20 sep, huella validada en vivo). Podcast/cliente del mes ya tiene su mirror en el mismo commit (36f1df9) — falta pegar `Digest.gs` en vivo y validar huella para cerrar del todo
+- [x] Two-source-of-truth guard (D-088): cerrado para reviews Y para podcast/cliente del mes (20 sep, huellas validadas en vivo para ambos). Ya no queda ninguna vista de Fase 5 sin su mirror en `Digest.gs`.
 
 **Riesgo operativo (Slack, D-141)**
 - [x] Decidir plan pago del workspace de Slack, o acordar que nadie instala apps sin avisar — cerrado 20 sep (D-150): **no hace falta ninguna de las dos.** Un app de Slack no está limitado a un webhook — se pueden crear varios webhooks dentro de la misma app (Slack → configuración del app → Incoming Webhooks → Add New Webhook). Si algún día se necesita un webhook nuevo, se agrega dentro de una de las dos apps que ya existen, nunca creando una tercera. Esa tercera app fue justo lo que llevó el workspace a 10/10 la primera vez (D-141).
