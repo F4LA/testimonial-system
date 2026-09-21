@@ -78,7 +78,8 @@
  *   Setup (build tabs)  →  Install triggers  →  (optional) Manual test (by email)
  * Trigger functions (installed by name in installTriggers; renaming any of these
  * means updating the strings there and reinstalling): onSignalEdit,
- * onClientVideoSubmit, onCoachFormSubmit, sendMonthlyNominationMessage.
+ * onClientVideoSubmit, onCoachFormSubmit, sendMonthlyNominationMessage,
+ * slackHealthCheck_ (section 18).
  * Plus two installed by their own installers: processPendingSignals (section 16)
  * and onPrefsFormSubmit (section 17).
  * ============================================================================
@@ -163,6 +164,7 @@ function onOpen() {
     .addSeparator()
     .addItem('Manual test (by email)', 'manualTest')
     .addItem('Test: send nomination now', 'manualNominationTest')
+    .addItem('Send missed nomination now (real)', 'sendMissedNominationMessage')
     .addSeparator()
     .addItem('Check: nomination setup (read-only)', 'checkNominationSetup')
     .addItem('Check: preferences wiring (read-only)', 'checkPrefsFormWiring')
@@ -262,6 +264,10 @@ function installTriggers() {
   // already sent for that month.
   ScriptApp.newTrigger('sendMonthlyNominationMessage')
     .timeBased().onWeekDay(ScriptApp.WeekDay.MONDAY).atHour(NOMINATION_HOUR).create();
+
+  // Slack health check (section 18) — daily, before the 8-9am digest/DM window,
+  // so a dead token gets caught by email before the silent Slack sends would fire.
+  ScriptApp.newTrigger('slackHealthCheck_').timeBased().everyDays(1).atHour(7).create();
 
   // WARNING: this function DELETES every trigger first, including the two
   // installed separately — the signal poll (section 16) and the preferences
@@ -1505,6 +1511,44 @@ function manualNominationTest() {
     (testCh ? 'the test channel.' : 'the real collection channel (with a TEST marker — delete it after).'));
 }
 
+// Menu action — recovers a missed automatic send (D-141 left this gap open:
+// sendMonthlyNominationMessage only fires on the correct Monday, and
+// manualNominationTest always marks isTest=true and never sets the monthly
+// marker). This posts the REAL message and sets NOMINATION_LAST_SENT_MONTH,
+// so the next automatic Monday send does not repeat it.
+function sendMissedNominationMessage() {
+  var ui = SpreadsheetApp.getUi();
+  var dueMonth = nominationMonthDueToday_();
+  var lastSent = PropertiesService.getScriptProperties().getProperty('NOMINATION_LAST_SENT_MONTH');
+  var suggested = dueMonth || Utilities.formatDate(new Date(), TZ, 'yyyy-MM');
+
+  var resp = ui.prompt('Send the REAL nomination message now',
+    'This posts the real message to the collection channel (no test marker) and marks it sent, ' +
+    'so the automatic Monday send will not repeat it. Last sent marker: ' + (lastSent || '(empty)') +
+    '. Enter the month this send is FOR (yyyy-MM), or leave blank to use ' + suggested + ':',
+    ui.ButtonSet.OK_CANCEL);
+  if (resp.getSelectedButton() !== ui.Button.OK) return;
+
+  var month = (resp.getResponseText() || '').trim() || suggested;
+  if (!/^\d{4}-\d{2}$/.test(month)) { uiAlert_('Month must be yyyy-MM.'); return; }
+
+  var confirm = ui.alert('Confirm real send',
+    'This will post the REAL nomination message to the collection channel right now, for ' + month +
+    '. This cannot be undone. Continue?', ui.ButtonSet.YES_NO);
+  if (confirm !== ui.Button.YES) return;
+
+  var lock = LockService.getScriptLock();
+  lock.waitLock(30000);
+  try {
+    postNomination_(NOMINATION_CHANNEL_ID, false);
+    PropertiesService.getScriptProperties().setProperty('NOMINATION_LAST_SENT_MONTH', month);
+    logEvent_('', 'Nomination', 'Missed monthly nomination message sent manually for ' + month, 'MANUAL');
+    uiAlert_('Sent for ' + month + ' and marker updated.');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
 /**
  * READ-ONLY. Verifies the copy and the send calendar. Posts nothing, writes
  * nothing, changes nothing. Run this after any edit to this section.
@@ -2177,4 +2221,35 @@ function checkMeetRetry() {
   Logger.log(text);
   uiAlert_(text);
   return text;
+}
+
+// ============================================================================
+// 18 · SLACK HEALTH CHECK — the one alert that does NOT depend on Slack.
+// Every other alert in this system travels through Slack, which is exactly
+// what went silent for 1-2 weeks in D-141 with nobody noticing. This checks
+// auth.test daily and emails Bernardo directly (MailApp, no Slack dependency)
+// the moment the token stops working, instead of relying on someone noticing
+// nine days of quiet. Requires a new Script Property: BERNARDO_EMAIL (his
+// plain email address — not a secret, no token, safe to have as a property).
+// ============================================================================
+function slackHealthCheck_() {
+  var token = prop_('SLACK_BOT_TOKEN');
+  var res = UrlFetchApp.fetch('https://slack.com/api/auth.test', {
+    headers: { Authorization: 'Bearer ' + token }, muteHttpExceptions: true
+  });
+  var r = JSON.parse(res.getContentText());
+  if (r.ok) return; // healthy — silent, same "quiet is fine" contract as the rest of the system
+
+  var to = prop_('BERNARDO_EMAIL');
+  MailApp.sendEmail({
+    to: to,
+    subject: 'Testimonial System: Slack bot token is down (' + r.error + ')',
+    body: 'The Slack health check failed just now.\n\n' +
+      'Error: ' + r.error + '\n\n' +
+      'Every alert that travels through Slack (coach notices, the monthly nomination message, ' +
+      'the daily digest, drift alerts) is currently silent — same failure as D-141.\n\n' +
+      'Likely cause: the workspace hit its 10-app limit and Slack force-uninstalled the bot. ' +
+      'Reinstall the app, generate a new token, and update SLACK_BOT_TOKEN in BOTH Apps Script ' +
+      'projects\' Script Properties (engine + dashboard share the same token).'
+  });
 }

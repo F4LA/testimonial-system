@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-Last updated: September 18, 2026 — Next up reorganizado como checklist con casillas, para ir marcando tareas una por una; agregados los dos hallazgos de hoy (guardrail de CANONICAL_URL, archivos viejos de Heather/Jennifer) y cerrado Ashley Lee
+Last updated: September 20, 2026 — D-149: cerrados dos de los tres huecos de D-141 (recuperación de envío mensual perdido, aviso por correo si Slack se cae); solo queda el plan de Slack, que es decisión de Bernardo
 
 ## Current phase
 
@@ -114,9 +114,9 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 - [ ] Two-source-of-truth guard (D-088): queda OPEN solo para reviews/podcast — cuando esas vistas se construyan, su lógica debe aterrizar en `Digest.gs` en el MISMO commit, o el chequeo diario de deriva las va a marcar como desincronizadas desde el día uno
 
 **Riesgo operativo (Slack, D-141)**
-- [ ] Decidir plan pago del workspace de Slack, o acordar que nadie instala apps sin avisar (sigue en 10/10 apps, riesgo de expulsar el bot otra vez)
-- [ ] Pensar cómo el sistema avisa si Slack mismo se cae (hoy no hay forma — todos los avisos viajan por Slack)
-- [ ] Construir una opción de menú que mande el mensaje mensual real fuera de fecha, sin marca de prueba (hoy un envío perdido no se recupera por el camino del sistema)
+- [ ] Decidir plan pago del workspace de Slack, o acordar que nadie instala apps sin avisar (sigue en 10/10 apps, riesgo de expulsar el bot otra vez) — **el único de los tres que sigue abierto; es decisión de Bernardo, no de código**
+- [x] Pensar cómo el sistema avisa si Slack mismo se cae — cerrado 20 sep (D-149): `slackHealthCheck_()`, trigger diario que llama `auth.test` y, si falla, manda un correo directo a Bernardo por MailApp (no depende de Slack). Falta un Script Property nuevo, `BERNARDO_EMAIL`, antes de instalar el trigger.
+- [x] Construir una opción de menú que mande el mensaje mensual real fuera de fecha, sin marca de prueba — cerrado 20 sep (D-149): `sendMissedNominationMessage()` en el menú "Testimonial System"
 
 **Backlog / compuertas antes de cerrar el "rock" (D-032/D-075)**
 - [ ] Decidir la estrategia del backlog de ~10 testimonios guardados — compuerta dura antes de cerrar el rock
