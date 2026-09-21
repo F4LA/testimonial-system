@@ -125,7 +125,6 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 
 **Post-launch, sin urgencia (D-093/D-092/D-122)**
 - [ ] Rediseño de UX del tablero (densidad, secciones colapsables, feedback, drag-and-drop)
-- [ ] **EN PAUSA, retomar después de las correcciones grandes** — archivar los deployments duplicados del proxy viejo, renombrar el que sí se usa como "ACTIVE — used by dashboard/config.js". La URL real es la que termina en `...qll5X-MnC3gZ/exec` (dashboard/config.js WEB_APP_URL) — esa nunca se toca, solo se archivan las demás. Cosmético, no afecta nada en producción.
 - [x] Decidir el evento "sin undo" de corrección de pipeline — cerrado 20 sep (D-151): NO se construye un evento genérico. Cada corrección real ya se resolvió por separado, siempre escribiendo hacia adelante (postponement cancelled, free move del calendario, confirm/unmatched de Reviews), y Publish + ganador de sorteo quedan explícitamente sin deshacer, con el diálogo de confirmación como única red de seguridad. Decisión, no feature — nada que construir.
 - [x] Arreglar el texto del banner de la vista del sorteo — cerrado 20 sep: cambiado a "una vez que [mes] termine". Es puro frontend (`raffle-view.js`), se despliega solo con GitHub Pages, no necesita pegar nada en Apps Script.
 
