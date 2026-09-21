@@ -119,7 +119,7 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 - [x] Construir una opción de menú que mande el mensaje mensual real fuera de fecha, sin marca de prueba — cerrado y DESPLEGADO EN VIVO 20 sep (D-149): `sendMissedNominationMessage()` en el menú "Testimonial System"
 
 **Backlog / compuertas antes de cerrar el "rock" (D-032/D-075)**
-- [ ] Decidir la estrategia del backlog de ~10 testimonios guardados — compuerta dura antes de cerrar el rock
+- [ ] **EN ESPERA DE BERNARDO** — decidir la estrategia del backlog de ~10 testimonios guardados (D-032, compuerta dura antes de cerrar el rock). Miguel le mandó mensaje 20 sep con su opinión (con video + transcript el agente puede armar las piezas sin problema, casi no se usan los Looms/Meet notes en la práctica) y la recomendación de Claude (probar con 1-2 como piloto antes de meter los diez). Si Bernardo aprueba: agregar a esa gente directo al pipeline en la etapa de producción para que Miguel les cree el testimonio.
 - [ ] **EN ESPERA, no bloqueado por nosotros** — validación en vivo de `checkCycleWindowsFor(email, fecha)` contra un cliente real de ciclo 2 (D-129 — la lógica ya está lista y probada con datos sintéticos; falta que exista de verdad un cliente re-nominado por segunda vez). Confirmado 20 sep: los 10 testimonios activos son todos ciclo 1 todavía. No hay nada que trabajar hasta que Bernardo re-nomine a alguien — no es un pendiente olvidado, es uno que se resuelve solo cuando el mundo real lo produzca. Cuando pase, correr `checkCycleWindowsFor("email@cliente.com")` desde el editor del motor y confirmar.
 - [x] Repartir el documento de "coach non-negotiables" al equipo de coaching — cerrado 20 sep: mensaje redactado, Bernardo lo manda al equipo
 
