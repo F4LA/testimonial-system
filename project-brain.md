@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-Last updated: September 20, 2026 — D-150: los tres huecos de D-141 quedan cerrados. No hace falta plan pago de Slack ni acuerdo de apps — se pueden crear varios webhooks dentro de las dos apps que ya existen
+Last updated: September 20, 2026 — Vista de Reviews (Fase 5, D-066) construida y subida al repo del tablero; falta desplegar en vivo y validar huella. D-150: los tres huecos de D-141 quedan cerrados. No hace falta plan pago de Slack ni acuerdo de apps — se pueden crear varios webhooks dentro de las dos apps que ya existen
 
 ## Current phase
 
@@ -106,9 +106,9 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 - [ ] Decidir si se borran los archivos viejos con el bug de canonical en las carpetas de Heather/Jennifer (D-143) — no viven en el repo `strongstandar`, deben estar en Drive o localmente
 
 **Fase 5 del dashboard — construida solo a medias (task 26)**
-- [ ] Vista de reviews (las dos señales, tarea semanal de verificación empujada)
+- [ ] Vista de reviews (las dos señales, tarea semanal de verificación empujada) — **código construido y subido 20 sep (repo del tablero, commit f15c106):** `dashboard/reviews.js` + `reviews-view.js` nuevos, mirror completo en `Digest.gs`, `PROXY_VERSION` → 10 (excepción angosta para el marcador semanal sin email). Falta: pegar `Code.gs` y `Digest.gs` en sus editores de Apps Script en vivo, y validar huella tablero↔digest — recién ahí se marca cerrado del todo
 - [ ] Vista de podcast / cliente del mes (candidatos, marcar ganador, tarea de shout-out)
-- [ ] Mostrar la alerta "Preferences — unresolved" como tarea de Gaby (fallos de identidad del puente D-098)
+- [x] Mostrar la alerta "Preferences — unresolved" como tarea de Gaby — cerrado 20 sep, sin necesitar código nuevo: verificado en vivo que `alerts.js` ya convierte CUALQUIER evento "Flag: " sin email en una tarea de revisión para Gaby, de forma genérica (línea 64, "Unattributed engine flag"). Como `onPrefsFormSubmit` escribe `Preferences — unresolved` con email vacío y texto que empieza con "Flag: ", ya cae ahí solo — no hacía falta este ítem, solo faltaba confirmarlo.
 - [ ] Podcast sub-process (Bernardo + Joey): crear el calendario de podcast en GoHighLevel; escribir/aprobar el copy de invitación; Joey aprueba el calendario
 - [ ] Shout-out copy + cuenta que publica (Bernardo + Joey): definir el copy del cliente del mes y qué cuenta lo publica
 - [ ] Two-source-of-truth guard (D-088): queda OPEN solo para reviews/podcast — cuando esas vistas se construyan, su lógica debe aterrizar en `Digest.gs` en el MISMO commit, o el chequeo diario de deriva las va a marcar como desincronizadas desde el día uno
