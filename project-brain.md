@@ -4,7 +4,7 @@
 
 **What this is:** the living state of the project. One page. Anyone (or any Claude chat) reads this and knows exactly where the project stands. Updated by Bernardo every Wednesday after reviewing the check-ins, and at the close of any chat that changes project status.
 
-Last updated: September 20, 2026 — Vista de Reviews (Fase 5, D-066) cerrada y validada en vivo, huella idéntica tablero↔digest. D-150: los tres huecos de D-141 quedan cerrados. No hace falta plan pago de Slack ni acuerdo de apps — se pueden crear varios webhooks dentro de las dos apps que ya existen
+Last updated: September 20, 2026 — D-151: cerrado el evento "sin undo" de pipeline, sin construir nada — el patrón de escribir hacia adelante ya está probado cinco veces distintas. Vista de Reviews (Fase 5, D-066) cerrada y validada en vivo. D-150: los tres huecos de D-141 quedan cerrados.
 
 ## Current phase
 
@@ -126,7 +126,7 @@ _Formato checklist: `- [ ]` pendiente, `- [x]` cerrado. Se marca acá mismo a me
 **Post-launch, sin urgencia (D-093/D-092/D-122)**
 - [ ] Rediseño de UX del tablero (densidad, secciones colapsables, feedback, drag-and-drop)
 - [ ] Archivar los deployments duplicados del proxy viejo, renombrar el que sí se usa como "ACTIVE — used by dashboard/config.js"
-- [ ] Decidir el evento "sin undo" de corrección de pipeline ("Pipeline — correction") — ahora también cubre un ganador de sorteo confirmado
+- [x] Decidir el evento "sin undo" de corrección de pipeline — cerrado 20 sep (D-151): NO se construye un evento genérico. Cada corrección real ya se resolvió por separado, siempre escribiendo hacia adelante (postponement cancelled, free move del calendario, confirm/unmatched de Reviews), y Publish + ganador de sorteo quedan explícitamente sin deshacer, con el diálogo de confirmación como única red de seguridad. Decisión, no feature — nada que construir.
 - [x] Arreglar el texto del banner de la vista del sorteo — cerrado 20 sep: cambiado a "una vez que [mes] termine". Es puro frontend (`raffle-view.js`), se despliega solo con GitHub Pages, no necesita pegar nada en Apps Script.
 
 **Ya cerrado (referencia — no re-abrir, agregar una fila nueva si algo cambia)**
