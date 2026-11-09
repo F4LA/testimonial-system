@@ -79,7 +79,7 @@
  * Trigger functions (installed by name in installTriggers; renaming any of these
  * means updating the strings there and reinstalling): onSignalEdit,
  * onClientVideoSubmit, onCoachFormSubmit, sendMonthlyNominationMessage,
- * slackHealthCheck_ (section 18).
+ * slackHealthCheck (section 18).
  * Plus two installed by their own installers: processPendingSignals (section 16)
  * and onPrefsFormSubmit (section 17).
  * ============================================================================
@@ -267,7 +267,7 @@ function installTriggers() {
 
   // Slack health check (section 18) — daily, before the 8-9am digest/DM window,
   // so a dead token gets caught by email before the silent Slack sends would fire.
-  ScriptApp.newTrigger('slackHealthCheck_').timeBased().everyDays(1).atHour(7).create();
+  ScriptApp.newTrigger('slackHealthCheck').timeBased().everyDays(1).atHour(7).create();
 
   // WARNING: this function DELETES every trigger first, including the two
   // installed separately — the signal poll (section 16) and the preferences
@@ -2232,7 +2232,7 @@ function checkMeetRetry() {
 // nine days of quiet. Requires a new Script Property: BERNARDO_EMAIL (his
 // plain email address — not a secret, no token, safe to have as a property).
 // ============================================================================
-function slackHealthCheck_() {
+function slackHealthCheck() {
   var token = prop_('SLACK_BOT_TOKEN');
   var res = UrlFetchApp.fetch('https://slack.com/api/auth.test', {
     headers: { Authorization: 'Bearer ' + token }, muteHttpExceptions: true
