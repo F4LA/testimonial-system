@@ -306,10 +306,30 @@ function readRoster_() {
 }
 
 // Canonical name (from the dropdown) → full record. EXACT match.
+// Overrides fallback: a client the roster does not list (e.g. a former client)
+// can be resolved from the "Overrides" tab of the Signal sheet (SIGNAL_SHEET_ID;
+// A name, B email, C coach, D coach Slack email). The roster always wins; the tab
+// is read only on a ZERO-hit roster miss, and still needs exactly one exact hit.
 function rosterByName_(name) {
   var n = String(name).trim();
   var hits = readRoster_().filter(function (f) { return f.name === n; });
-  return hits.length === 1 ? hits[0] : null;   // 0 or >1 = translation failure
+  if (hits.length > 0) return hits.length === 1 ? hits[0] : null;   // >1 = translation failure
+
+  var tab = SpreadsheetApp.openById(prop_('SIGNAL_SHEET_ID')).getSheetByName('Overrides');
+  if (!tab || !n) return null;
+  var data = tab.getDataRange().getValues();
+  var over = [];
+  for (var r = 1; r < data.length; r++) {
+    if (String(data[r][0]).trim() !== n) continue;
+    over.push({
+      name: n,
+      email: String(data[r][1]).trim().toLowerCase(),
+      coach: String(data[r][2]).trim(),
+      coachEmail: '',
+      coachSlackEmail: String(data[r][3]).trim().toLowerCase()
+    });
+  }
+  return over.length === 1 ? over[0] : null;   // 0 or >1 = translation failure
 }
 
 // Email → full record. Exact match, case-insensitive.
